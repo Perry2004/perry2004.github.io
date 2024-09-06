@@ -31,7 +31,8 @@ html body main #page-1 nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
   padding: 1rem 0;
   position: absolute;
   top: 0;
@@ -43,7 +44,8 @@ html body main #page-1 nav #logo {
   background-image: url("../images/white_logo_transparent_background.png");
   background-size: contain;
   border-radius: 50%;
-  backdrop-filter: invert(1);
+  -webkit-backdrop-filter: invert(1);
+          backdrop-filter: invert(1);
   justify-self: flex-start;
   position: relative;
   left: 3%;
@@ -75,7 +77,8 @@ html body main #page-1 h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 10px;
 }
@@ -250,6 +253,4 @@ html body footer a {
 }
 html body footer a:hover {
   color: rgb(184, 10, 94);
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
