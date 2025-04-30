@@ -1,3 +1,4 @@
+import { useActiveAnchor } from "@/hooks";
 import {
   Navbar,
   NavbarBrand,
@@ -21,10 +22,14 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
   };
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const activeAnchor = useActiveAnchor(anchors);
+  // React.useEffect(() => {
+  //   console.log("activeAnchor", activeAnchor);
+  // }, [activeAnchor]);
 
   return (
     <div className="fixed top-0 z-10 w-full bg-opacity-20">
-      <Navbar onMenuOpenChange={setIsMenuOpen}>
+      <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
         <NavbarBrand>
           <p className="font-bold">Perry Zhu</p>
         </NavbarBrand>
@@ -34,9 +39,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
             className="sm:hidden"
           />
           {anchors.map((anchor) => (
-            <NavbarItem key={anchor}>
+            <NavbarItem key={anchor} className="hidden sm:block">
               <Link href={`#${anchor}`}>
-                <Button>{navbarAnchorMap[anchor]}</Button>
+                <Button
+                  className={activeAnchor === anchor ? "bg-indigo-300" : ""}
+                >
+                  {navbarAnchorMap[anchor]}
+                </Button>
               </Link>
             </NavbarItem>
           ))}
@@ -44,7 +53,16 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
         <NavbarMenu>
           {anchors.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link className="w-full" href={`#${item}`} size="lg">
+              <Link
+                className={
+                  "w-full" +
+                  " " +
+                  (activeAnchor === item ? "bg-indigo-300" : "")
+                }
+                href={`#${item}`}
+                size="lg"
+                onPress={() => setIsMenuOpen(false)}
+              >
                 {navbarAnchorMap[item]}
               </Link>
             </NavbarMenuItem>
