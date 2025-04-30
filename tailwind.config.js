@@ -19,7 +19,7 @@ export default {
         },
       },
       animation: {
-        scroll: "scroll 10s linear infinite",
+        scroll: "scroll 15s linear infinite",
       },
     },
   },
