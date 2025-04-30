@@ -1,3 +1,4 @@
+import { Skeleton } from "@heroui/react";
 import React from "react";
 
 export function RollingImages() {
@@ -27,13 +28,20 @@ export function RollingImages() {
   }, [rollingImages]);
 
   const [isAnimationRunning, setIsAnimationRunning] = React.useState(true);
+  const [areImagesLoaded, setAreImagesLoaded] = React.useState(false);
+  const [imageLoadCount, setImageLoadCount] = React.useState(0);
+  const totalImages = shuffledImages.length;
 
   return (
-    <div className="relative h-52 overflow-hidden whitespace-nowrap bg-pink-200">
+    <div className={"h-52 overflow-hidden whitespace-nowrap"}>
       {[0, 1].map((index) => {
         return (
           <div
-            className="animate-scroll inline-flex h-full w-max whitespace-nowrap"
+            className={
+              areImagesLoaded
+                ? "animate-scroll inline-flex h-full w-max whitespace-nowrap"
+                : "hidden"
+            }
             key={index}
             style={{
               animationPlayState: isAnimationRunning ? "running" : "paused",
@@ -50,12 +58,21 @@ export function RollingImages() {
                   onClick={() => {
                     window.open(convertPexelsUrl(imageUrl), "_blank");
                   }}
+                  onLoad={() => {
+                    setImageLoadCount((prevCount) => prevCount + 1);
+                    if (imageLoadCount === totalImages) {
+                      setAreImagesLoaded(true);
+                    }
+                  }}
                 />
               );
             })}
           </div>
         );
       })}
+      <div className={areImagesLoaded ? "hidden" : "h-full w-full"}>
+        <Skeleton className="h-full w-full" />
+      </div>
     </div>
   );
 }
