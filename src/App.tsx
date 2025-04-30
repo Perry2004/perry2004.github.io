@@ -1,12 +1,26 @@
 import { HeroUIProvider } from "@heroui/react";
-import { AboutMe, Home, Projects, Skills, WorkExperiences } from "./components";
+import {
+  AboutMe,
+  Home,
+  Projects,
+  Skills,
+  WorkExperiences,
+  NavbarHeader,
+} from "./components";
 import ReactFullpage from "@fullpage/react-fullpage";
-
 function App() {
+  const anchors = [
+    "home",
+    "about-me",
+    "projects",
+    "work-experiences",
+    "skills",
+  ];
   return (
     <HeroUIProvider>
+      <NavbarHeader anchors={anchors} />
       <ReactFullpage
-        anchors={["home", "about-me", "projects", "work-experiences", "skills"]}
+        anchors={anchors}
         navigation={true}
         scrollOverflow={true}
         credits={{
