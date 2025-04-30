@@ -1,3 +1,3 @@
 export default function Skills() {
-  return <div>Skills</div>;
+  return <div className="min-h-screen bg-cyan-100">Skills</div>;
 }

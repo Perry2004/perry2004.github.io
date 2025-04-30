@@ -1,3 +1,3 @@
 export default function WorkExperiences() {
-  return <div>Work Experiences</div>;
+  return <div className="min-h-screen bg-purple-200">Work Experiences</div>;
 }
