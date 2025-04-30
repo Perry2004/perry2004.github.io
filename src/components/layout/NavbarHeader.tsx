@@ -10,7 +10,8 @@ import {
   Button,
 } from "@heroui/react";
 import React from "react";
-export default function NavbarHeader({ anchors }: { anchors: string[] }) {
+
+export function NavbarHeader({ anchors }: { anchors: string[] }) {
   const navbarAnchorMap: { [key: string]: string } = {
     home: "Home",
     "about-me": "About Me",

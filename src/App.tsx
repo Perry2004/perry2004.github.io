@@ -8,7 +8,8 @@ import {
   NavbarHeader,
 } from "./components";
 import ReactFullpage from "@fullpage/react-fullpage";
-function App() {
+
+export function App() {
   const anchors = [
     "home",
     "about-me",
@@ -53,5 +54,3 @@ function App() {
     </HeroUIProvider>
   );
 }
-
-export default App;
