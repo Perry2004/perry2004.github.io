@@ -31,7 +31,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
     <div className="fixed top-0 z-10 w-full bg-opacity-20">
       <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
         <NavbarBrand>
-          <p className="font-bold">Perry Zhu</p>
+          <p className="font-great-vibes text-2xl font-bold">Perry Zhu</p>
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarMenuToggle
@@ -40,9 +40,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
           />
           {anchors.map((anchor) => (
             <NavbarItem key={anchor} className="hidden sm:block">
-              <Link href={`#${anchor}`}>
+              <Link href={`#${anchor}`} target="_blank">
                 <Button
-                  className={activeAnchor === anchor ? "bg-indigo-300" : ""}
+                  className={
+                    "text-md" +
+                    " " +
+                    (activeAnchor === anchor ? "bg-indigo-300" : "")
+                  }
                 >
                   {navbarAnchorMap[anchor]}
                 </Button>

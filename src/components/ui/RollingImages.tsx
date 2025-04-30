@@ -30,7 +30,7 @@ export function RollingImages() {
                 <img
                   src={imageUrl}
                   key={imgIndex}
-                  className="duration-5000 mx-5 scale-85 rounded-lg transition-all hover:scale-100 hover:cursor-pointer"
+                  className="duration-5000 scale-85 rounded-lg transition-all hover:scale-100 hover:cursor-pointer"
                   onClick={() => {
                     window.open(convertPexelsUrl(imageUrl), "_blank");
                   }}

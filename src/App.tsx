@@ -19,38 +19,40 @@ export function App() {
   ];
   return (
     <HeroUIProvider>
-      <NavbarHeader anchors={anchors} />
-      <ReactFullpage
-        anchors={anchors}
-        navigation={true}
-        scrollOverflow={true}
-        credits={{
-          enabled: false,
-          label: "",
-          position: "right",
-        }}
-        render={() => {
-          return (
-            <ReactFullpage.Wrapper>
-              <div className="section">
-                <Home />
-              </div>
-              <div className="section">
-                <AboutMe />
-              </div>
-              <div className="section">
-                <Projects />
-              </div>
-              <div className="section">
-                <WorkExperiences />
-              </div>
-              <div className="section">
-                <Skills />
-              </div>
-            </ReactFullpage.Wrapper>
-          );
-        }}
-      />
+      <div className="font-raleway">
+        <NavbarHeader anchors={anchors} />
+        <ReactFullpage
+          anchors={anchors}
+          navigation={true}
+          scrollOverflow={true}
+          credits={{
+            enabled: false,
+            label: "",
+            position: "right",
+          }}
+          render={() => {
+            return (
+              <ReactFullpage.Wrapper>
+                <div className="section">
+                  <Home />
+                </div>
+                <div className="section">
+                  <AboutMe />
+                </div>
+                <div className="section">
+                  <Projects />
+                </div>
+                <div className="section">
+                  <WorkExperiences />
+                </div>
+                <div className="section">
+                  <Skills />
+                </div>
+              </ReactFullpage.Wrapper>
+            );
+          }}
+        />
+      </div>
     </HeroUIProvider>
   );
 }
