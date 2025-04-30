@@ -1,6 +1,7 @@
 import { Button, Link } from "@heroui/react";
 import { NavbarPlaceholder } from "../layout";
 import { IoDocumentAttach } from "react-icons/io5";
+import RotatingText from "@/blocks/TextAnimations/RotatingText/RotatingText";
 
 export function AboutMe() {
   return (
@@ -15,7 +16,45 @@ export function AboutMe() {
 }
 
 function AboutMeLeft() {
-  return <div className="w-1/2 bg-orange-400">Left</div>;
+  const aboutMePhrases = [
+    "Software Developer",
+    "Web Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Full Stack Developer",
+    "UBC Student",
+    "Former OSU Student",
+    "International Student from China",
+    "Computer Science Student",
+    "Statistics Student",
+    "Data Science Enthusiast",
+    "Machine Learning Enthusiast",
+    "Computer Graphics Enthusiast",
+    "Amateur Photographer",
+    "Open Source Contributor",
+    "Problem Solver",
+    "Lifelong Learner",
+  ];
+  const shuffledPhrases = aboutMePhrases.sort(() => Math.random() - 0.5);
+  return (
+    <div className="flex w-1/2 items-center justify-center bg-orange-400">
+      <div className="flex flex-col items-center justify-normal p-5 text-5xl">
+        <span className="">Hi there! I'm Perry, and I'm a:</span>
+        <RotatingText
+          texts={shuffledPhrases}
+          mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+          staggerFrom={"last"}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-120%" }}
+          staggerDuration={0.025}
+          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
+          rotationInterval={2000}
+        />
+      </div>
+    </div>
+  );
 }
 
 function AboutMeRight() {

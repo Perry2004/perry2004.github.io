@@ -13,7 +13,7 @@
     "@fullpage/react-fullpage": "^0.1.48",
     "@heroui/react": "^2.7.8",
     "axios": "^1.9.0",
-    "framer-motion": "^12.9.2",
+    "framer-motion": "^11.3.24",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0"
