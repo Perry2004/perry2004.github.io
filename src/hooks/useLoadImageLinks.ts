@@ -12,7 +12,7 @@ export function useLoadImageLinks() {
   // Fetch images from the JSON file
   useEffect(() => {
     axios
-      .get("/rolling-images.json")
+      .get("/data/rolling-images.json")
       .then((response) => {
         setImages(response.data.images || []);
         setIsLoading(false);
