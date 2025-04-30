@@ -14,44 +14,63 @@ export const projectInfos: ProjectInfo[] = [
     intro: (
       <>
         Full-Stack AI Integration Project with <code>TypeScript</code>,{" "}
-        <code>React</code>, and <code>MongoDB</code>
+        <code>React</code>, <code>MongoDB</code>, and <code>Docker</code>
       </>
     ),
     descriptions: [
       {
         shortDesc: (
           <>
-            Developed an AI-powered web application that generates personalized
-            journal entries based on users' daily outfit choices.
+            <strong>Designed and developed</strong> an AI-powered web
+            application that generates personalized journal entries based on
+            users' daily outfit choices, enhancing the fashion documentation
+            experience in a group of 4.
           </>
         ),
         longDesc: (
           <>
-            Built a responsive and intuitive user interface using{" "}
-            <code>TypeScript</code> and <code>React</code> that allows users to
-            upload outfit images, input descriptive tags, and receive
-            AI-generated content through an asynchronous communication pattern.
-            Implemented backend services with <code>MongoDB</code> for data
-            persistence and integrated Google's Gemini AI API to process user
-            inputs and generate contextually relevant outfit descriptions and
-            journal entries.
+            <ul>
+              <li>
+                Built a <em>responsive and intuitive</em> user interface using{" "}
+                <code>TypeScript</code> and <code>React</code> that allows users
+                to upload outfit images, input descriptive tags, and receive
+                AI-generated content through an{" "}
+                <em>asynchronous communication pattern</em>.
+              </li>
+              <li>
+                Implemented backend services with <code>MongoDB</code> for data
+                persistence and integrated{" "}
+                <strong>Google's Gemini AI API</strong> to process user inputs
+                and generate contextually relevant outfit descriptions and
+                journal entries.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Containerized the application using <code>Docker</code> with
+            Containerized the entire application using <code>Docker</code> to
+            ensure consistent development and deployment environments, with
             separate configurations for frontend and backend services.
           </>
         ),
         longDesc: (
           <>
-            Created a scalable architecture with proper environment variable
-            management for sensitive credentials and designed RESTful API
-            endpoints to handle the communication between frontend components
-            and AI services. The containerized approach ensures consistent
-            development and deployment environments across different systems.
+            <ul>
+              <li>
+                Created a <em>scalable architecture</em> with proper environment
+                variable management for sensitive credentials and designed{" "}
+                <strong>RESTful API endpoints</strong>
+                to handle the communication between frontend components and AI
+                services.
+              </li>
+              <li>
+                The containerized approach ensures consistent development and
+                deployment environments across different systems.
+              </li>
+            </ul>
           </>
         ),
       },
@@ -77,29 +96,35 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Built and hosted a full-stack website using <code>HTML5</code>,{" "}
-            <code>Sass</code>, <code>Bootstrap</code>, and <code>Three.js</code>{" "}
-            for 3D graphics.
+            <strong>Constructed and hosted</strong> a website containing my
+            information, experiences, and projects.
           </>
         ),
         longDesc: (
           <>
-            The website is designed to showcase my projects, skills, and
-            experiences in a visually appealing and interactive way. The
-            frontend is built with <code>HTML5</code>, <code>Bootstrap</code>,{" "}
-            <code>Sass</code>, <code>TypeScript</code>, and{" "}
-            <code>Three.js</code>. The website is designed in a responsive
-            manner to ensure compatibility with different devices and screen
-            sizes.
+            <ul>
+              <li>
+                Designed and developed the front-end webpage using{" "}
+                <code>HTML5</code>, <code>Sass</code> preprocessor,{" "}
+                <code>Bootstrap</code>, and 3D graphics using <code>WebGL</code>{" "}
+                and <code>Three.js</code>.
+              </li>
+              <li>
+                The website includes personal information and project
+                demonstrations, designed in a <em>responsive way</em>,
+                guaranteeing proper appearance on all common devices.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Hosted on an AWS Linux EC2 instance with a <code>Node.js</code>{" "}
-            backend and
-            <code>Express</code> framework.
+            Hosted the site on my personal hostname by configuring an{" "}
+            <strong>AWS Linux EC2 instance</strong> cloud server that runs the{" "}
+            <code>Node.js</code> backend program with
+            <code>Express</code> framework for routing requests.
           </>
         ),
         longDesc: (
@@ -133,44 +158,59 @@ export const projectInfos: ProjectInfo[] = [
     title: "WeChat Message Analysis and Forecasting",
     intro: (
       <>
-        Time-series data analysis and forecasting project using{" "}
-        <code>Python</code> and machine learning
+        Time-series data analysis and forecasting project{" "}
+        <em>associated with The University of British Columbia</em>
       </>
     ),
     descriptions: [
       {
         shortDesc: (
           <>
-            Encoded date/time data as datetime objects to carry out continuous
-            time-series analysis, including visualization, decomposition, and
-            forecasting.
+            <strong>Encoded date/time data</strong> as datetime objects to carry
+            out continuous time-series analysis, including visualization,
+            decomposition, and forecasting.
           </>
         ),
         longDesc: (
           <>
-            Performed comprehensive time-series analysis on WeChat message data,
-            including data cleaning, visualization, and decomposition to
-            understand temporal patterns. Utilized various time-series
-            forecasting techniques to predict future message frequencies and
-            trends.
+            <ul>
+              <li>
+                Performed comprehensive time-series analysis on WeChat message
+                data, including data cleaning, visualization, and decomposition
+                to understand temporal patterns.
+              </li>
+              <li>
+                Utilized various time-series forecasting techniques to predict
+                future message frequencies and trends.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Data-engineered features by extracting date/time components,
-            creating lag features, and computing lagged differences.
+            <strong>Data-engineered features</strong> by extracting date/time
+            components, creating lag features, categorically encoding data,
+            generating interaction and polynomial terms, and computing lagged
+            differences to improve model performance.
           </>
         ),
         longDesc: (
           <>
-            Enhanced model performance through feature engineering by extracting
-            date/time components, creating lag features, categorically encoding
-            data, generating interaction and polynomial terms, and computing
-            lagged differences. Developed and evaluated multiple time-series
-            models with various hyperparameters and feature setups to forecast
-            future values with high accuracy.
+            <ul>
+              <li>
+                Enhanced model performance through feature engineering by
+                extracting date/time components, creating lag features,
+                categorically encoding data, generating interaction and
+                polynomial terms, and computing lagged differences.
+              </li>
+              <li>
+                Developed and evaluated multiple time-series models with various
+                hyperparameters and feature setups to forecast future values
+                with high accuracy.
+              </li>
+            </ul>
           </>
         ),
       },
@@ -196,39 +236,62 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Built machine learning pipelines to predict the number of reviews
-            per month for Airbnb listings in New York.
+            <strong>Constructed and evaluated</strong> several machine learning
+            pipelines to predict the number of reviews per month of Airbnb
+            listings in New York.
           </>
         ),
         longDesc: (
           <>
-            Constructed and evaluated several machine learning pipelines to
-            predict the number of reviews per month of Airbnb listings in New
-            York. Performed data preprocessing and feature engineering by
-            imputing missing values, standardizing numeric variables to improve
-            analogy-based models, and discretizing continuous features to
-            enhance linear models.
+            <ul>
+              <li>
+                Performed data preprocessing and feature engineering by imputing
+                missing values to satisfy the models, standardizing numeric
+                variables to improve analogy-based models, and discretizing
+                continuous features to enhance linear models.
+              </li>
+              <li>
+                Encoded text features using the <em>bags of words</em>{" "}
+                representation using the Count Vectorizer, and categorical
+                features using <em>One Hot Encoding</em> so they can be absorbed
+                by the models.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Implemented feature engineering, model selection, and hyperparameter
-            tuning to optimize prediction accuracy.
+            <strong>Developed pipelines</strong> for multiple models, including
+            linear Ridge model, Decision Tree Regressor, SVM with RBF kernel,
+            and XGBoost ensemble model.
           </>
         ),
         longDesc: (
           <>
-            Encoded text features using the bags of words representation with
-            Count Vectorizer, and categorical features with One Hot Encoding.
-            Developed pipelines for multiple models, including linear Ridge
-            model, Decision Tree Regressor, SVM with RBF kernel, and XGBoost
-            ensemble model. Conducted hyperparameter tuning using randomized
-            search and selected essential features using Select From Model with
-            XGBRegresor and Forward Search approach to reduce overfitting and
-            enhance interpretability. The best-performing model achieved around
-            1.3 MAPE with results that could be explained logically.
+            <ul>
+              <li>
+                Conducted hyperparameter tuning using a{" "}
+                <em>randomized search</em>
+                and chose the best-performing parameter according to
+                cross-validation scores to reduce the performance loss by
+                overfitting and underfitting.
+              </li>
+              <li>
+                Selected essential features using <code>Select From Model</code>{" "}
+                with XGBRegresor and <em>Forward Search</em> approach to reduce
+                overfitting, mitigate the curse of dimensionality, and enhance
+                interpretability and training speeds.
+              </li>
+              <li>
+                Evaluated and interpreted the models using <code>SHAP</code> on
+                the test set. The best-performing model achieved around{" "}
+                <strong>1.3 MAPE</strong>, and the predicted results can be
+                explained logically and consistently with real-world
+                understanding.
+              </li>
+            </ul>
           </>
         ),
       },
@@ -254,38 +317,57 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Designed and developed a program that manages all game data in a UNO
-            card game across 5 pages plus an administrator authentication page.
+            <strong>Designed and developed</strong> a program that manages all
+            game data in a UNO card game in 5 pages plus an administrator
+            authentication page in a group of 3.
           </>
         ),
         longDesc: (
           <>
-            Constructed a front-end interface with comprehensive form
-            validation, clear visual notifications, animations, and smooth
-            interaction by avoiding extra refresh using asynchronous fetches to
-            replace the default form submission behavior using HTML, CSS, and
-            JavaScript. The system provides a seamless user experience for
-            managing UNO game data.
+            <ul>
+              <li>
+                Constructed a front-end interface with{" "}
+                <em>comprehensive form validation</em>, clear visual
+                notifications, animations, and smooth interaction by avoiding
+                extra refresh using <strong>asynchronous fetches</strong> to
+                replace the default form submission behavior using{" "}
+                <code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>
+                .
+              </li>
+              <li>
+                The system provides a seamless user experience for managing UNO
+                game data.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Utilized RESTful API for front-end/back-end communication and
-            implemented secure data management with SQL.
+            <strong>Utilized RESTful API</strong> to set up the communication
+            between front- and back-end using <code>Express</code> framework and
+            used cookies and local storage to enable previous state restoration
+            and authentication state preservation.
           </>
         ),
         longDesc: (
           <>
-            Utilized RESTful API to set up the communication between front- and
-            back-end using Express framework and used cookies and local storage
-            to enable previous state restoration and authentication state
-            preservation. Tailored SQL DDLs and DML templates in the backend
-            model with sanitization to prevent injection for functionalities,
-            including nested group-by aggregation, division, and view creations
-            to handle user request actions triggered by front-end event
-            listeners.
+            <ul>
+              <li>
+                Tailored <code>SQL DDLs</code> and <code>DML</code> templates in
+                the backend model with
+                <em>sanitization to prevent injection</em> for functionalities,
+                including nested group- by aggregation, division, and view
+                creations to handle user request actions triggered by front-end
+                event listeners.
+              </li>
+              <li>
+                The system uses cookies and local storage for a better
+                interactive experience, preserving user state and authentication
+                information.
+              </li>
+            </ul>
           </>
         ),
       },
@@ -311,40 +393,60 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Constructed a video game that allows two players to play the
-            traditional Snake game on the same computer.
+            <strong>Constructed a video game</strong> that allows two players to
+            play the traditional Snake game on the same computer.{" "}
+            <em>Won the 1st place winner</em> of the Fundamentals of Engineering
+            Design Showcase.
           </>
         ),
         longDesc: (
           <>
-            Won the 1st place in the Fundamentals of Engineering Design Showcase
-            for being the best group among all first-year students in the OSU
-            College of Engineering. Developed the game in MatLab with the
-            provided game engine by initializing the game window with
-            self-created stripes, modeling the gameboard in a 2D matrix, and
-            maintaining a synchronous execution to tick the snake movements and
-            food generation while handling user inputs asynchronously.
+            <ul>
+              <li>
+                Best group among all first-year students in the OSU College of
+                Engineering with the contribution of developing the main
+                game-loop logic in a group of 4.
+              </li>
+              <li>
+                Developed the game in <code>MatLab</code> with the provided game
+                engine by initializing the game window with self-created
+                stripes, modeling the gameboard in a 2d matrix, maintaining a{" "}
+                <em>synchronous execution</em> to tick the snake movements and
+                food generation while handling user inputs
+                <em>asynchronously</em> by event listeners and model updates
+                with callback functions.
+              </li>
+            </ul>
           </>
         ),
       },
       {
         shortDesc: (
           <>
-            Migrated the MatLab game to Java with Swing and Lanterna libraries
-            using object-oriented design patterns.
+            <strong>Later migrated</strong> the MatLab game to Java with two
+            interfaces with <code>Swing</code>
+            and <code>Lanterna</code> libraries in an object-oriented manner.
           </>
         ),
         longDesc: (
           <>
-            Later migrated the MatLab game to Java with two interfaces using
-            Swing and Lanterna libraries in an object-oriented manner. Empowered
-            with singleton, observer, and MVC design patterns to divide the
-            project into separate components and hierarchies with well-specified
-            interfaces for better maintainability and scalability. The OOP
-            design also features extra functionality for serializing and
-            exporting all game data into JSON for further reuse. Maintained 100%
-            unit test coverage check while developing the Java version using
-            JUnit.
+            <ul>
+              <li>
+                Empowered with <em>singleton</em>, <em>observer</em>, and{" "}
+                <em>MVC design patterns</em> to divide the project into separate
+                components and hierarchies with well-specified interfaces for
+                better maintainability and scalability.
+              </li>
+              <li>
+                The OOP design also features extra functionality for{" "}
+                <strong>serializing and exporting</strong> all game data into
+                JSON for further reuse.
+              </li>
+              <li>
+                Maintained <strong>100% unit test coverage</strong> check while
+                developing the Java version using <code>JUnit</code>.
+              </li>
+            </ul>
           </>
         ),
       },

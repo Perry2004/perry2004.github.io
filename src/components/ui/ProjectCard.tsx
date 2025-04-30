@@ -30,7 +30,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
           </div>
         </CardHeader>
         <Divider />
-        <CardBody className="scrollbar-hide">
+        <CardBody className="ul-default scrollbar-hide">
           <Accordion>
             {projectInfo.descriptions.map((desc, index) => {
               return (
