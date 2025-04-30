@@ -1,9 +1,15 @@
-import { Alert, HeroUIProvider } from "@heroui/react";
+import { HeroUIProvider } from "@heroui/react";
+import { AboutMe, Home, Projects, Skills, WorkExperiences } from "./components";
 function App() {
   return (
     <HeroUIProvider>
-      {/* <h1 className="text-center text-3xl font-bold">Hello World</h1> */}
-      <Alert title="Hello World" />
+      <main>
+        <Home />
+        <AboutMe />
+        <Projects />
+        <WorkExperiences />
+        <Skills />
+      </main>
     </HeroUIProvider>
   );
 }
