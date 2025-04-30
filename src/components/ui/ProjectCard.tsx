@@ -21,8 +21,8 @@ export interface ProjectInfo {
 
 export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
   return (
-    <div className="">
-      <Card>
+    <div className="h-full">
+      <Card className="h-full">
         <CardHeader>
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-semibold">{projectInfo.title}</h1>
@@ -30,7 +30,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
           </div>
         </CardHeader>
         <Divider />
-        <CardBody>
+        <CardBody className="scrollbar-hide">
           <Accordion>
             {projectInfo.descriptions.map((desc, index) => {
               return (
