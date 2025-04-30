@@ -1,5 +1,5 @@
-import { ProjectInfo } from "@/components";
-import { Link } from "@heroui/react";
+import { ProjectInfo, IconedLink } from "@/components";
+import { LinkText } from "@/components";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
 /**
@@ -12,10 +12,10 @@ export const projectInfos: ProjectInfo[] = [
   {
     title: "Personal Website",
     intro: (
-      <p>
+      <>
         Full-Stack Web Design & Development With <code>HTML</code>,{" "}
         <code>CSS</code>, and <code>TypeScript</code>
-      </p>
+      </>
     ),
     descriptions: [
       {
@@ -58,16 +58,16 @@ export const projectInfos: ProjectInfo[] = [
     ],
     links: [
       <>
-        <Link href="https://github.com/perry2004/perry2004.github.io">
+        <IconedLink href="https://github.com/perry2004/perry2004.github.io">
           <SiGithub />
-          Check GitHub
-        </Link>
+          <LinkText>Check GitHub</LinkText>
+        </IconedLink>
       </>,
       <>
-        <Link href="https://www.linkedin.com/in/yourprofile">
+        <IconedLink href="https://www.linkedin.com/in/yourprofile">
           <SiLinkedin />
-          View LinkedIn
-        </Link>
+          <LinkText>Check LinkedIn</LinkText>
+        </IconedLink>
       </>,
     ],
   },

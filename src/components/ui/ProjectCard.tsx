@@ -7,7 +7,7 @@ import {
   CardHeader,
   Divider,
 } from "@heroui/react";
-import { JSX } from "react";
+import { JSX, ReactNode } from "react";
 
 export interface ProjectInfo {
   title: string;
@@ -24,9 +24,9 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
     <div className="">
       <Card>
         <CardHeader>
-          <div className="flex flex-col">
-            <p>{projectInfo.title}</p>
-            <p>{projectInfo.intro}</p>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-semibold">{projectInfo.title}</h1>
+            <p className="text-xl">{projectInfo.intro}</p>
           </div>
         </CardHeader>
         <Divider />
@@ -36,22 +36,52 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
               return (
                 <AccordionItem
                   key={index}
-                  title={desc.shortDesc}
+                  title={
+                    <span className="text-xl font-normal">
+                      {desc.shortDesc}
+                    </span>
+                  }
+                  textValue={extractTextFromJSX(desc.shortDesc)}
                   className="text-left"
                 >
-                  {desc.longDesc}
+                  <p className="text-lg">{desc.longDesc}</p>
                 </AccordionItem>
               );
             })}
           </Accordion>
         </CardBody>
         <Divider />
-        <CardFooter>
+        <CardFooter className="my-2 flex flex-row justify-center gap-3">
           {projectInfo.links.map((link, index) => (
-            <div key={index}>{link}</div>
+            <div key={index} className="flex flex-row items-center">
+              {link}
+            </div>
           ))}
         </CardFooter>
       </Card>
     </div>
   );
+}
+
+/**
+ * Utility function to extract text content from JSX elements
+ */
+function extractTextFromJSX(element: ReactNode): string {
+  if (typeof element === "string" || typeof element === "number") {
+    return String(element);
+  }
+
+  if (Array.isArray(element)) {
+    return element.map(extractTextFromJSX).join(" ");
+  }
+
+  // JSX elements
+  if (element !== null && typeof element === "object" && "props" in element) {
+    const props = element.props as { children?: ReactNode };
+    if (props.children) {
+      return extractTextFromJSX(props.children);
+    }
+  }
+
+  return "";
 }
