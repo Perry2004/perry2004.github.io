@@ -7,7 +7,12 @@ export default {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        raleway: ['"Raleway"', "sans-serif"],
+        "great-vibes": ['"Great Vibes"', "cursive"],
+      },
+    },
   },
   darkMode: "class",
   plugins: [heroui()],
