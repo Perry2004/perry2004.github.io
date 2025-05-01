@@ -1,10 +1,17 @@
 import { NavbarPlaceholder } from "../layout";
 import { Chrono } from "react-chrono";
 import { Accordion, AccordionItem } from "@heroui/react";
-import { useLoadWorkExperiences } from "@/hooks";
+import { useLoadDataJson } from "@/hooks";
 
 export function WorkExperiences() {
-  const { workExperiences, isLoading, error } = useLoadWorkExperiences();
+  const {
+    data: workExperiences,
+    isLoading,
+    error,
+  } = useLoadDataJson<WorkExperience[]>(
+    "/data/work-experiences.json",
+    "workExperiences",
+  );
 
   if (isLoading) {
     return (

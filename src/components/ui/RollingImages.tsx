@@ -1,12 +1,27 @@
 import { Skeleton } from "@heroui/react";
-import React from "react";
-import { useLoadPexelImages, useLoadImageLinks } from "@/hooks";
+import React, { useMemo } from "react";
+import { useLoadDataJson, useLoadPexelImages } from "@/hooks";
 
 export function RollingImages() {
-  const { shuffledImages } = useLoadImageLinks();
+  const {
+    data: images,
+    isLoading,
+    error,
+  } = useLoadDataJson<string[]>("/data/rolling-images.json", "images");
+
+  // Shuffle images
+  const shuffledImages = useMemo(() => {
+    return [...images].sort(() => Math.random() - 0.5);
+  }, [images]);
+
   const [isAnimationRunning, setIsAnimationRunning] = React.useState(true);
   const { areImagesLoaded, handleImageLoad } =
     useLoadPexelImages(shuffledImages);
+
+  // Show error state if error occurs
+  if (error) {
+    return <div>Error loading images</div>;
+  }
 
   return (
     <div className={"h-52 overflow-hidden whitespace-nowrap"}>
@@ -14,8 +29,8 @@ export function RollingImages() {
         return (
           <div
             className={
-              areImagesLoaded
-                ? "animate-scroll inline-flex h-full w-max whitespace-nowrap"
+              areImagesLoaded && !isLoading
+                ? "inline-flex h-full w-max animate-scroll whitespace-nowrap"
                 : "hidden"
             }
             key={index}
@@ -41,7 +56,9 @@ export function RollingImages() {
           </div>
         );
       })}
-      <div className={areImagesLoaded ? "hidden" : "h-full w-full"}>
+      <div
+        className={areImagesLoaded && !isLoading ? "hidden" : "h-full w-full"}
+      >
         <Skeleton className="h-full w-full" />
       </div>
     </div>
