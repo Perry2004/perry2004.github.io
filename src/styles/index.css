@@ -38,4 +38,8 @@
     padding-left: 1.5rem;
     list-style-type: circle;
   }
+
+  .max-h-sub-clear div {
+    max-height: none;
+  }
 }
