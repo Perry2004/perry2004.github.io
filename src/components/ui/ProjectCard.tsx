@@ -44,7 +44,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
                   textValue={extractTextFromJSX(desc.shortDesc)}
                   className="text-left"
                 >
-                  <p className="text-lg">{desc.longDesc}</p>
+                  <div className="text-lg">{desc.longDesc}</div>
                 </AccordionItem>
               );
             })}
