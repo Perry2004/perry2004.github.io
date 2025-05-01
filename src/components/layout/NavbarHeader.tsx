@@ -40,7 +40,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
           />
           {anchors.map((anchor) => (
             <NavbarItem key={anchor} className="hidden sm:block">
-              <Link href={`#${anchor}`} target="_blank">
+              <Link href={`#${anchor}`} target="_self">
                 <Button
                   className={
                     "text-md" +
