@@ -63,7 +63,7 @@ export function WorkExperiences() {
   return (
     <div className="min-h-screen bg-purple-200">
       <NavbarPlaceholder />
-      <div className="ul-default">
+      <div className="ul-default h-[calc(100vh-4rem)]">
         <Chrono
           items={chronoItems}
           mode="VERTICAL_ALTERNATING"
@@ -72,9 +72,8 @@ export function WorkExperiences() {
           cardHeight={300}
           useReadMore={true}
           classNames={{
-            card: "my-custom-card-class !min-h-0",
-            cardTitle: "my-custom-title-class",
-            cardText: "my-custom-text-class max-h-sub-clear !max-h-fit",
+            card: "!min-h-0",
+            cardText: "max-h-sub-clear !max-h-fit",
           }}
           parseDetailsAsHTML={true}
         />
