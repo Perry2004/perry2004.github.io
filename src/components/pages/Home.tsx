@@ -1,7 +1,7 @@
 import { Button, Link } from "@heroui/react";
 import { SiGithub, SiLinkedin, SiInstagram, SiPexels } from "react-icons/si";
-import { NavbarPlaceholder } from "../layout";
-import { RollingImages } from "../ui";
+import { NavbarPlaceholder } from "@/components/layout";
+import { RollingImages } from "@/components/ui";
 
 interface SocialMediaLink {
   text: string;

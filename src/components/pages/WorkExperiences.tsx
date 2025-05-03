@@ -1,4 +1,4 @@
-import { NavbarPlaceholder } from "../layout";
+import { NavbarPlaceholder } from "@/components/layout";
 import { Chrono } from "react-chrono";
 import { Accordion, AccordionItem } from "@heroui/react";
 import { useLoadDataJson } from "@/hooks";

@@ -6,7 +6,7 @@ import {
   Skills,
   WorkExperiences,
   NavbarHeader,
-} from "./components";
+} from "@/components";
 import ReactFullpage from "@fullpage/react-fullpage";
 
 export function App() {

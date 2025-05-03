@@ -1,5 +1,5 @@
-import { NavbarPlaceholder } from "../layout";
-import { ProjectCard } from "../ui";
+import { NavbarPlaceholder } from "@/components/layout";
+import { ProjectCard } from "@/components/ui";
 import { projectInfos } from "@/assets/project-details";
 
 export function Projects() {

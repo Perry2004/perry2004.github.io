@@ -1,5 +1,5 @@
 import { Button, Link } from "@heroui/react";
-import { NavbarPlaceholder } from "../layout";
+import { NavbarPlaceholder } from "@/components/layout";
 import { IoDocumentAttach } from "react-icons/io5";
 import RotatingText from "@/blocks/TextAnimations/RotatingText/RotatingText";
 
@@ -68,7 +68,7 @@ function AboutMeRight() {
   return (
     <div className="flex w-1/2 flex-col items-center justify-center">
       <div
-        className="animate-rotate-rainbow mx-8 my-1 flex flex-col items-center justify-center p-5 text-xl"
+        className="mx-8 my-1 flex animate-rotate-rainbow flex-col items-center justify-center p-5 text-xl"
         style={
           {
             // credit: thanks to https://www.bram.us/2021/01/29/animating-a-css-gradient-border/
