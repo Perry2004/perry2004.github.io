@@ -63,7 +63,7 @@ export function WorkExperiences() {
   return (
     <div className="min-h-screen bg-purple-200">
       <NavbarPlaceholder />
-      <div className="ul-default h-[calc(100vh-4rem)]">
+      <div className="ul-default min-h-[calc(100vh-4rem)] py-5">
         <Chrono
           items={chronoItems}
           mode="VERTICAL_ALTERNATING"
@@ -86,8 +86,8 @@ export interface WorkExperience {
   jobTitle: string;
   company: string;
   companyShortName: string;
-  startDate: string; // Changed from Date to string (e.g. "Jan 2024")
-  endDate: string; // Changed from Date | "present" to just string (e.g. "Present" or "May 2025")
+  startDate: string;
+  endDate: string;
   descriptions: {
     shortDesc: string;
     longDesc: string[];
