@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import {
   FaCode,
   FaJava,
@@ -78,12 +77,7 @@ import {
 import { BiTimeFive, BiStats, BiData } from "react-icons/bi";
 import { IoLanguage } from "react-icons/io5";
 import { RiEnglishInput } from "react-icons/ri";
-
-export interface SkillInfo {
-  name: string;
-  icon: JSX.Element;
-  subSkills: SkillInfo[];
-}
+import { SkillInfo } from "@/components/pages";
 
 export const skillsData: SkillInfo[] = [
   {

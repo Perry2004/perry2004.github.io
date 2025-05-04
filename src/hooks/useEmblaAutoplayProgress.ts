@@ -45,7 +45,6 @@ export const useEmblaAutoplayProgress = <ProgressElement extends HTMLElement>(
     const autoplay = emblaApi?.plugins()?.autoplay;
     if (!autoplay) return;
 
-    // Start the progress bar immediately when the component mounts
     startProgress(autoplay.timeUntilNext());
 
     emblaApi
