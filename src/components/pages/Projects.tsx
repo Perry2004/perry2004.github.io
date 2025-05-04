@@ -1,6 +1,6 @@
 import { NavbarPlaceholder } from "@/components/layout";
 import { ProjectCard } from "@/components/ui";
-import { projectInfos } from "@/assets/project-details";
+import { projectInfos } from "@/assets/projects-details";
 
 export function Projects() {
   return (
