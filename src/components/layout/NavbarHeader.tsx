@@ -19,6 +19,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
     projects: "Projects",
     "work-experiences": "Work Experiences",
     skills: "Skills",
+    contacts: "Contacts",
   };
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);

@@ -5,6 +5,7 @@ import {
   Projects,
   Skills,
   WorkExperiences,
+  Contacts,
   NavbarHeader,
 } from "@/components";
 import ReactFullpage from "@fullpage/react-fullpage";
@@ -16,6 +17,7 @@ export function App() {
     "projects",
     "work-experiences",
     "skills",
+    "contacts",
   ];
   return (
     <HeroUIProvider>
@@ -47,6 +49,9 @@ export function App() {
                 </div>
                 <div className="section">
                   <Skills />
+                </div>
+                <div className="section">
+                  <Contacts />
                 </div>
               </ReactFullpage.Wrapper>
             );
