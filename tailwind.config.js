@@ -29,10 +29,19 @@ export default {
             "--angle": "360deg",
           },
         },
+        "autoplay-progress": {
+          "0%": {
+            transform: "translate3d(0, 0, 0)",
+          },
+          "100%": {
+            transform: "translate3d(100%, 0, 0)",
+          },
+        },
       },
       animation: {
         scroll: "scroll 15s linear infinite",
         "rotate-rainbow": "rotate-rainbow 5s linear infinite",
+        "autoplay-progress": "autoplay-progress linear 1",
       },
       // Custom colors can be added here if needed
     },

@@ -55,11 +55,23 @@ export function SkillsCarousel() {
         disabled={prevBtnDisabled}
       />
 
-      <div className="embla">
-        <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
+      <div
+        className="relative mx-auto max-w-3xl overflow-hidden"
+        style={
+          {
+            "--slide-spacing": "1rem",
+            "--slide-size": "70%",
+            "--slide-height": "19rem",
+          } as React.CSSProperties
+        }
+      >
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="backface-hidden -ml-[var(--slide-spacing)] flex touch-pan-y touch-pinch-zoom">
             {skillsData.map((skill, index) => (
-              <div key={index} className="embla__slide">
+              <div
+                key={index}
+                className="relative min-w-0 flex-[0_0_var(--slide-size)] pl-[var(--slide-spacing)] sm:flex-[0_0_100%] md:flex-[0_0_50%]"
+              >
                 <Card className="h-full">
                   <CardBody className="p-4">
                     <SkillChip skill={skill} />
@@ -78,11 +90,16 @@ export function SkillsCarousel() {
         </div>
 
         <div
-          className={`embla__progress ${
-            showAutoplayProgress ? "" : "embla__progress--hidden"
+          className={`relative mx-auto mt-4 h-[0.3rem] w-full max-w-[30rem] overflow-hidden rounded-[0.3rem] bg-black/10 ${
+            showAutoplayProgress
+              ? ""
+              : "opacity-0 transition-opacity duration-300"
           }`}
         >
-          <div className="embla__progress__bar" ref={progressRef} />
+          <div
+            className="animate-autoplay-progress absolute bottom-0 left-[-100%] top-0 w-full bg-neutral-800"
+            ref={progressRef}
+          />
         </div>
       </div>
 

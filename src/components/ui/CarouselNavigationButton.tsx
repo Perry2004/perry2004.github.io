@@ -14,12 +14,14 @@ export function CarouselNavigationButton({
 }: CarouselNavigationButtonProps) {
   return (
     <button
-      className={`embla__button embla__button--${direction}`}
+      className={`z-5 absolute top-1/2 flex h-9 w-9 -translate-y-1/2 cursor-pointer appearance-none items-center justify-center rounded-full border-0 bg-white/80 text-neutral-800 shadow-md transition-all duration-200 ease-in-out hover:bg-white hover:shadow-lg ${
+        disabled ? "cursor-default opacity-30" : ""
+      } ${direction === "prev" ? "left-[-3rem]" : "right-[-3rem]"}`}
       onClick={onClick}
       disabled={disabled}
       aria-label={direction === "prev" ? "Previous slide" : "Next slide"}
     >
-      <svg className="embla__button__svg" viewBox="0 0 532 532">
+      <svg className="h-[35%] w-[35%]" viewBox="0 0 532 532">
         {direction === "prev" ? (
           <path
             fill="currentColor"
