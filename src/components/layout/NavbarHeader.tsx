@@ -35,9 +35,9 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
   const getThemeIcon = () => {
     switch (theme) {
       case "light":
-        return <FaSun className="h-4 w-4 text-yellow-500" />;
+        return <FaSun className="h-4 w-4 text-amber-400" />;
       case "dark":
-        return <FaMoon className="h-4 w-4 text-blue-500" />;
+        return <FaMoon className="h-4 w-4 text-[#5ad6ff]" />;
       case "system":
         return (
           <FaComputer className="h-4 w-4 text-gray-500 dark:text-gray-400" />
@@ -46,31 +46,40 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
   };
 
   return (
-    <div className="fixed top-0 z-10 w-full bg-white/80 backdrop-blur-md dark:bg-gray-900/90">
-      <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
+    <div className="fixed top-0 z-10 w-full border-b border-[#5ad6ff]/30 bg-gradient-to-r from-[#5ad6ff]/90 to-[#fb9ac7]/90 shadow-sm backdrop-blur-md">
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+        className=""
+      >
         <NavbarBrand>
-          <p className="font-great-vibes text-2xl font-bold dark:text-white">
+          <p className="bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] bg-clip-text font-great-vibes text-3xl font-bold text-transparent">
             Perry Zhu
           </p>
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="sm:hidden"
+            className="text-[#5ad6ff] sm:hidden"
           />
           {anchors.map((anchor) => (
             <NavbarItem key={anchor} className="hidden sm:block">
               <Link href={`#${anchor}`} target="_self">
                 <Button
                   className={
-                    "text-md" +
-                    " " +
+                    "text-md relative overflow-hidden font-medium transition-all duration-300 ease-in-out " +
                     (activeAnchor === anchor
-                      ? "bg-indigo-300 dark:bg-indigo-600"
-                      : "dark:text-white")
+                      ? "scale-105 bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] text-white shadow-md"
+                      : "bg-transparent text-gray-700 hover:scale-105 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff] hover:shadow-sm")
                   }
                 >
-                  {navbarAnchorMap[anchor]}
+                  <span className="relative z-10">
+                    {navbarAnchorMap[anchor]}
+                  </span>
+                  {activeAnchor === anchor && (
+                    <span className="absolute inset-0 bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] opacity-100 transition-opacity duration-300"></span>
+                  )}
+                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] transition-all duration-300 group-hover:w-full"></span>
                 </Button>
               </Link>
             </NavbarItem>
@@ -81,29 +90,33 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <Button
                   variant="light"
                   isIconOnly
-                  className="rounded-full"
+                  className="rounded-full border border-[#5ad6ff]/50 bg-white/50 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#5ad6ff]/10 hover:shadow-md"
                   aria-label="Toggle theme mode"
                 >
                   {getThemeIcon()}
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Theme options">
+              <DropdownMenu aria-label="Theme options" className="shadow-lg">
                 <DropdownItem
                   key="light"
-                  startContent={<FaSun className="h-4 w-4 text-yellow-500" />}
+                  startContent={<FaSun className="h-4 w-4 text-amber-400" />}
                   onPress={() => setTheme("light")}
                   className={
-                    theme === "light" ? "bg-gray-100 dark:bg-gray-800" : ""
+                    theme === "light"
+                      ? "bg-[#5ad6ff]/10 text-[#5ad6ff]"
+                      : "hover:bg-[#5ad6ff]/10"
                   }
                 >
                   Light
                 </DropdownItem>
                 <DropdownItem
                   key="dark"
-                  startContent={<FaMoon className="h-4 w-4 text-blue-500" />}
+                  startContent={<FaMoon className="h-4 w-4 text-[#5ad6ff]" />}
                   onPress={() => setTheme("dark")}
                   className={
-                    theme === "dark" ? "bg-gray-100 dark:bg-gray-800" : ""
+                    theme === "dark"
+                      ? "bg-[#5ad6ff]/10 text-[#5ad6ff]"
+                      : "hover:bg-[#5ad6ff]/10"
                   }
                 >
                   Dark
@@ -111,11 +124,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <DropdownItem
                   key="system"
                   startContent={
-                    <FaComputer className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                    <FaComputer className="h-4 w-4 text-gray-500" />
                   }
                   onPress={() => setTheme("system")}
                   className={
-                    theme === "system" ? "bg-gray-100 dark:bg-gray-800" : ""
+                    theme === "system"
+                      ? "bg-[#5ad6ff]/10 text-[#5ad6ff]"
+                      : "hover:bg-[#5ad6ff]/10"
                   }
                 >
                   System
@@ -124,30 +139,32 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
             </Dropdown>
           </NavbarItem>
         </NavbarContent>
-        <NavbarMenu className="dark:bg-gray-800">
+        <NavbarMenu className="border-t border-[#5ad6ff]/30 bg-white/95 backdrop-blur-lg">
           {anchors.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 className={
-                  "w-full" +
-                  " " +
+                  "relative w-full overflow-hidden transition-all duration-300 ease-in-out " +
                   (activeAnchor === item
-                    ? "bg-indigo-300 dark:bg-indigo-600"
-                    : "dark:text-gray-300")
+                    ? "translate-x-1 transform bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] text-white"
+                    : "text-gray-700 hover:translate-x-1 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff]")
                 }
                 href={`#${item}`}
                 size="lg"
                 onPress={() => setIsMenuOpen(false)}
               >
-                {navbarAnchorMap[item]}
+                <span className="relative z-10">{navbarAnchorMap[item]}</span>
+                {activeAnchor === item && (
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] opacity-100 transition-opacity duration-300"></span>
+                )}
               </Link>
             </NavbarMenuItem>
           ))}
           <NavbarMenuItem>
             <div className="flex items-center gap-2">
-              <FaSun className="h-4 w-4 text-yellow-500" />
+              <FaSun className="h-4 w-4 text-amber-400" />
               <Button
-                className="w-full justify-start pl-2"
+                className="w-full justify-start pl-2 text-gray-700 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff]"
                 variant="light"
                 onPress={() => setTheme("light")}
               >
@@ -157,9 +174,9 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
           </NavbarMenuItem>
           <NavbarMenuItem>
             <div className="flex items-center gap-2">
-              <FaMoon className="h-4 w-4 text-blue-500" />
+              <FaMoon className="h-4 w-4 text-[#5ad6ff]" />
               <Button
-                className="w-full justify-start pl-2"
+                className="w-full justify-start pl-2 text-gray-700 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff]"
                 variant="light"
                 onPress={() => setTheme("dark")}
               >
@@ -169,9 +186,9 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
           </NavbarMenuItem>
           <NavbarMenuItem>
             <div className="flex items-center gap-2">
-              <FaComputer className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+              <FaComputer className="h-4 w-4 text-gray-500" />
               <Button
-                className="w-full justify-start pl-2"
+                className="w-full justify-start pl-2 text-gray-700 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff]"
                 variant="light"
                 onPress={() => setTheme("system")}
               >

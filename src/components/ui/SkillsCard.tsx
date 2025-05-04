@@ -18,7 +18,7 @@ export function SkillsCard({ skillCategory }: SkillsCardProps) {
             <span className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-2.5 text-2xl text-white shadow-md">
               {skillCategory.icon}
             </span>
-            <h3 className="text-2xl font-bold tracking-tight text-gray-800">
+            <h3 className="text-xl font-bold tracking-tight text-gray-800">
               {skillCategory.name}
             </h3>
           </div>

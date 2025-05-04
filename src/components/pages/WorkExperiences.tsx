@@ -15,16 +15,20 @@ export function WorkExperiences() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-purple-200">
-        <div>Loading work experiences...</div>
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30">
+        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm">
+          Loading work experiences...
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-purple-200">
-        <div>Error loading work experiences. Please try again later.</div>
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30">
+        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm">
+          Error loading work experiences. Please try again later.
+        </div>
       </div>
     );
   }
@@ -42,13 +46,26 @@ export function WorkExperiences() {
               return (
                 <AccordionItem
                   key={index + desc.shortDesc}
-                  title={<span className="text-lg">{desc.shortDesc}</span>}
+                  title={
+                    <span className="text-lg text-gray-800">
+                      {desc.shortDesc}
+                    </span>
+                  }
                   textValue={desc.shortDesc}
-                  className=""
+                  classNames={{
+                    content: "text-gray-700",
+                    trigger:
+                      "data-[hover=true]:bg-[#5ad6ff]/10 px-4 rounded-lg",
+                    indicator: "text-gray-500",
+                  }}
                 >
-                  <ul>
+                  <ul className="text-gray-700">
                     {desc.longDesc.map((longDesc, index) => {
-                      return <li key={index + longDesc}>{longDesc}</li>;
+                      return (
+                        <li key={index + longDesc} className="mb-2">
+                          {longDesc}
+                        </li>
+                      );
                     })}
                   </ul>
                 </AccordionItem>
@@ -61,24 +78,38 @@ export function WorkExperiences() {
   });
 
   return (
-    <div className="min-h-screen bg-purple-200">
+    <div className="min-h-screen bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30">
       <NavbarPlaceholder />
       <div>
-        <h1 className="m-10 text-center font-great-vibes text-5xl">
+        <h1 className="bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] bg-clip-text p-8 pb-0 text-center font-great-vibes text-5xl text-transparent">
           Work Experiences
         </h1>
+        <div className="mx-auto mt-2 h-1 w-60 rounded-full bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7]"></div>
       </div>
-      <div className="ul-default min-h-[calc(100vh-4rem)] py-5">
+      <div className="ul-default work-experiences-timeline min-h-[calc(100vh-12rem)] py-8">
         <Chrono
           items={chronoItems}
           mode="VERTICAL_ALTERNATING"
+          // mode="VERTICAL"
           disableToolbar={true}
           disableInteraction={true}
           cardHeight={300}
           useReadMore={true}
           classNames={{
-            card: "!min-h-0",
+            card: "work-experience-card",
             cardText: "max-h-sub-clear !max-h-fit",
+            cardTitle: "work-experience-card-title",
+            cardSubtitle: "work-experience-card-subtitle",
+            timelinePointClass: "work-experience-timeline-point",
+            title: "work-experience-title",
+          }}
+          theme={{
+            primary: "#5ad6ff",
+            secondary: "#fb9ac7",
+            cardBgColor: "rgba(255, 255, 255, 0.8)",
+            cardForeColor: "#333",
+            titleColor: "#5ad6ff",
+            titleColorActive: "#fb9ac7",
           }}
           parseDetailsAsHTML={true}
         />
