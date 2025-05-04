@@ -63,6 +63,11 @@ export function WorkExperiences() {
   return (
     <div className="min-h-screen bg-purple-200">
       <NavbarPlaceholder />
+      <div>
+        <h1 className="m-10 text-center font-great-vibes text-5xl">
+          Work Experiences
+        </h1>
+      </div>
       <div className="ul-default min-h-[calc(100vh-4rem)] py-5">
         <Chrono
           items={chronoItems}

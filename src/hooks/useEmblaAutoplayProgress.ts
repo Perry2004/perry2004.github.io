@@ -3,6 +3,7 @@ import { EmblaCarouselType } from "embla-carousel";
 
 type UseAutoplayProgressType = {
   showAutoplayProgress: boolean;
+  resetProgress: () => void;
 };
 
 export const useEmblaAutoplayProgress = <ProgressElement extends HTMLElement>(
@@ -41,6 +42,17 @@ export const useEmblaAutoplayProgress = <ProgressElement extends HTMLElement>(
     [progressNode],
   );
 
+  const resetProgress = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay;
+    if (!autoplay) return;
+
+    // Reset the timer
+    autoplay.reset();
+
+    // Restart the progress animation with the new time
+    startProgress(autoplay.timeUntilNext());
+  }, [emblaApi, startProgress]);
+
   useEffect(() => {
     const autoplay = emblaApi?.plugins()?.autoplay;
     if (!autoplay) return;
@@ -61,5 +73,6 @@ export const useEmblaAutoplayProgress = <ProgressElement extends HTMLElement>(
 
   return {
     showAutoplayProgress,
+    resetProgress,
   };
 };

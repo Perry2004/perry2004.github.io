@@ -1,27 +1,11 @@
 import { useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardBody } from "@heroui/react";
 import { useEmblaAutoplayProgress, useEmblaPrevNextButtons } from "@/hooks";
 import { skillsData } from "@/assets/skills-details";
-import { SkillInfo } from "@/components/pages";
+import { SkillCategory } from "@/components/pages";
 import { CarouselNavigationButton } from "./CarouselNavigationButton";
-import { SkillChip } from "./SkillChip";
-
-/**
- * Recursively get all sub-skills of a given skill.
- * @param skill The skill to get sub-skills from
- */
-function getAllSubskills(skill: SkillInfo): SkillInfo[] {
-  const subSkills: SkillInfo[] = [];
-  function getSubskillsRecursively(skill: SkillInfo): SkillInfo[] {
-    subSkills.push(...skill.subSkills);
-    skill.subSkills.forEach(getSubskillsRecursively);
-    return subSkills;
-  }
-  getSubskillsRecursively(skill);
-  return subSkills;
-}
+import { SkillsCard } from "./SkillsCard";
 
 export function SkillsCarousel() {
   const progressRef = useRef<HTMLDivElement>(null);
@@ -30,8 +14,14 @@ export function SkillsCarousel() {
       align: "center",
       loop: true,
       slidesToScroll: 1,
+      containScroll: "trimSnaps",
     },
     [Autoplay({ delay: 4000, stopOnInteraction: false })],
+  );
+
+  const { showAutoplayProgress, resetProgress } = useEmblaAutoplayProgress(
+    emblaApi,
+    progressRef as React.RefObject<HTMLElement>,
   );
 
   const {
@@ -39,24 +29,12 @@ export function SkillsCarousel() {
     nextBtnDisabled,
     onPrevButtonClick,
     onNextButtonClick,
-  } = useEmblaPrevNextButtons(emblaApi);
-
-  const { showAutoplayProgress } = useEmblaAutoplayProgress(
-    emblaApi,
-    progressRef as React.RefObject<HTMLElement>,
-  );
+  } = useEmblaPrevNextButtons(emblaApi, undefined, resetProgress);
 
   return (
-    <div className="relative w-4/5 max-w-6xl">
-      {/* prev button */}
-      <CarouselNavigationButton
-        direction="prev"
-        onClick={onPrevButtonClick}
-        disabled={prevBtnDisabled}
-      />
-
+    <div className="relative w-full max-w-6xl overflow-hidden px-4">
       <div
-        className="relative mx-auto max-w-3xl overflow-hidden"
+        className="relative mx-auto"
         style={
           {
             "--slide-spacing": "1rem",
@@ -65,50 +43,50 @@ export function SkillsCarousel() {
           } as React.CSSProperties
         }
       >
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="backface-hidden -ml-[var(--slide-spacing)] flex touch-pan-y touch-pinch-zoom">
-            {skillsData.map((skill, index) => (
+        <div className="overflow-hidden py-6" ref={emblaRef}>
+          <div className="backface-hidden flex touch-pan-y touch-pinch-zoom">
+            {skillsData.map((skillCategory: SkillCategory, index) => (
               <div
                 key={index}
-                className="relative min-w-0 flex-[0_0_var(--slide-size)] pl-[var(--slide-spacing)] sm:flex-[0_0_100%] md:flex-[0_0_50%]"
+                className="relative min-w-0 flex-[0_0_var(--slide-size)] p-3 pl-[var(--slide-spacing)] sm:flex-[0_0_100%] md:flex-[0_0_50%]"
               >
-                <Card className="h-full">
-                  <CardBody className="p-4">
-                    <SkillChip skill={skill} />
-                    <div className="mt-4 space-y-2">
-                      {getAllSubskills(skill).map((subSkill, subIndex) => (
-                        <div key={subIndex} className="ml-4">
-                          <SkillChip skill={subSkill} />
-                        </div>
-                      ))}
-                    </div>
-                  </CardBody>
-                </Card>
+                <SkillsCard skillCategory={skillCategory} />
               </div>
             ))}
           </div>
         </div>
 
-        <div
-          className={`relative mx-auto mt-4 h-[0.3rem] w-full max-w-[30rem] overflow-hidden rounded-[0.3rem] bg-black/10 ${
-            showAutoplayProgress
-              ? ""
-              : "opacity-0 transition-opacity duration-300"
-          }`}
-        >
+        {/* Controls container with progress bar and navigation buttons */}
+        <div className="mt-6 flex items-center justify-center gap-4">
+          {/* Prev button now positioned inline */}
+          <CarouselNavigationButton
+            direction="prev"
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
+          />
+
+          {/* Progress bar */}
           <div
-            className="animate-autoplay-progress absolute bottom-0 left-[-100%] top-0 w-full bg-neutral-800"
-            ref={progressRef}
+            className={`relative h-[0.3rem] w-full max-w-[20rem] overflow-hidden rounded-[0.3rem] bg-black/10 ${
+              showAutoplayProgress
+                ? ""
+                : "opacity-0 transition-opacity duration-300"
+            }`}
+          >
+            <div
+              className="animate-autoplay-progress absolute bottom-0 left-[-100%] top-0 w-full bg-gradient-to-r from-cyan-600 to-blue-600"
+              ref={progressRef}
+            />
+          </div>
+
+          {/* Next button now positioned inline */}
+          <CarouselNavigationButton
+            direction="next"
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
           />
         </div>
       </div>
-
-      {/* next button */}
-      <CarouselNavigationButton
-        direction="next"
-        onClick={onNextButtonClick}
-        disabled={nextBtnDisabled}
-      />
     </div>
   );
 }

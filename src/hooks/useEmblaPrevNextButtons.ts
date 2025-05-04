@@ -11,6 +11,7 @@ type UsePrevNextButtonsType = {
 export const useEmblaPrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined,
   onButtonClick?: (emblaApi: EmblaCarouselType) => void,
+  resetProgress?: () => void,
 ): UsePrevNextButtonsType => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
@@ -19,13 +20,15 @@ export const useEmblaPrevNextButtons = (
     if (!emblaApi) return;
     emblaApi.scrollPrev();
     if (onButtonClick) onButtonClick(emblaApi);
-  }, [emblaApi, onButtonClick]);
+    if (resetProgress) resetProgress();
+  }, [emblaApi, onButtonClick, resetProgress]);
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return;
     emblaApi.scrollNext();
     if (onButtonClick) onButtonClick(emblaApi);
-  }, [emblaApi, onButtonClick]);
+    if (resetProgress) resetProgress();
+  }, [emblaApi, onButtonClick, resetProgress]);
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
