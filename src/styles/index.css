@@ -80,6 +80,20 @@
   position: relative !important;
 }
 
+/* Dark mode timeline card styles */
+.dark .work-experience-card {
+  border: 1px solid rgba(90, 214, 255, 0.5) !important;
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(90, 214, 255, 0.15),
+    rgba(251, 154, 199, 0.15)
+  ) !important;
+  box-shadow:
+    0 4px 8px -1px rgb(0 0 0 / 0.25),
+    0 2px 6px -2px rgb(0 0 0 / 0.2) !important;
+}
+
 .work-experience-card::before {
   content: "" !important;
   position: absolute !important;
@@ -93,6 +107,10 @@
   z-index: 0 !important;
 }
 
+.dark .work-experience-card::before {
+  background-color: rgba(100, 209, 255, 0.3) !important;
+}
+
 .work-experience-card::after {
   content: "" !important;
   position: absolute !important;
@@ -104,6 +122,10 @@
   background-color: rgba(251, 154, 199, 0.3) !important;
   filter: blur(15px) !important;
   z-index: 0 !important;
+}
+
+.dark .work-experience-card::after {
+  background-color: rgba(250, 183, 255, 0.3) !important;
 }
 
 .work-experience-card > * {
@@ -123,6 +145,17 @@
   ) !important;
 }
 
+.dark .work-experience-card:hover {
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.3),
+    0 4px 6px -4px rgb(0 0 0 / 0.2) !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 209, 255, 0.2),
+    rgba(250, 183, 255, 0.2)
+  ) !important;
+}
+
 /* Card header and footer styling */
 .work-experience-card .react-chrono-card-header {
   background-image: linear-gradient(
@@ -132,6 +165,15 @@
   ) !important;
   padding: 0.5rem 1rem !important;
   border-bottom: 2px solid rgba(90, 214, 255, 0.15) !important;
+}
+
+.dark .work-experience-card .react-chrono-card-header {
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 209, 255, 0.2),
+    rgba(250, 183, 255, 0.2)
+  ) !important;
+  border-bottom: 2px solid rgba(100, 209, 255, 0.3) !important;
 }
 
 .work-experience-card .react-chrono-card-footer {
@@ -144,6 +186,15 @@
   border-top: 2px solid rgba(90, 214, 255, 0.15) !important;
 }
 
+.dark .work-experience-card .react-chrono-card-footer {
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 209, 255, 0.2),
+    rgba(250, 183, 255, 0.2)
+  ) !important;
+  border-top: 2px solid rgba(100, 209, 255, 0.3) !important;
+}
+
 .work-experience-card-title {
   background: linear-gradient(to right, #5ad6ff, #fb9ac7);
   -webkit-background-clip: text !important;
@@ -152,14 +203,22 @@
   font-weight: bold !important;
 }
 
-.work-experience-card-subtitle {
-  font-weight: 500 !important;
-  color: #4b5563 !important;
+.dark .work-experience-card-title {
+  background: linear-gradient(to right, #64d1ff, #fab7ff);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 }
 
+.dark .work-experience-card-title + h2 {
+  color: #e5e7eb;
+}
 .work-experience-title {
   font-weight: 600 !important;
   color: #1f2937 !important;
+}
+
+.dark .work-experience-title {
+  color: #e5e7eb !important;
 }
 
 /* Embla Carousel */
