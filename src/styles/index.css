@@ -531,3 +531,10 @@
 .dark .fp-slidesNav ul li a span {
   background: rgb(193, 193, 193) !important;
 }
+
+@media (max-width: 768px) {
+  .dark #fp-nav ul li a span,
+  .dark .fp-slidesNav ul li a span {
+    display: none !important;
+  }
+}

@@ -6,12 +6,12 @@ export function Skills() {
   return (
     <div className="gradient-bg-responsive min-h-screen">
       <NavbarPlaceholder />
-      <div className="flex h-[calc(100vh-4rem)] w-full flex-col items-center justify-center">
-        <div className="mb-8">
-          <h1 className="gradient-text-responsive text-center font-great-vibes text-5xl leading-normal">
+      <div className="flex h-[calc(100vh-4rem)] w-full flex-col items-center justify-center px-4 sm:px-6 md:px-8">
+        <div className="mb-4 sm:mb-6 md:mb-8">
+          <h1 className="gradient-text-responsive text-center font-great-vibes text-4xl !leading-normal sm:text-5xl">
             Skills
           </h1>
-          <div className="gradient-divider-responsive mx-auto mt-2 w-32"></div>
+          <div className="gradient-divider-responsive mx-auto mt-1 w-24 sm:mt-2 sm:w-28 md:w-32"></div>
         </div>
         <SkillsCarousel />
       </div>

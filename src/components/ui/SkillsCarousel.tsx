@@ -38,7 +38,8 @@ export function SkillsCarousel() {
         style={
           {
             "--slide-spacing": "1rem",
-            "--slide-size": "70%",
+            "--slide-size-normal": "70%",
+            "--slide-size-mobile": "100%",
             "--slide-height": "19rem",
           } as React.CSSProperties
         }
@@ -48,7 +49,7 @@ export function SkillsCarousel() {
             {skillsData.map((skillCategory: SkillCategory, index) => (
               <div
                 key={index}
-                className="relative min-w-0 flex-[0_0_var(--slide-size)] p-3 pl-[var(--slide-spacing)] sm:flex-[0_0_100%] md:flex-[0_0_50%]"
+                className="relative min-w-0 flex-[0_0_var(--slide-size-mobile)] p-3 pl-[var(--slide-spacing)] sm:flex-[0_0_var(--slide-size-normal)] md:flex-[0_0_var(--slide-size-normal)]"
               >
                 <SkillsCard skillCategory={skillCategory} />
               </div>

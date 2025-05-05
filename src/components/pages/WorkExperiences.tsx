@@ -2,8 +2,10 @@ import { NavbarPlaceholder } from "@/components/layout";
 import { Chrono } from "react-chrono";
 import { Accordion, AccordionItem } from "@heroui/react";
 import { useLoadDataJson } from "@/hooks";
+import { useEffect, useState } from "react";
 
 export function WorkExperiences() {
+  const [chronoMode, setChronoMode] = useState("VERTICAL_ALTERNATING");
   const {
     data: workExperiences,
     isLoading,
@@ -13,10 +15,32 @@ export function WorkExperiences() {
     "workExperiences",
   );
 
+  // Set the mode based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setChronoMode("VERTICAL");
+      } else {
+        setChronoMode("VERTICAL_ALTERNATING");
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   if (isLoading) {
     return (
       <div className="gradient-bg-responsive flex min-h-screen items-center justify-center">
-        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md">
+        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-4 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md sm:p-5 md:p-6">
           Loading work experiences...
         </div>
       </div>
@@ -26,7 +50,7 @@ export function WorkExperiences() {
   if (error) {
     return (
       <div className="gradient-bg-responsive flex min-h-screen items-center justify-center">
-        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md">
+        <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-4 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md sm:p-5 md:p-6">
           Error loading work experiences. Please try again later.
         </div>
       </div>
@@ -47,7 +71,7 @@ export function WorkExperiences() {
                 <AccordionItem
                   key={index + desc.shortDesc}
                   title={
-                    <span className="text-lg text-gray-800 dark:text-gray-200">
+                    <span className="text-xl text-gray-800 dark:text-gray-200 sm:text-2xl">
                       {desc.shortDesc}
                     </span>
                   }
@@ -55,11 +79,11 @@ export function WorkExperiences() {
                   classNames={{
                     content: "text-gray-700 dark:text-gray-300",
                     trigger:
-                      "data-[hover=true]:bg-[#5ad6ff]/10 dark:data-[hover=true]:bg-[#5ad6ff]/20 px-4 rounded-lg",
+                      "data-[hover=true]:bg-[#5ad6ff]/10 dark:data-[hover=true]:bg-[#5ad6ff]/20 px-2 sm:px-3 md:px-4 rounded-lg",
                     indicator: "text-gray-500 dark:text-gray-400",
                   }}
                 >
-                  <ul className="text-gray-700 dark:text-gray-300">
+                  <ul className="text-lg text-gray-700 dark:text-gray-300 sm:text-xl">
                     {desc.longDesc.map((longDesc, index) => {
                       return (
                         <li key={index + longDesc} className="mb-2">
@@ -81,16 +105,15 @@ export function WorkExperiences() {
     <div className="gradient-bg-responsive min-h-screen">
       <NavbarPlaceholder />
       <div>
-        <h1 className="gradient-text-responsive p-8 pb-0 text-center font-great-vibes text-5xl">
+        <h1 className="gradient-text-responsive p-4 pb-0 text-center font-great-vibes text-4xl sm:p-6 sm:text-5xl md:p-8">
           Work Experiences
         </h1>
-        <div className="gradient-divider-responsive mx-auto mt-2 w-60"></div>
+        <div className="gradient-divider-responsive mx-auto mt-1 w-40 sm:mt-2 sm:w-48 md:w-60"></div>
       </div>
-      <div className="ul-default work-experiences-timeline min-h-[calc(100vh-12rem)] py-8">
+      <div className="ul-default work-experiences-timeline min-h-[calc(100vh-12rem)] px-2 py-4 sm:px-4 sm:py-6 md:px-6 md:py-8">
         <Chrono
           items={chronoItems}
-          mode="VERTICAL_ALTERNATING"
-          // mode="VERTICAL"
+          mode={chronoMode as never}
           disableToolbar={true}
           disableInteraction={true}
           cardHeight={300}

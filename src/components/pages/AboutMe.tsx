@@ -14,7 +14,7 @@ export function AboutMe() {
   return (
     <div className="gradient-bg-responsive min-h-screen">
       <NavbarPlaceholder />
-      <div className="item-center flex h-full min-h-[calc(100vh-4rem)] flex-grow flex-row justify-center">
+      <div className="item-center flex h-full min-h-[calc(100vh-4rem)] flex-grow flex-col justify-center md:flex-row">
         <AboutMeLeft />
         <AboutMeRight />
       </div>
@@ -32,15 +32,15 @@ function AboutMeLeft() {
   const shuffledPhrases = [...phrases].sort(() => Math.random() - 0.5);
 
   return (
-    <div className="flex w-2/5 items-center justify-center">
-      <div className="flex flex-col items-center justify-normal p-5 text-5xl leading-normal">
-        <span className="gradient-text-responsive mb-4 font-great-vibes">
+    <div className="flex w-full items-center justify-center py-4 md:w-2/5 md:py-0">
+      <div className="flex flex-col items-center justify-normal p-3 text-3xl leading-normal sm:p-4 sm:text-4xl md:p-5 md:text-6xl">
+        <span className="gradient-text-responsive mb-2 text-center font-great-vibes leading-normal sm:mb-3 md:mb-4">
           Hi there! I'm Perry, and I'm a:
         </span>
         {!isLoading && shuffledPhrases.length > 0 && (
           <RotatingText
             texts={shuffledPhrases}
-            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-3xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
+            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-xl sm:text-2xl md:text-3xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
             elementLevelClassName="gradient-text-responsive font-bold"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
@@ -62,14 +62,13 @@ function AboutMeRight() {
   const aboutMeText = data?.paragraphs || [];
 
   return (
-    <div className="flex w-3/5 flex-col items-center justify-center">
-      <div className="m-8 flex flex-col items-center justify-center rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:shadow-md">
+    <div className="flex w-full flex-col items-center justify-center md:w-3/5">
+      <div className="mx-4 flex flex-col items-center justify-center rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-4 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:shadow-md sm:mx-6 sm:p-5 md:m-8 md:p-6">
         {aboutMeText.map((text, index) => (
           <p
             key={index}
-            className="my-2 text-xl leading-relaxed text-gray-700 dark:text-gray-200"
+            className="my-2 text-base leading-relaxed text-gray-700 dark:text-gray-200 sm:text-lg md:text-2xl"
           >
-            {/* {text} */}
             <DecryptedText
               text={text}
               speed={30}
@@ -85,7 +84,7 @@ function AboutMeRight() {
           download="PerryZ_resume.pdf"
           className="self-start"
         >
-          <Button className="gradient-button-hover-responsive mt-4 flex items-center gap-2 border border-[#5ad6ff]/50 bg-white px-4 py-2 text-gray-700 shadow-sm dark:border-[#5ad6ff]/70 dark:bg-gray-800 dark:text-gray-200">
+          <Button className="gradient-button-hover-responsive mt-4 flex items-center gap-2 border border-[#5ad6ff]/50 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm dark:border-[#5ad6ff]/70 dark:bg-gray-800 dark:text-gray-200 sm:px-4 sm:py-2 sm:text-base">
             <IoDocumentAttach />
             <span>Check my resume</span>
           </Button>

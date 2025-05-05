@@ -23,25 +23,25 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
   return (
     <div className="h-full">
       <Card className="card-base-responsive h-full">
-        <CardHeader className="card-header-responsive">
-          <div className="flex flex-col gap-2">
-            <h1 className="gradient-text-responsive text-2xl font-semibold">
+        <CardHeader className="card-header-responsive p-3 sm:p-4 md:p-5">
+          <div className="flex flex-col gap-1 sm:gap-2">
+            <h1 className="gradient-text-responsive text-xl font-semibold sm:text-3xl">
               {projectInfo.title}
             </h1>
-            <p className="text-lg text-gray-700 dark:text-gray-200">
+            <p className="text-base text-gray-700 dark:text-gray-200 sm:text-xl">
               {projectInfo.intro}
             </p>
           </div>
         </CardHeader>
         <Divider className="card-divider-responsive" />
-        <CardBody className="ul-default scrollbar-hide">
+        <CardBody className="ul-default p-3 scrollbar-hide sm:p-4 md:p-5">
           <Accordion>
             {projectInfo.descriptions.map((desc, index) => {
               return (
                 <AccordionItem
                   key={index}
                   title={
-                    <span className="text-lg font-normal dark:text-gray-100">
+                    <span className="text-base font-normal dark:text-gray-100 sm:text-xl">
                       {desc.shortDesc}
                     </span>
                   }
@@ -49,11 +49,11 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
                   className="text-left transition-all duration-300"
                   classNames={{
                     content: "text-gray-700 dark:text-gray-300",
-                    trigger: "accordion-hover-responsive",
+                    trigger: "accordion-hover-responsive py-2 sm:py-3",
                     indicator: "text-gray-500 dark:text-gray-400",
                   }}
                 >
-                  <div className="text-lg dark:text-gray-300">
+                  <div className="text-sm dark:text-gray-300 sm:text-base md:text-xl">
                     {desc.longDesc}
                   </div>
                 </AccordionItem>
@@ -62,7 +62,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
           </Accordion>
         </CardBody>
         <Divider className="card-divider-responsive" />
-        <CardFooter className="card-footer-responsive flex flex-row justify-center gap-3">
+        <CardFooter className="card-footer-responsive flex flex-row flex-wrap justify-center gap-2 p-3 sm:gap-3 sm:p-4">
           {projectInfo.links.map((link, index) => (
             <div key={index} className="hover-float flex flex-row items-center">
               {link}
