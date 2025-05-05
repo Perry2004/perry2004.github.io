@@ -1,4 +1,5 @@
-import { useActiveAnchor, useThemeToggle } from "@/hooks";
+import { useActiveAnchor } from "@/hooks";
+import { useTheme } from "@/hooks";
 import {
   Navbar,
   NavbarBrand,
@@ -30,7 +31,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const activeAnchor = useActiveAnchor(anchors);
-  const { theme, setTheme } = useThemeToggle();
+  const { theme, setTheme } = useTheme();
 
   const getThemeIcon = () => {
     switch (theme) {

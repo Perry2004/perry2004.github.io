@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
+import { Theme, ThemeContext } from "./ThemeContext";
 
-type Theme = "light" | "dark" | "system";
+interface ThemeProviderProps {
+  children: ReactNode;
+}
 
-export function useThemeToggle() {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const getSystemTheme = (): "light" | "dark" => {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
@@ -65,11 +68,13 @@ export function useThemeToggle() {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme]);
 
-  return {
+  const value = {
     theme,
     resolvedTheme,
     setTheme,
-    toggleTheme: () => setTheme(theme === "dark" ? "light" : "dark"),
-    isDark: resolvedTheme === "dark",
   };
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }

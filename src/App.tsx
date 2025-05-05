@@ -9,6 +9,7 @@ import {
   NavbarHeader,
 } from "@/components";
 import ReactFullpage from "@fullpage/react-fullpage";
+import { ThemeProvider } from "@/context";
 
 export function App() {
   const anchors = [
@@ -20,44 +21,46 @@ export function App() {
     "contacts",
   ];
   return (
-    <HeroUIProvider>
-      <div className="font-raleway">
-        <NavbarHeader anchors={anchors} />
-        <ReactFullpage
-          anchors={anchors}
-          navigation={true}
-          scrollOverflow={true}
-          credits={{
-            enabled: false,
-            label: "",
-            position: "right",
-          }}
-          render={() => {
-            return (
-              <ReactFullpage.Wrapper>
-                <div className="section">
-                  <Home />
-                </div>
-                <div className="section">
-                  <AboutMe />
-                </div>
-                <div className="section">
-                  <Projects />
-                </div>
-                <div className="section">
-                  <WorkExperiences />
-                </div>
-                <div className="section">
-                  <Skills />
-                </div>
-                <div className="section">
-                  <Contacts />
-                </div>
-              </ReactFullpage.Wrapper>
-            );
-          }}
-        />
-      </div>
-    </HeroUIProvider>
+    <ThemeProvider>
+      <HeroUIProvider>
+        <div className="font-raleway">
+          <NavbarHeader anchors={anchors} />
+          <ReactFullpage
+            anchors={anchors}
+            navigation={true}
+            scrollOverflow={true}
+            credits={{
+              enabled: false,
+              label: "",
+              position: "right",
+            }}
+            render={() => {
+              return (
+                <ReactFullpage.Wrapper>
+                  <div className="section">
+                    <Home />
+                  </div>
+                  <div className="section">
+                    <AboutMe />
+                  </div>
+                  <div className="section">
+                    <Projects />
+                  </div>
+                  <div className="section">
+                    <WorkExperiences />
+                  </div>
+                  <div className="section">
+                    <Skills />
+                  </div>
+                  <div className="section">
+                    <Contacts />
+                  </div>
+                </ReactFullpage.Wrapper>
+              );
+            }}
+          />
+        </div>
+      </HeroUIProvider>
+    </ThemeProvider>
   );
 }

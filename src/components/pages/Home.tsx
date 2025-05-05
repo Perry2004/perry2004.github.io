@@ -3,7 +3,7 @@ import { SiGithub, SiLinkedin, SiInstagram, SiPexels } from "react-icons/si";
 import { NavbarPlaceholder } from "@/components/layout";
 import { RollingImages } from "@/components/ui";
 import Iridescence from "@/blocks/Backgrounds/Iridescence/Iridescence";
-import { useThemeToggle } from "@/hooks";
+import { useTheme } from "@/hooks";
 
 interface SocialMediaLink {
   text: string;
@@ -34,7 +34,7 @@ const socialMediaLinks: SocialMediaLink[] = [
   },
 ];
 export function Home() {
-  const { resolvedTheme, theme } = useThemeToggle();
+  const { resolvedTheme, theme } = useTheme();
   return (
     <div className="relative flex min-h-screen flex-col justify-evenly overflow-hidden bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30 dark:from-[#1a4d6d]/70 dark:via-[#2a2a3d]/90 dark:to-[#6d1a4a]/70">
       <div className="absolute z-10 h-full w-full">
