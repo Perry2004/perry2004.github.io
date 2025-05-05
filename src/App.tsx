@@ -21,11 +21,12 @@ export function App() {
     "skills",
     "contacts",
   ];
+
   return (
     <ThemeProvider>
       <HeroUIProvider>
         <ClickSpark
-          sparkColor="#fff"
+          sparkColor="#7046e3"
           sparkSize={20}
           sparkRadius={40}
           sparkCount={8}
