@@ -18,10 +18,28 @@
   font-style: normal;
 }
 
+/* Common variables and properties */
+:root {
+  --gradient-animation-duration: 10s;
+}
+
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Common utility classes and gradients */
@@ -91,15 +109,36 @@
 
   /* Common gradient backgrounds */
   .gradient-bg-light {
-    @apply bg-gradient-to-r from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30;
+    @apply bg-gradient-to-r from-[#5ad6ff]/30 via-[#fbf2ff] to-[#fb9ac7]/30;
+    background-size: 200% 100%;
+    animation: gradientMove var(--gradient-animation-duration) ease infinite;
   }
 
   .gradient-bg-dark {
     @apply bg-gradient-to-r from-[#1a4d6d]/70 via-[#2a2a3d]/90 to-[#6d1a4a]/70;
+    background-size: 200% 100%;
+    animation: gradientMove var(--gradient-animation-duration) ease infinite;
   }
 
   .gradient-bg-responsive {
     @apply gradient-bg-light dark:gradient-bg-dark;
+  }
+
+  /* Animated navbar gradients */
+  .navbar-gradient-light {
+    @apply bg-gradient-to-r from-[#5ad6ff]/90 via-[#f5deff]/80 to-[#fb9ac7]/90;
+    background-size: 200% 100%;
+    animation: gradientMove var(--gradient-animation-duration) ease infinite;
+  }
+
+  .navbar-gradient-dark {
+    @apply bg-gradient-to-r from-[#0361a8]/90 via-[#285475]/90 to-[#FF71CF]/90;
+    background-size: 200% 100%;
+    animation: gradientMove var(--gradient-animation-duration) ease infinite;
+  }
+
+  .navbar-gradient-responsive {
+    @apply navbar-gradient-light dark:navbar-gradient-dark;
   }
 
   /* Common gradient dividers */
