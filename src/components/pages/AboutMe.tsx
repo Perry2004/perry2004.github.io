@@ -71,7 +71,7 @@ function AboutMeRight() {
           >
             <DecryptedText
               text={text}
-              speed={30}
+              speed={20}
               sequential={true}
               revealDirection="start"
               animateOn="view"
