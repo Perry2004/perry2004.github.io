@@ -10,6 +10,11 @@
   --gradient-animation-duration: 10s;
 }
 
+/* Common variables and properties */
+:root {
+  --gradient-animation-duration: 10s;
+}
+
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -520,4 +525,9 @@
       left: 8px;
     }
   }
+}
+
+.dark #fp-nav ul li a span,
+.dark .fp-slidesNav ul li a span {
+  background: rgb(193, 193, 193) !important;
 }

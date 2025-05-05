@@ -32,7 +32,7 @@ function AboutMeLeft() {
   const shuffledPhrases = [...phrases].sort(() => Math.random() - 0.5);
 
   return (
-    <div className="flex w-1/2 items-center justify-center">
+    <div className="flex w-2/5 items-center justify-center">
       <div className="flex flex-col items-center justify-normal p-5 text-5xl leading-normal">
         <span className="gradient-text-responsive mb-4 font-great-vibes">
           Hi there! I'm Perry, and I'm a:
@@ -62,7 +62,7 @@ function AboutMeRight() {
   const aboutMeText = data?.paragraphs || [];
 
   return (
-    <div className="flex w-1/2 flex-col items-center justify-center">
+    <div className="flex w-3/5 flex-col items-center justify-center">
       <div className="m-8 flex flex-col items-center justify-center rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:shadow-md">
         {aboutMeText.map((text, index) => (
           <p
@@ -76,6 +76,7 @@ function AboutMeRight() {
               sequential={true}
               revealDirection="start"
               animateOn="view"
+              useOriginalCharsOnly={true}
             />
           </p>
         ))}
