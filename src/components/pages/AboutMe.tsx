@@ -3,6 +3,7 @@ import { NavbarPlaceholder } from "@/components/layout";
 import { IoDocumentAttach } from "react-icons/io5";
 import RotatingText from "@/blocks/TextAnimations/RotatingText/RotatingText";
 import { useLoadDataJson } from "@/hooks";
+import DecryptedText from "@/blocks/TextAnimations/DecryptedText/DecryptedText";
 
 interface AboutMeData {
   phrases: string[];
@@ -68,7 +69,14 @@ function AboutMeRight() {
             key={index}
             className="my-2 text-xl leading-relaxed text-gray-700 dark:text-gray-200"
           >
-            {text}
+            {/* {text} */}
+            <DecryptedText
+              text={text}
+              speed={30}
+              sequential={true}
+              revealDirection="start"
+              animateOn="view"
+            />
           </p>
         ))}
         <Link
