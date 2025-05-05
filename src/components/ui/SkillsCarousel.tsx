@@ -74,7 +74,7 @@ export function SkillsCarousel() {
             }`}
           >
             <div
-              className="animate-autoplay-progress absolute bottom-0 left-[-100%] top-0 w-full bg-gradient-to-r from-cyan-600 to-blue-600"
+              className="absolute bottom-0 left-[-100%] top-0 w-full animate-autoplay-progress bg-gradient-to-r from-cyan-600 to-blue-600"
               ref={progressRef}
             />
           </div>

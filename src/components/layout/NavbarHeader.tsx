@@ -54,7 +54,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
         className=""
       >
         <NavbarBrand>
-          <p className="bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] bg-clip-text font-great-vibes text-3xl font-bold text-transparent">
+          <p className="gradient-text-responsive font-great-vibes text-3xl font-bold">
             Perry Zhu
           </p>
         </NavbarBrand>

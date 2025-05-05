@@ -22,10 +22,10 @@ export interface ProjectInfo {
 export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
   return (
     <div className="h-full">
-      <Card className="h-full overflow-hidden border border-[#5ad6ff]/30 bg-white/80 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-xl dark:border-[#5ad6ff]/50 dark:bg-gray-800/80 dark:shadow-md dark:hover:shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-[#5ad6ff]/10 to-[#fb9ac7]/10 dark:from-[#5ad6ff]/20 dark:to-[#fb9ac7]/20">
+      <Card className="card-base-responsive h-full">
+        <CardHeader className="card-header-responsive">
           <div className="flex flex-col gap-2">
-            <h1 className="bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] bg-clip-text text-2xl font-semibold text-transparent dark:from-[#64d1ff] dark:to-[#fab7ff]">
+            <h1 className="gradient-text-responsive text-2xl font-semibold">
               {projectInfo.title}
             </h1>
             <p className="text-lg text-gray-700 dark:text-gray-200">
@@ -33,7 +33,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
             </p>
           </div>
         </CardHeader>
-        <Divider className="h-[2px] bg-gradient-to-r from-[#5ad6ff]/30 to-[#fb9ac7]/30 dark:from-[#5ad6ff]/40 dark:to-[#fb9ac7]/40" />
+        <Divider className="card-divider-responsive" />
         <CardBody className="ul-default scrollbar-hide">
           <Accordion>
             {projectInfo.descriptions.map((desc, index) => {
@@ -49,8 +49,7 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
                   className="text-left transition-all duration-300"
                   classNames={{
                     content: "text-gray-700 dark:text-gray-300",
-                    trigger:
-                      "data-[hover=true]:bg-[#5ad6ff]/10 dark:data-[hover=true]:bg-[#5ad6ff]/20 px-4 rounded-lg",
+                    trigger: "accordion-hover-responsive",
                     indicator: "text-gray-500 dark:text-gray-400",
                   }}
                 >
@@ -62,13 +61,10 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
             })}
           </Accordion>
         </CardBody>
-        <Divider className="h-[2px] bg-gradient-to-r from-[#5ad6ff]/30 to-[#fb9ac7]/30 dark:from-[#5ad6ff]/40 dark:to-[#fb9ac7]/40" />
-        <CardFooter className="flex flex-row justify-center gap-3 bg-gradient-to-r from-[#5ad6ff]/10 to-[#fb9ac7]/10 dark:from-[#5ad6ff]/20 dark:to-[#fb9ac7]/20">
+        <Divider className="card-divider-responsive" />
+        <CardFooter className="card-footer-responsive flex flex-row justify-center gap-3">
           {projectInfo.links.map((link, index) => (
-            <div
-              key={index}
-              className="flex transform-gpu flex-row items-center transition-all duration-300 hover:scale-105"
-            >
+            <div key={index} className="hover-float flex flex-row items-center">
               {link}
             </div>
           ))}

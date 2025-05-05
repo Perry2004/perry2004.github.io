@@ -11,15 +11,11 @@ export function ContactInfoItem({
   icon,
   title,
   children,
-  iconClass = "bg-orange-100 text-orange-600",
+  iconClass = "info-icon-gradient-light info-icon-primary-light dark:info-icon-gradient-dark dark:info-icon-primary-dark",
 }: ContactInfoItemProps) {
   return (
     <div className="flex items-start gap-4">
-      <div
-        className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${iconClass}`}
-      >
-        {icon}
-      </div>
+      <div className={iconClass}>{icon}</div>
       <div>
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
           {title}

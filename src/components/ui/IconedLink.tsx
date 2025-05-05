@@ -9,7 +9,7 @@ interface IconedLinkProps {
 export function IconedLink({
   href,
   children,
-  className = "gap-1 text-lg dark:text-gray-200",
+  className = "link-colored-responsive gap-1 text-lg dark:text-gray-200",
 }: IconedLinkProps) {
   return (
     <HerouiLink

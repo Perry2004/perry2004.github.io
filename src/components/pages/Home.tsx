@@ -34,9 +34,9 @@ const socialMediaLinks: SocialMediaLink[] = [
   },
 ];
 export function Home() {
-  const { resolvedTheme, theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   return (
-    <div className="relative flex min-h-screen flex-col justify-evenly overflow-hidden bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30 dark:from-[#1a4d6d]/70 dark:via-[#2a2a3d]/90 dark:to-[#6d1a4a]/70">
+    <div className="gradient-bg-responsive relative flex min-h-screen flex-col justify-evenly overflow-hidden">
       <div className="absolute z-10 h-full w-full">
         <Iridescence
           color={resolvedTheme === "light" ? [0.9, 0.9, 0.9] : [0.4, 0.4, 0.4]}
@@ -49,10 +49,10 @@ export function Home() {
 
       <div className="relative z-10 ml-48 w-1/2">
         <div className="relative">
-          <h1 className="bg-gradient-to-r from-[#5895ff] to-[#ff0378] bg-clip-text font-great-vibes text-6xl font-bold leading-normal text-transparent dark:from-[#64d1ff] dark:to-[#fab7ff]">
-            Hello World! {theme}
+          <h1 className="gradient-text-responsive font-great-vibes text-6xl font-bold leading-normal">
+            Hello World!
           </h1>
-          <div className="mb-3 h-1 w-40 rounded-full bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] dark:from-[#4ca1c5] dark:to-[#fab7ff]"></div>
+          <div className="gradient-divider-responsive mb-3 w-40"></div>
         </div>
 
         <p className="rounded-lg border border-[#5ad6ff]/30 bg-white/40 p-3 text-xl leading-relaxed text-gray-700 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md">
@@ -70,7 +70,7 @@ export function Home() {
             return (
               <Link href={link.href} key={link.text} target="_blank">
                 <Button
-                  className="flex items-center gap-2 border px-4 py-2 text-gray-700 shadow-sm transition-all duration-300 hover:bg-gradient-to-r hover:from-[#5ad6ff] hover:to-[#fb9ac7] hover:text-white hover:shadow-md dark:border-[#5ad6ff]/30 dark:text-gray-200 dark:shadow-md dark:hover:from-[#749bff] dark:hover:to-[#b45ca7] dark:hover:shadow-lg"
+                  className="gradient-button-hover-responsive flex items-center gap-2 border px-4 py-2 text-gray-700 shadow-sm dark:border-[#5ad6ff]/30 dark:text-gray-200 dark:shadow-md"
                   variant="ghost"
                 >
                   <span className="text-lg">{link.icon}</span> {link.text}

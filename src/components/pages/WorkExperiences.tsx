@@ -15,7 +15,7 @@ export function WorkExperiences() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30 dark:from-[#1a4d6d]/70 dark:via-[#2a2a3d]/90 dark:to-[#6d1a4a]/70">
+      <div className="gradient-bg-responsive flex min-h-screen items-center justify-center">
         <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md">
           Loading work experiences...
         </div>
@@ -25,7 +25,7 @@ export function WorkExperiences() {
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30 dark:from-[#1a4d6d]/70 dark:via-[#2a2a3d]/90 dark:to-[#6d1a4a]/70">
+      <div className="gradient-bg-responsive flex min-h-screen items-center justify-center">
         <div className="rounded-xl border border-[#5ad6ff]/30 bg-white/40 p-6 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md">
           Error loading work experiences. Please try again later.
         </div>
@@ -78,13 +78,13 @@ export function WorkExperiences() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#5ad6ff]/30 via-white to-[#fb9ac7]/30 dark:from-[#1a4d6d]/70 dark:via-[#2a2a3d]/90 dark:to-[#6d1a4a]/70">
+    <div className="gradient-bg-responsive min-h-screen">
       <NavbarPlaceholder />
       <div>
-        <h1 className="bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] bg-clip-text p-8 pb-0 text-center font-great-vibes text-5xl text-transparent dark:from-[#64d1ff] dark:to-[#fab7ff]">
+        <h1 className="gradient-text-responsive p-8 pb-0 text-center font-great-vibes text-5xl">
           Work Experiences
         </h1>
-        <div className="mx-auto mt-2 h-1 w-60 rounded-full bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] dark:from-[#749bff] dark:to-[#b45ca7]"></div>
+        <div className="gradient-divider-responsive mx-auto mt-2 w-60"></div>
       </div>
       <div className="ul-default work-experiences-timeline min-h-[calc(100vh-12rem)] py-8">
         <Chrono
