@@ -5,3 +5,4 @@ export { useEmblaAutoplayProgress } from "./useEmblaAutoplayProgress";
 export { useEmblaPrevNextButtons } from "./useEmblaPrevNextButtons";
 export { useTheme } from "./useTheme";
 export { useDevice } from "./useDevice";
+export { useMobileActiveAnchor } from "./useMobileActiveAnchor";

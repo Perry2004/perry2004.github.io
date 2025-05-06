@@ -559,3 +559,7 @@
 .card-sub-title {
   @apply text-lg !important;
 }
+
+html {
+  scroll-behavior: smooth;
+}

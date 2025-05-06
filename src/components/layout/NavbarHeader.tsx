@@ -1,5 +1,6 @@
-import { useActiveAnchor } from "@/hooks";
+import { useActiveAnchor, useMobileActiveAnchor } from "@/hooks";
 import { useTheme } from "@/hooks";
+import { useDevice } from "@/hooks";
 import {
   Navbar,
   NavbarBrand,
@@ -15,7 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@heroui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { FaComputer } from "react-icons/fa6";
 
@@ -31,21 +32,12 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
 
   // Adjusted breakpoints for responsive behavior
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [, setIsMobile] = useState(false);
-  const activeAnchor = useActiveAnchor(anchors);
+  const { isDesktop } = useDevice();
+  // Use the appropriate active anchor hook based on device type
+  const desktopActiveAnchor = useActiveAnchor(anchors);
+  const mobileActiveAnchor = useMobileActiveAnchor(anchors);
+  const activeAnchor = isDesktop ? desktopActiveAnchor : mobileActiveAnchor;
   const { theme, setTheme } = useTheme();
-
-  // Check screen size
-  useEffect(() => {
-    const checkSize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    window.addEventListener("resize", checkSize);
-    checkSize(); // Initial check
-
-    return () => window.removeEventListener("resize", checkSize);
-  }, []);
 
   const getThemeIcon = () => {
     switch (theme) {
@@ -160,12 +152,12 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
             </Dropdown>
           </NavbarItem>
         </NavbarContent>
-        <NavbarMenu className="max-h-[calc(100vh-64px)] overflow-auto border-t border-[#5ad6ff]/30 bg-white/95 pt-2 backdrop-blur-lg dark:bg-gray-900/95">
+        <NavbarMenu className="max-h-[calc(100vh-64px)] overflow-auto border-t border-[#5ad6ff]/30 bg-white/95 pt-5 backdrop-blur-lg dark:bg-gray-900/95">
           {anchors.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 className={
-                  "relative w-full overflow-hidden rounded-lg p-2 transition-all duration-300 ease-in-out" +
+                  "relative w-full overflow-hidden rounded-lg p-2 transition-all duration-300 ease-in-out " +
                   (activeAnchor === item
                     ? "translate-x-1 transform bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] text-white dark:from-[#749bff] dark:to-[#b45ca7]"
                     : "text-gray-700 hover:translate-x-1 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff] dark:text-gray-300 dark:hover:bg-[#5ad6ff]/20")
