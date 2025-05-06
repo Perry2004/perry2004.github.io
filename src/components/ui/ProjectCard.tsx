@@ -64,7 +64,10 @@ export function ProjectCard({ projectInfo }: { projectInfo: ProjectInfo }) {
         <Divider className="card-divider-responsive" />
         <CardFooter className="card-footer-responsive flex flex-row flex-wrap justify-center gap-2 p-3 sm:gap-3 sm:p-4">
           {projectInfo.links.map((link, index) => (
-            <div key={index} className="hover-float flex flex-row items-center">
+            <div
+              key={index}
+              className="hover-float project-link flex flex-row items-center"
+            >
               {link}
             </div>
           ))}

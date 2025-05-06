@@ -9,7 +9,7 @@ export function Contacts() {
       <NavbarPlaceholder />
 
       <div className="container mx-auto px-4 py-4 sm:py-6 md:py-8">
-        <h1 className="gradient-text-responsive text-center font-great-vibes text-4xl !leading-normal sm:text-5xl">
+        <h1 className="gradient-text-responsive mt-2 text-center font-great-vibes text-4xl !leading-normal sm:text-6xl md:mt-0">
           Contact Me
         </h1>
         <div className="gradient-divider-responsive mx-auto mb-4 w-28 sm:mb-6 sm:w-32 md:mb-8 md:w-40"></div>

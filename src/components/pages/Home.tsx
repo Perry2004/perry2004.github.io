@@ -49,7 +49,7 @@ export function Home() {
 
       <div className="relative z-10 mx-4 w-auto max-w-full sm:mx-8 sm:w-4/5 md:ml-12 md:w-3/4 lg:ml-24 lg:w-2/3 xl:ml-48 xl:w-1/2">
         <div className="relative">
-          <h1 className="gradient-text-responsive font-great-vibes text-4xl font-bold !leading-normal sm:text-5xl md:text-7xl">
+          <h1 className="gradient-text from-[#2f4eff] to-[#ff1281] font-great-vibes text-4xl font-bold !leading-normal dark:from-[#64d1ff] dark:to-[#fab7ff] sm:text-5xl md:text-7xl">
             Hello World!
           </h1>
           <div className="gradient-divider-responsive mb-3 w-32 sm:w-36 md:w-40"></div>
@@ -70,7 +70,7 @@ export function Home() {
             return (
               <Link href={link.href} key={link.text} target="_blank">
                 <Button
-                  className="gradient-button-hover-responsive flex items-center gap-1 border px-2 py-1 text-sm text-gray-700 shadow-sm dark:border-[#5ad6ff]/30 dark:text-gray-200 dark:shadow-md sm:gap-2 sm:px-3 sm:py-2 sm:text-base md:px-4"
+                  className="gradient-button-hover-responsive flex items-center gap-1 border px-2 py-1 text-sm text-gray-700 shadow-sm dark:border-[#5ad6ff]/30 dark:text-gray-200 dark:shadow-md sm:gap-2 sm:px-3 sm:py-2 sm:text-base md:px-4 md:text-xl"
                   variant="ghost"
                 >
                   <span className="text-base sm:text-lg">{link.icon}</span>{" "}

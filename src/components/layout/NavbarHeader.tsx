@@ -50,12 +50,12 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
   const getThemeIcon = () => {
     switch (theme) {
       case "light":
-        return <FaSun className="h-3.5 w-3.5 text-amber-400 sm:h-4 sm:w-4" />;
+        return <FaSun className="h-4 w-4 text-amber-400 sm:h-5 sm:w-5" />;
       case "dark":
-        return <FaMoon className="h-3.5 w-3.5 text-[#5ad6ff] sm:h-4 sm:w-4" />;
+        return <FaMoon className="h-4 w-4 text-[#5ad6ff] sm:h-5 sm:w-5" />;
       case "system":
         return (
-          <FaComputer className="h-3.5 w-3.5 text-gray-500 dark:text-gray-400 sm:h-4 sm:w-4" />
+          <FaComputer className="h-4 w-4 text-gray-500 dark:text-gray-400 sm:h-5 sm:w-5" />
         );
     }
   };
@@ -83,13 +83,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <Button
                   size="md"
                   className={
-                    "relative overflow-hidden text-xs font-medium transition-all duration-300 ease-in-out md:text-lg lg:text-base " +
+                    "relative overflow-hidden text-sm font-medium transition-all duration-300 ease-in-out md:text-2xl lg:text-lg " +
                     (activeAnchor === anchor
                       ? "scale-105 bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] text-white shadow-md"
                       : "bg-transparent text-gray-700 hover:scale-105 hover:bg-[#5ad6ff]/10 hover:text-[#46a8ff] hover:shadow-sm dark:text-gray-300 dark:hover:bg-[#5ad6ff]/20 dark:hover:shadow-[#5ad6ff]/30")
                   }
                 >
-                  <span className="relative z-10 md:text-lg">
+                  <span className="relative z-10 md:text-xl">
                     {navbarAnchorMap[anchor]}
                   </span>
                   {activeAnchor === anchor && (
@@ -106,7 +106,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <Button
                   variant="light"
                   isIconOnly
-                  size="sm"
+                  size="md"
                   className="rounded-full border border-[#5ad6ff]/50 bg-white/50 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#5ad6ff]/10 hover:shadow-md dark:bg-gray-800/50 dark:hover:bg-[#5ad6ff]/20"
                   aria-label="Toggle theme mode"
                 >
@@ -117,13 +117,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <DropdownItem
                   key="light"
                   startContent={
-                    <FaSun className="h-3 w-3 text-amber-400 sm:h-4 sm:w-4" />
+                    <FaSun className="h-4 w-4 text-amber-400 sm:h-5 sm:w-5" />
                   }
                   onPress={() => setTheme("light")}
                   className={
                     theme === "light"
-                      ? "bg-[#5ad6ff]/10 text-xs text-[#5ad6ff] sm:text-sm"
-                      : "text-xs hover:bg-[#5ad6ff]/10 sm:text-sm"
+                      ? "bg-[#5ad6ff]/10 text-sm text-[#5ad6ff] sm:text-base"
+                      : "text-sm hover:bg-[#5ad6ff]/10 sm:text-base"
                   }
                 >
                   Light
@@ -131,13 +131,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <DropdownItem
                   key="dark"
                   startContent={
-                    <FaMoon className="h-3 w-3 text-[#5ad6ff] sm:h-4 sm:w-4" />
+                    <FaMoon className="h-4 w-4 text-[#5ad6ff] sm:h-5 sm:w-5" />
                   }
                   onPress={() => setTheme("dark")}
                   className={
                     theme === "dark"
-                      ? "bg-[#5ad6ff]/10 text-xs text-[#5ad6ff] sm:text-sm"
-                      : "text-xs hover:bg-[#5ad6ff]/10 sm:text-sm"
+                      ? "bg-[#5ad6ff]/10 text-sm text-[#5ad6ff] sm:text-base"
+                      : "text-sm hover:bg-[#5ad6ff]/10 sm:text-base"
                   }
                 >
                   Dark
@@ -145,13 +145,13 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                 <DropdownItem
                   key="system"
                   startContent={
-                    <FaComputer className="h-3 w-3 text-gray-500 sm:h-4 sm:w-4" />
+                    <FaComputer className="h-4 w-4 text-gray-500 sm:h-5 sm:w-5" />
                   }
                   onPress={() => setTheme("system")}
                   className={
                     theme === "system"
-                      ? "bg-[#5ad6ff]/10 text-xs text-[#5ad6ff] sm:text-sm"
-                      : "text-xs hover:bg-[#5ad6ff]/10 sm:text-sm"
+                      ? "bg-[#5ad6ff]/10 text-sm text-[#5ad6ff] sm:text-base"
+                      : "text-sm hover:bg-[#5ad6ff]/10 sm:text-base"
                   }
                 >
                   System
@@ -165,7 +165,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 className={
-                  "relative w-full overflow-hidden rounded-lg py-2 transition-all duration-300 ease-in-out" +
+                  "relative w-full overflow-hidden rounded-lg p-2 transition-all duration-300 ease-in-out" +
                   (activeAnchor === item
                     ? "translate-x-1 transform bg-gradient-to-r from-[#5ad6ff] to-[#fb9ac7] text-white dark:from-[#749bff] dark:to-[#b45ca7]"
                     : "text-gray-700 hover:translate-x-1 hover:bg-[#5ad6ff]/10 hover:text-[#5ad6ff] dark:text-gray-300 dark:hover:bg-[#5ad6ff]/20")
@@ -196,10 +196,10 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
               variant="light"
               onPress={() => setTheme("light")}
             >
-              <FaSun className="h-4 w-4 text-amber-400" />
-              <span>Light</span>
+              <FaSun className="h-5 w-5 text-amber-400" />
+              <span className="text-base">Light</span>
               {theme === "light" && (
-                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-xs text-[#5ad6ff]">
+                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-sm text-[#5ad6ff]">
                   Active
                 </span>
               )}
@@ -216,10 +216,10 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
               variant="light"
               onPress={() => setTheme("dark")}
             >
-              <FaMoon className="h-4 w-4 text-[#5ad6ff]" />
-              <span>Dark</span>
+              <FaMoon className="h-5 w-5 text-[#5ad6ff]" />
+              <span className="text-base">Dark</span>
               {theme === "dark" && (
-                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-xs text-[#5ad6ff]">
+                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-sm text-[#5ad6ff]">
                   Active
                 </span>
               )}
@@ -236,10 +236,10 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
               variant="light"
               onPress={() => setTheme("system")}
             >
-              <FaComputer className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-              <span>System</span>
+              <FaComputer className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+              <span className="text-base">System</span>
               {theme === "system" && (
-                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-xs text-[#5ad6ff]">
+                <span className="ml-auto rounded-full bg-[#5ad6ff]/20 px-2 py-0.5 text-sm text-[#5ad6ff]">
                   Active
                 </span>
               )}

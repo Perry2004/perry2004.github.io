@@ -33,15 +33,15 @@ function AboutMeLeft() {
 
   return (
     <div className="flex w-full items-center justify-center py-4 md:w-2/5 md:py-0">
-      <div className="flex flex-col items-center justify-normal p-3 text-3xl leading-normal sm:p-4 sm:text-4xl md:p-5 md:text-6xl">
+      <div className="flex flex-col items-center justify-normal p-3 text-4xl leading-normal sm:p-4 sm:text-5xl md:p-5 md:text-7xl">
         <span className="gradient-text-responsive mb-2 text-center font-great-vibes leading-normal sm:mb-3 md:mb-4">
           Hi there! I'm Perry, and I'm a:
         </span>
         {!isLoading && shuffledPhrases.length > 0 && (
           <RotatingText
             texts={shuffledPhrases}
-            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-xl sm:text-2xl md:text-3xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
-            elementLevelClassName="gradient-text-responsive font-bold"
+            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-xl sm:text-3xl md:text-4xl lg:text-5xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
+            elementLevelClassName="gradient-text-responsive "
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}

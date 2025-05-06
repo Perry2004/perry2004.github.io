@@ -13,10 +13,14 @@ interface SkillChipProps {
 export function SkillChip({ skill }: SkillChipProps) {
   return (
     <Chip
-      className="skill-chip-responsive"
-      startContent={<div className="skill-icon-responsive">{skill.icon}</div>}
+      className="skill-chip-responsive px-5 py-3"
+      startContent={
+        <div className="skill-icon-responsive mr-3 text-lg sm:text-2xl">
+          {skill.icon}
+        </div>
+      }
     >
-      <span className="font-medium">{skill.name}</span>
+      <span className="text-base font-medium sm:text-xl">{skill.name}</span>
     </Chip>
   );
 }

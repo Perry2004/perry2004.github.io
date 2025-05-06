@@ -6,7 +6,7 @@ export function Projects() {
   return (
     <div className="gradient-bg-responsive min-h-screen pb-8 sm:pb-10 md:pb-12">
       <NavbarPlaceholder />
-      <h1 className="gradient-text-responsive p-4 pb-0 text-center font-great-vibes text-4xl leading-normal sm:p-6 sm:text-5xl md:p-8">
+      <h1 className="gradient-text-responsive mt-2 p-4 pb-0 text-center font-great-vibes text-4xl leading-normal sm:p-6 sm:text-6xl md:mt-0 md:p-8">
         Projects
       </h1>
       <div className="gradient-divider-responsive mx-auto mb-4 w-28 sm:mb-6 sm:w-32 md:mb-8 md:w-40"></div>
