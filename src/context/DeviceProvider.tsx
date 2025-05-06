@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { DeviceContext } from "./DeviceContext";
 
-export const useDeviceType = () => {
+interface DeviceProviderProps {
+  children: ReactNode;
+}
+
+export function DeviceProvider({ children }: DeviceProviderProps) {
   const [, setWidth] = useState(window.innerWidth);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
@@ -17,5 +22,9 @@ export const useDeviceType = () => {
     };
   }, []);
 
-  return { isDesktop };
-};
+  return (
+    <DeviceContext.Provider value={{ isDesktop }}>
+      {children}
+    </DeviceContext.Provider>
+  );
+}

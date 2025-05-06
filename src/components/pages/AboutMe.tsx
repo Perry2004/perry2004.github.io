@@ -2,7 +2,7 @@ import { Button, Link } from "@heroui/react";
 import { NavbarPlaceholder } from "@/components/layout";
 import { IoDocumentAttach } from "react-icons/io5";
 import RotatingText from "@/blocks/TextAnimations/RotatingText/RotatingText";
-import { useLoadDataJson } from "@/hooks";
+import { useDevice, useLoadDataJson } from "@/hooks";
 import DecryptedText from "@/blocks/TextAnimations/DecryptedText/DecryptedText";
 
 interface AboutMeData {
@@ -11,10 +11,12 @@ interface AboutMeData {
 }
 
 export function AboutMe() {
+  const { isDesktop } = useDevice();
+
   return (
-    <div className="gradient-bg-responsive min-h-screen">
-      <NavbarPlaceholder />
-      <div className="item-center flex h-full min-h-[calc(100vh-4rem)] flex-grow flex-col justify-center md:flex-row">
+    <div className="gradient-bg-responsive sm:min-h-screen">
+      {isDesktop && <NavbarPlaceholder />}
+      <div className="item-center flex h-full flex-grow flex-col justify-center sm:min-h-[calc(100vh-4rem)] md:flex-row">
         <AboutMeLeft />
         <AboutMeRight />
       </div>

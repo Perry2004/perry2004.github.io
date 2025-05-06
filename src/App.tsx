@@ -7,14 +7,86 @@ import {
   WorkExperiences,
   Contacts,
   NavbarHeader,
+  NavbarPlaceholder,
 } from "@/components";
 import ReactFullpage from "@fullpage/react-fullpage";
-import { ThemeProvider } from "@/context";
+import { DeviceProvider, ThemeProvider } from "@/context";
 import ClickSpark from "@/blocks/Animations/ClickSpark/ClickSpark";
-import { useDeviceType } from "@/hooks";
+import { useDevice } from "@/hooks";
 
-export function App() {
-  const { isDesktop } = useDeviceType();
+// Component for mobile layout
+function MobileLayout({ anchors }: { anchors: string[] }) {
+  return (
+    <>
+      <NavbarHeader anchors={anchors} />
+      <div id="home" className="sm:min-h-screen">
+        <NavbarPlaceholder />
+        <Home />
+      </div>
+      <div id="about-me" className="sm:min-h-screen">
+        <AboutMe />
+      </div>
+      <div id="projects" className="sm:min-h-screen">
+        <Projects />
+      </div>
+      <div id="work-experiences" className="sm:min-h-screen">
+        <WorkExperiences />
+      </div>
+      <div id="skills" className="sm:min-h-screen">
+        <Skills />
+      </div>
+      <div id="contacts" className="sm:min-h-screen">
+        <Contacts />
+      </div>
+    </>
+  );
+}
+
+// Component for desktop layout (fullpage)
+function DesktopLayout({ anchors }: { anchors: string[] }) {
+  return (
+    <>
+      <NavbarHeader anchors={anchors} />
+      <ReactFullpage
+        anchors={anchors}
+        navigation={true}
+        scrollOverflow={true}
+        credits={{
+          enabled: false,
+          label: "",
+          position: "right",
+        }}
+        render={() => {
+          return (
+            <ReactFullpage.Wrapper>
+              <div className="section">
+                <Home />
+              </div>
+              <div className="section">
+                <AboutMe />
+              </div>
+              <div className="section">
+                <Projects />
+              </div>
+              <div className="section">
+                <WorkExperiences />
+              </div>
+              <div className="section">
+                <Skills />
+              </div>
+              <div className="section">
+                <Contacts />
+              </div>
+            </ReactFullpage.Wrapper>
+          );
+        }}
+      />
+    </>
+  );
+}
+
+function AppContent() {
+  const { isDesktop } = useDevice();
   const anchors = [
     "home",
     "about-me",
@@ -24,92 +96,34 @@ export function App() {
     "contacts",
   ];
 
-  // Component for mobile layout
-  function MobileLayout() {
-    return (
-      <>
-        <NavbarHeader anchors={anchors} />
-        <div id="home" className="min-h-screen">
-          <Home />
-        </div>
-        <div id="about-me" className="min-h-screen">
-          <AboutMe />
-        </div>
-        <div id="projects" className="min-h-screen">
-          <Projects />
-        </div>
-        <div id="work-experiences" className="min-h-screen">
-          <WorkExperiences />
-        </div>
-        <div id="skills" className="min-h-screen">
-          <Skills />
-        </div>
-        <div id="contacts" className="min-h-screen">
-          <Contacts />
-        </div>
-      </>
-    );
-  }
+  return (
+    <div className="font-raleway">
+      {isDesktop ? (
+        <DesktopLayout anchors={anchors} />
+      ) : (
+        <MobileLayout anchors={anchors} />
+      )}
+    </div>
+  );
+}
 
-  // Component for desktop layout (fullpage)
-  function DesktopLayout() {
-    return (
-      <>
-        <NavbarHeader anchors={anchors} />
-        <ReactFullpage
-          anchors={anchors}
-          navigation={true}
-          scrollOverflow={true}
-          credits={{
-            enabled: false,
-            label: "",
-            position: "right",
-          }}
-          render={() => {
-            return (
-              <ReactFullpage.Wrapper>
-                <div className="section">
-                  <Home />
-                </div>
-                <div className="section">
-                  <AboutMe />
-                </div>
-                <div className="section">
-                  <Projects />
-                </div>
-                <div className="section">
-                  <WorkExperiences />
-                </div>
-                <div className="section">
-                  <Skills />
-                </div>
-                <div className="section">
-                  <Contacts />
-                </div>
-              </ReactFullpage.Wrapper>
-            );
-          }}
-        />
-      </>
-    );
-  }
-
+export function App() {
   return (
     <ThemeProvider>
-      <HeroUIProvider>
-        <ClickSpark
-          sparkColor="#7046e3"
-          sparkSize={20}
-          sparkRadius={40}
-          sparkCount={8}
-          duration={400}
-          extraScale={1.0}
-        >
-          <div className="font-raleway">
-            {isDesktop ? <DesktopLayout /> : <MobileLayout />}
-          </div>
-        </ClickSpark>
-      </HeroUIProvider>
+      <DeviceProvider>
+        <HeroUIProvider>
+          <ClickSpark
+            sparkColor="#7046e3"
+            sparkSize={20}
+            sparkRadius={40}
+            sparkCount={8}
+            duration={400}
+            extraScale={1.0}
+          >
+            <AppContent />
+          </ClickSpark>
+        </HeroUIProvider>
+      </DeviceProvider>
     </ThemeProvider>
   );
 }

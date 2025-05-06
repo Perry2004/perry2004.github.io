@@ -1,11 +1,12 @@
 import { NavbarPlaceholder } from "@/components/layout";
 import { Chrono } from "react-chrono";
 import { Accordion, AccordionItem } from "@heroui/react";
-import { useLoadDataJson } from "@/hooks";
+import { useLoadDataJson, useDevice } from "@/hooks";
 import { useEffect, useState } from "react";
 
 export function WorkExperiences() {
   const [chronoMode, setChronoMode] = useState("VERTICAL_ALTERNATING");
+  const { isDesktop } = useDevice();
   const {
     data: workExperiences,
     isLoading,
@@ -103,9 +104,9 @@ export function WorkExperiences() {
 
   return (
     <div className="gradient-bg-responsive min-h-screen">
-      <NavbarPlaceholder />
+      {isDesktop && <NavbarPlaceholder />}
       <div>
-        <h1 className="gradient-text-responsive mt-2 p-4 pb-0 text-center font-great-vibes text-4xl sm:p-6 sm:text-6xl md:mt-0 md:p-8">
+        <h1 className="gradient-text-responsive p-4 pb-0 text-center font-great-vibes text-4xl sm:p-6 sm:text-6xl md:mt-0 md:p-8">
           Work Experiences
         </h1>
         <div className="gradient-divider-responsive mx-auto mt-1 w-40 sm:mt-2 sm:w-48 md:w-60"></div>

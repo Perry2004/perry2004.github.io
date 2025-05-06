@@ -3,7 +3,7 @@ import { SiGithub, SiLinkedin, SiInstagram, SiPexels } from "react-icons/si";
 import { NavbarPlaceholder } from "@/components/layout";
 import { RollingImages } from "@/components/ui";
 import Iridescence from "@/blocks/Backgrounds/Iridescence/Iridescence";
-import { useTheme } from "@/hooks";
+import { useDevice, useTheme } from "@/hooks";
 
 interface SocialMediaLink {
   text: string;
@@ -35,6 +35,8 @@ const socialMediaLinks: SocialMediaLink[] = [
 ];
 export function Home() {
   const { resolvedTheme } = useTheme();
+  const { isDesktop } = useDevice();
+
   return (
     <div className="gradient-bg-responsive relative flex min-h-screen flex-col justify-evenly overflow-hidden">
       <div className="absolute z-10 h-full w-full">
@@ -45,7 +47,7 @@ export function Home() {
           speed={0.3}
         />
       </div>
-      <NavbarPlaceholder />
+      {isDesktop && <NavbarPlaceholder />}
 
       <div className="relative z-10 mx-4 w-auto max-w-full sm:mx-8 sm:w-4/5 md:ml-12 md:w-3/4 lg:ml-24 lg:w-2/3 xl:ml-48 xl:w-1/2">
         <div className="relative">
