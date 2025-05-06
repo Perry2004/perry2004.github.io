@@ -61,7 +61,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
   };
 
   return (
-    <div className="navbar-gradient-responsive fixed top-0 z-10 w-full border-b border-[#5ad6ff]/30 opacity-90 shadow-sm backdrop-blur-md">
+    <div className="navbar-gradient-responsive fixed top-0 z-50 w-full border-b border-[#5ad6ff]/30 opacity-90 shadow-sm backdrop-blur-md">
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
         isMenuOpen={isMenuOpen}

@@ -4,3 +4,4 @@ export { useLoadPexelImages } from "./useLoadPexelImages";
 export { useEmblaAutoplayProgress } from "./useEmblaAutoplayProgress";
 export { useEmblaPrevNextButtons } from "./useEmblaPrevNextButtons";
 export { useTheme } from "./useTheme";
+export { useDeviceType } from "./useDeviceType";
