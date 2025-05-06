@@ -494,6 +494,7 @@
   background-clip: text !important;
   color: transparent !important;
   font-weight: bold !important;
+  @apply !text-2xl;
 }
 
 .dark .work-experience-card-title {
@@ -508,6 +509,7 @@
 .work-experience-title {
   font-weight: 600 !important;
   color: #1f2937 !important;
+  @apply !text-xl;
 }
 
 .dark .work-experience-title {
@@ -537,4 +539,23 @@
   .dark .fp-slidesNav ul li a span {
     display: none !important;
   }
+}
+
+@media (max-width: 640px) {
+  .dnIwUc {
+    width: 10% !important;
+  }
+  #fp-nav ul li a span {
+    display: none !important;
+  }
+}
+
+.project-link {
+  a {
+    @apply text-xl;
+  }
+}
+
+.card-sub-title {
+  @apply text-lg !important;
 }

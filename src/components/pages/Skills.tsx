@@ -6,9 +6,9 @@ export function Skills() {
   return (
     <div className="gradient-bg-responsive min-h-screen">
       <NavbarPlaceholder />
-      <div className="flex h-[calc(100vh-4rem)] w-full flex-col items-center justify-center px-4 sm:px-6 md:px-8">
+      <div className="flex min-h-[calc(100vh-4rem)] w-full flex-col items-center justify-center px-4 sm:px-6 md:px-8">
         <div className="mb-4 sm:mb-6 md:mb-8">
-          <h1 className="gradient-text-responsive text-center font-great-vibes text-4xl !leading-normal sm:text-5xl">
+          <h1 className="gradient-text-responsive mt-2 p-4 pb-0 text-center font-great-vibes text-4xl sm:p-6 sm:text-6xl md:mt-0 md:p-8">
             Skills
           </h1>
           <div className="gradient-divider-responsive mx-auto mt-1 w-24 sm:mt-2 sm:w-28 md:w-32"></div>

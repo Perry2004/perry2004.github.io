@@ -15,10 +15,10 @@ function CopyrightSection({ currentYear }: { currentYear: number }) {
         icon={<MdCopyright className="h-5 w-5" />}
         title="Copyright"
       >
-        <p className="text-gray-700 dark:text-gray-200">
+        <p className="text-base text-gray-700 dark:text-gray-200 sm:text-lg">
           &copy; {currentYear}, Perry Zhu. All rights reserved.
         </p>
-        <p className="mt-2 text-gray-700 dark:text-gray-200">
+        <p className="mt-2 text-base text-gray-700 dark:text-gray-200 sm:text-lg">
           Code licensed under{" "}
           <IconedLink
             href="https://github.com/Perry2004/perry2004.github.io/blob/main/LICENSE"
@@ -40,7 +40,7 @@ function AttributionSection() {
       title="Attribution"
       iconClass="info-icon-gradient-light info-icon-secondary-light dark:info-icon-gradient-dark dark:info-icon-secondary-dark"
     >
-      <div className="mt-2 text-gray-700 dark:text-gray-200">
+      <div className="mt-2 text-base text-gray-700 dark:text-gray-200 sm:text-lg">
         <p>
           This page UI is designed and developed by Perry Zhu using React,
           Tailwind CSS, HeroUI, and React Bits.
@@ -75,7 +75,7 @@ function OpenSourceSection() {
         icon={<FaGithub className="h-5 w-5" />}
         title="Open Source"
       >
-        <p className="text-gray-700 dark:text-gray-200">
+        <p className="text-base text-gray-700 dark:text-gray-200 sm:text-lg">
           The source code for this website is available on{" "}
           <Link
             href="https://github.com/Perry2004/perry2004.github.io"
@@ -86,7 +86,7 @@ function OpenSourceSection() {
           </Link>
           .
         </p>
-        <p className="text-gray-700 dark:text-gray-200">
+        <p className="text-base text-gray-700 dark:text-gray-200 sm:text-lg">
           Spot an issue? Open an{" "}
           <Link
             href="https://github.com/Perry2004/perry2004.github.io/issues/new"
@@ -106,7 +106,7 @@ export function AboutSiteCard({ currentYear }: AboutSiteCardProps) {
   return (
     <Card className="card-base-responsive h-full">
       <CardBody className="p-8">
-        <h2 className="gradient-text-responsive mb-6 text-2xl font-bold">
+        <h2 className="gradient-text-responsive mb-6 text-2xl font-bold sm:text-3xl">
           About This Site
         </h2>
         <CopyrightSection currentYear={currentYear} />
