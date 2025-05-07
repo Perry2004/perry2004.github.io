@@ -1,0 +1,2 @@
+# don't copy the server config file so changing it won't influence the build cache
+./Caddyfile
