@@ -1,0 +1,48 @@
+{
+    # Global options
+    admin off
+}
+
+# Main site configuration
+:80, 443 {
+    # Set the root directory for serving files
+    root * /usr/share/caddy
+    
+    # Enable automatic HTTPS
+    tls internal
+
+    # Redirect /index.html to / for canonical URLs
+    @indexHtml {
+        path /index.html
+    }
+    redir @indexHtml / permanent
+    
+    # Try static files first, then fallback to index.html for SPA
+    try_files {path} /index.html
+    
+    # Serve files
+    file_server
+    
+    # Compress responses
+    encode gzip
+    
+    # Basic security headers
+    header {
+        # Enable HTTP Strict Transport Security (HSTS)
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        # Prevent MIME type sniffing
+        X-Content-Type-Options "nosniff"
+        # Enable XSS protection
+        X-XSS-Protection "1; mode=block"
+        # Control frame embedding
+        X-Frame-Options "SAMEORIGIN"
+        # Content Security Policy
+        Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self';"
+    }
+    
+    # Log access requests
+    log {
+        output stdout
+        format console
+    }
+}
