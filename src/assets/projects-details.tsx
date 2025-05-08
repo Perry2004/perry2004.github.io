@@ -24,18 +24,18 @@ export const projectInfos: ProjectInfo[] = [
             <strong>Designed and developed</strong> an AI-powered web
             application that generates personalized journal entries based on
             users' daily outfit choices, enhancing the fashion documentation
-            experience in a group of 4.
+            experience in a group of 4 during BCS Hack 2025.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Built a <em>responsive and intuitive</em> user interface using{" "}
-                <code>TypeScript</code> and <code>React</code> that allows users
-                to upload outfit images, input descriptive tags, and receive
-                AI-generated content through an{" "}
-                <em>asynchronous communication pattern</em>.
+                Built a <strong>responsive and intuitive</strong> user interface
+                using <code>TypeScript</code> and <code>React</code> that allows
+                users to upload outfit images, input descriptive tags, and
+                receive AI-generated content through an{" "}
+                <strong>asynchronous communication pattern</strong>.
               </li>
               <li>
                 Implemented backend services with <code>MongoDB</code> for data
@@ -60,9 +60,9 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <ul>
               <li>
-                Created a <em>scalable architecture</em> with proper environment
-                variable management for sensitive credentials and designed{" "}
-                <strong>RESTful API endpoints</strong>
+                Created an <strong>orchestrated Docker deployment</strong> with
+                proper environment variable management for sensitive credentials
+                and exposed <strong>RESTful API endpoints</strong>
                 to handle the communication between frontend components and AI
                 services.
               </li>
@@ -111,7 +111,7 @@ export const projectInfos: ProjectInfo[] = [
               </li>
               <li>
                 The website includes personal information and project
-                demonstrations, designed in a <em>responsive way</em>,
+                demonstrations, designed in a <strong>responsive way</strong>,
                 guaranteeing proper appearance on all common devices.
               </li>
             </ul>
@@ -159,7 +159,7 @@ export const projectInfos: ProjectInfo[] = [
     intro: (
       <>
         Time-series data analysis and forecasting project{" "}
-        <em>associated with The University of British Columbia</em>
+        <strong>associated with The University of British Columbia</strong>
       </>
     ),
     descriptions: [
@@ -251,10 +251,10 @@ export const projectInfos: ProjectInfo[] = [
                 continuous features to enhance linear models.
               </li>
               <li>
-                Encoded text features using the <em>bags of words</em>{" "}
+                Encoded text features using the <strong>bags of words</strong>{" "}
                 representation using the Count Vectorizer, and categorical
-                features using <em>One Hot Encoding</em> so they can be absorbed
-                by the models.
+                features using <strong>One Hot Encoding</strong> so they can be
+                absorbed by the models.
               </li>
             </ul>
           </>
@@ -273,16 +273,16 @@ export const projectInfos: ProjectInfo[] = [
             <ul>
               <li>
                 Conducted hyperparameter tuning using a{" "}
-                <em>randomized search</em>
+                <strong>randomized search</strong>
                 and chose the best-performing parameter according to
                 cross-validation scores to reduce the performance loss by
                 overfitting and underfitting.
               </li>
               <li>
                 Selected essential features using <code>Select From Model</code>{" "}
-                with XGBRegresor and <em>Forward Search</em> approach to reduce
-                overfitting, mitigate the curse of dimensionality, and enhance
-                interpretability and training speeds.
+                with XGBRegresor and <strong>Forward Search</strong> approach to
+                reduce overfitting, mitigate the curse of dimensionality, and
+                enhance interpretability and training speeds.
               </li>
               <li>
                 Evaluated and interpreted the models using <code>SHAP</code> on
@@ -327,7 +327,7 @@ export const projectInfos: ProjectInfo[] = [
             <ul>
               <li>
                 Constructed a front-end interface with{" "}
-                <em>comprehensive form validation</em>, clear visual
+                <strong>comprehensive form validation</strong>, clear visual
                 notifications, animations, and smooth interaction by avoiding
                 extra refresh using <strong>asynchronous fetches</strong> to
                 replace the default form submission behavior using{" "}
@@ -357,10 +357,10 @@ export const projectInfos: ProjectInfo[] = [
               <li>
                 Tailored <code>SQL DDLs</code> and <code>DML</code> templates in
                 the backend model with
-                <em>sanitization to prevent injection</em> for functionalities,
-                including nested group- by aggregation, division, and view
-                creations to handle user request actions triggered by front-end
-                event listeners.
+                <strong>sanitization to prevent injection</strong> for
+                functionalities, including nested group- by aggregation,
+                division, and view creations to handle user request actions
+                triggered by front-end event listeners.
               </li>
               <li>
                 The system uses cookies and local storage for a better
@@ -395,8 +395,8 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <strong>Constructed a video game</strong> that allows two players to
             play the traditional Snake game on the same computer.{" "}
-            <em>Won the 1st place winner</em> of the Fundamentals of Engineering
-            Design Showcase.
+            <strong>Won the 1st place winner</strong> of the Fundamentals of
+            Engineering Design Showcase.
           </>
         ),
         longDesc: (
@@ -411,10 +411,10 @@ export const projectInfos: ProjectInfo[] = [
                 Developed the game in <code>MatLab</code> with the provided game
                 engine by initializing the game window with self-created
                 stripes, modeling the gameboard in a 2d matrix, maintaining a{" "}
-                <em>synchronous execution</em> to tick the snake movements and
-                food generation while handling user inputs
-                <em>asynchronously</em> by event listeners and model updates
-                with callback functions.
+                <strong>synchronous execution</strong> to tick the snake
+                movements and food generation while handling user inputs
+                <strong>asynchronously</strong> by event listeners and model
+                updates with callback functions.
               </li>
             </ul>
           </>
@@ -432,10 +432,11 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <ul>
               <li>
-                Empowered with <em>singleton</em>, <em>observer</em>, and{" "}
-                <em>MVC design patterns</em> to divide the project into separate
-                components and hierarchies with well-specified interfaces for
-                better maintainability and scalability.
+                Empowered with <strong>singleton</strong>,{" "}
+                <strong>observer</strong>, and{" "}
+                <strong>MVC design patterns</strong> to divide the project into
+                separate components and hierarchies with well-specified
+                interfaces for better maintainability and scalability.
               </li>
               <li>
                 The OOP design also features extra functionality for{" "}
