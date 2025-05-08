@@ -33,6 +33,12 @@ const socialMediaLinks: SocialMediaLink[] = [
     icon: <SiPexels />,
   },
 ];
+
+const introductionText = [
+  "Hi, I'm Perry Zhu, an international undergraduate majoring in Computer Science and Statistics at the University of British Columbia (UBC).",
+  "I'm passionate about software development, machine learning, DevOps, computer graphics, and photography. Explore my photos, projects, and experiences here!",
+];
+
 export function Home() {
   const { resolvedTheme } = useTheme();
   const { isDesktop } = useDevice();
@@ -58,13 +64,10 @@ export function Home() {
         </div>
 
         <p className="rounded-lg border border-[#5ad6ff]/30 bg-white/40 p-3 text-base leading-relaxed text-gray-700 shadow-sm backdrop-blur-sm dark:border-[#5ad6ff]/50 dark:bg-gray-800/40 dark:text-gray-200 dark:shadow-md sm:text-lg md:text-2xl">
-          Hi, I'm Perry Zhu, an international undergraduate majoring in Computer
-          Science and Statistics at the University of British Columbia (UBC).
+          {introductionText[0]}
           <br />
           <br />
-          I'm passionate about software development, machine learning, computer
-          graphics, and photography. Explore my projects, photos, and
-          experiences here!
+          {introductionText[1]}
         </p>
 
         <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
