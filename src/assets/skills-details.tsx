@@ -15,6 +15,8 @@ import {
   FaLinux,
   FaCalculator,
   FaRProject,
+  FaServer,
+  FaMobileAlt,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -31,17 +33,22 @@ import {
   SiGnubash,
   SiJavascript,
   SiBootstrap,
+  SiTailwindcss,
+  SiSass,
+  SiPostgresql,
 } from "react-icons/si";
-import { GiMagnifyingGlass } from "react-icons/gi";
-import { BsDatabaseGear, BsFileBarGraph, BsFiletypeSql } from "react-icons/bs";
+import { GiMagnifyingGlass, GiEarthAmerica, GiJapan } from "react-icons/gi";
+import { BsDatabaseGear, BsFiletypeSql, BsDiagram3 } from "react-icons/bs";
 import { TbMathFunction, TbBrandThreejs, TbMatrix } from "react-icons/tb";
 import {
   MdOutlineDataExploration,
   MdOutlineEngineering,
   MdOutlineStorage,
+  MdScience,
+  MdArchitecture,
 } from "react-icons/md";
-import { BiTimeFive } from "react-icons/bi";
-import { IoLanguage } from "react-icons/io5";
+import { BiTimeFive, BiStats } from "react-icons/bi";
+import { IoGameController } from "react-icons/io5";
 import { RiEnglishInput } from "react-icons/ri";
 import { SkillCategory } from "@/components/pages";
 
@@ -50,14 +57,14 @@ export const skillsData: SkillCategory[] = [
     name: "Programming Languages",
     icon: <FaCode />,
     skills: [
-      { name: "JavaScript", icon: <FaJs /> },
-      { name: "Java", icon: <FaJava /> },
       { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Java", icon: <FaJava /> },
+      { name: "JavaScript", icon: <FaJs /> },
       { name: "Python", icon: <FaPython /> },
       { name: "R", icon: <FaRProject /> },
       { name: "C", icon: <SiC /> },
       { name: "C++", icon: <SiCplusplus /> },
-      { name: "MatLab", icon: <SiC /> },
+      { name: "Matlab", icon: <MdScience /> },
     ],
   },
   {
@@ -69,8 +76,10 @@ export const skillsData: SkillCategory[] = [
       { name: "ECMAScript 6", icon: <SiJavascript /> },
       { name: "TypeScript", icon: <SiTypescript /> },
       { name: "Bootstrap", icon: <SiBootstrap /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Sass", icon: <SiSass /> },
       { name: "React", icon: <FaReact /> },
-      { name: "Responsive design", icon: <FaChartBar /> },
+      { name: "Responsive Design", icon: <FaMobileAlt /> },
       { name: "WebGL", icon: <SiWebgl /> },
       { name: "Three.js", icon: <TbBrandThreejs /> },
       { name: "Express.js", icon: <SiExpress /> },
@@ -82,12 +91,12 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: "Python", icon: <FaPython /> },
       { name: "R", icon: <FaRProject /> },
-      { name: "Statistical inference", icon: <BsFileBarGraph /> },
-      { name: "Data preprocessing", icon: <MdOutlineDataExploration /> },
-      { name: "Feature engineering", icon: <MdOutlineEngineering /> },
-      { name: "Recommender systems", icon: <GiMagnifyingGlass /> },
-      { name: "Time series prediction", icon: <BiTimeFive /> },
-      { name: "Interpretation", icon: <BsFileBarGraph /> },
+      { name: "Statistical Inference", icon: <BiStats /> },
+      { name: "Data Preprocessing", icon: <MdOutlineDataExploration /> },
+      { name: "Feature Engineering", icon: <MdOutlineEngineering /> },
+      { name: "Recommender Systems", icon: <GiMagnifyingGlass /> },
+      { name: "Time Series Prediction", icon: <BiTimeFive /> },
+      { name: "Interpretation", icon: <MdArchitecture /> },
       { name: "Visualization", icon: <FaChartBar /> },
       { name: "Tableau", icon: <SiTableau /> },
     ],
@@ -96,33 +105,35 @@ export const skillsData: SkillCategory[] = [
     name: "Database Design and Management",
     icon: <FaDatabase />,
     skills: [
-      { name: "Relational DB design", icon: <BsDatabaseGear /> },
-      { name: "ER model", icon: <BsDatabaseGear /> },
-      { name: "DB normalization", icon: <BsDatabaseGear /> },
-      { name: "Relational algebra", icon: <BsFiletypeSql /> },
+      { name: "Relational DB Design", icon: <BsDatabaseGear /> },
+      { name: "ER Model", icon: <BsDiagram3 /> },
+      { name: "DB Normalization", icon: <BsDatabaseGear /> },
+      { name: "Relational Algebra", icon: <BsFiletypeSql /> },
       { name: "SQL", icon: <BsFiletypeSql /> },
       { name: "MySQL DB", icon: <SiMysql /> },
       { name: "OracleDB", icon: <SiOracle /> },
-      { name: "Data warehousing", icon: <MdOutlineStorage /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "Data Warehousing", icon: <MdOutlineStorage /> },
     ],
   },
   {
     name: "Math & Statistics",
     icon: <FaCalculator />,
     skills: [
-      { name: "Differential & Integral calculus", icon: <TbMathFunction /> },
-      { name: "Matrix and linear algebra", icon: <TbMatrix /> },
-      { name: "Statistical inference", icon: <BsFileBarGraph /> },
-      { name: "Mathematical proof", icon: <TbMathFunction /> },
-      { name: "Probability theory", icon: <BsFileBarGraph /> },
+      { name: "Differential & Integral Calculus", icon: <TbMathFunction /> },
+      { name: "Matrix and Linear Algebra", icon: <TbMatrix /> },
+      { name: "Statistical Inference", icon: <BiStats /> },
+      { name: "Mathematical Proof", icon: <TbMathFunction /> },
+      { name: "Probability Theory", icon: <FaCalculator /> },
     ],
   },
   {
     name: "(Human) Languages",
     icon: <FaLanguage />,
     skills: [
-      { name: "Chinese - native", icon: <IoLanguage /> },
-      { name: "English - fluent", icon: <RiEnglishInput /> },
+      { name: "Chinese - Native", icon: <GiEarthAmerica /> },
+      { name: "English - Fluent", icon: <RiEnglishInput /> },
+      { name: "Japanese - Beginner", icon: <GiJapan /> },
     ],
   },
   {
@@ -132,11 +143,16 @@ export const skillsData: SkillCategory[] = [
       { name: "Git", icon: <SiGit /> },
       { name: "GitHub", icon: <FaGithub /> },
       { name: "Docker", icon: <FaDocker /> },
-      { name: "Vim/nvim", icon: <SiVim /> },
-      { name: "zsh", icon: <SiGnubash /> },
+      { name: "Vim/Nvim", icon: <SiVim /> },
+      { name: "Zsh", icon: <SiGnubash /> },
       { name: "AWS", icon: <FaAws /> },
       { name: "Linux", icon: <FaLinux /> },
       { name: "Blender", icon: <SiBlender /> },
+      {
+        name: "Minecraft Plugin and Mod Development",
+        icon: <IoGameController />,
+      },
+      { name: "Minecraft Server Management", icon: <FaServer /> },
     ],
   },
 ];
