@@ -37,11 +37,23 @@ export default {
             transform: "translate3d(100%, 0, 0)",
           },
         },
+        "spin-slow": {
+          "0%": {
+            transform: "rotate(0deg) scale(1)",
+          },
+          "50%": {
+            transform: "rotate(180deg) scale(1.2)",
+          },
+          "100%": {
+            transform: "rotate(360deg) scale(1)",
+          },
+        },
       },
       animation: {
         scroll: "scroll 15s linear infinite",
         "rotate-rainbow": "rotate-rainbow 5s linear infinite",
         "autoplay-progress": "autoplay-progress linear 1",
+        "spin-slow": "spin-slow 0.8s ease-in-out",
       },
       // Custom colors can be added here if needed
     },
