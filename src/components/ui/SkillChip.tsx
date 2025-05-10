@@ -7,15 +7,16 @@ interface SkillChipProps {
 
 /**
  * Chip component built on top of the Hero UI's chip component. Displays an icon followed by the skill name.
+ * The icon animates on hover with a scrolling/rotating effect.
  * @param param0 - Contains the skill information.
  * @returns JSX element representing the skill chip.
  */
 export function SkillChip({ skill }: SkillChipProps) {
   return (
     <Chip
-      className="skill-chip-responsive px-5 py-3"
+      className="skill-chip-responsive group px-5 py-3 hover:cursor-pointer"
       startContent={
-        <div className="skill-icon-responsive mr-3 text-lg sm:text-2xl">
+        <div className="skill-icon-responsive group-hover:animate-spin-slow mr-3 text-lg transition-transform duration-300 ease-in-out sm:text-2xl">
           {skill.icon}
         </div>
       }
