@@ -1,11 +1,12 @@
 import { NavbarPlaceholder } from "@/components/layout";
 import { Chrono } from "react-chrono";
 import { Accordion, AccordionItem } from "@heroui/react";
-import { useLoadDataJson, useDevice } from "@/hooks";
+import { useLoadDataJson, useDevice, useSortWorkExperiences } from "@/hooks";
 import { useEffect, useState } from "react";
 
 export function WorkExperiences() {
   const [chronoMode, setChronoMode] = useState("VERTICAL_ALTERNATING");
+  const [isMobileView, setIsMobileView] = useState(false);
   const { isDesktop } = useDevice();
   const {
     data: workExperiences,
@@ -16,14 +17,23 @@ export function WorkExperiences() {
     "workExperiences",
   );
 
+  const sortedWorkExperiences = useSortWorkExperiences(workExperiences);
+
   // Set the mode based on screen width
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const isTablet = window.innerWidth < 768;
+      const isMediumScreen = window.innerWidth < 1024;
+
+      // Set chronoMode based on screen size
+      if (isTablet) {
         setChronoMode("VERTICAL");
       } else {
         setChronoMode("VERTICAL_ALTERNATING");
       }
+
+      // Update mobile view state - consider anything below 1024px as mobile-friendly format
+      setIsMobileView(isMediumScreen);
     };
 
     // Initial check
@@ -58,9 +68,18 @@ export function WorkExperiences() {
     );
   }
 
-  const chronoItems = workExperiences.map((work) => {
+  const chronoItems = sortedWorkExperiences.map((work) => {
+    // Create a more readable title for screens under 1024px (medium/small screens)
+    // For screens under 640px, put location on a new line
+    // For screens between 640px and 1024px, keep on same line but format differently
+    const formattedTitle = isMobileView
+      ? window.innerWidth < 640
+        ? `${work.jobTitle}\n${work.location}`
+        : `${work.jobTitle} | ${work.location}`
+      : `${work.jobTitle} - ${work.location}`;
+
     return {
-      title: `${work.jobTitle} - ${work.location}`,
+      title: formattedTitle,
       cardTitle: `${work.startDate} - ${work.endDate}`,
       cardSubtitle: `${work.company} (${work.companyShortName})`,
       cardDetailedText: [],
