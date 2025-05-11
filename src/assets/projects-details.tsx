@@ -14,7 +14,7 @@ export const projectInfos: ProjectInfo[] = [
     intro: (
       <>
         Full-Stack AI Integration Project with <code>TypeScript</code>,{" "}
-        <code>React</code>, <code>MongoDB</code>, and <code>Docker</code>
+        <code>React</code>, <code>MongoDB</code>, and <code>Gemini API</code>
       </>
     ),
     descriptions: [
@@ -24,22 +24,22 @@ export const projectInfos: ProjectInfo[] = [
             <strong>Designed and developed</strong> an AI-powered web
             application that generates personalized journal entries based on
             users' daily outfit choices, enhancing the fashion documentation
-            experience in a group of 4.
+            experience in a group of 4 during BCS Hack 2025.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Built a <em>responsive and intuitive</em> user interface using{" "}
-                <code>TypeScript</code> and <code>React</code> that allows users
-                to upload outfit images, input descriptive tags, and receive
-                AI-generated content through an{" "}
-                <em>asynchronous communication pattern</em>.
+                Built a <strong>responsive and intuitive</strong> user interface
+                using <code>TypeScript</code> and <code>React</code> that allows
+                users to upload outfit images, input descriptive tags, and
+                receive AI-generated content through an{" "}
+                <strong>asynchronous communication pattern</strong>.
               </li>
               <li>
-                Implemented backend services with <code>MongoDB</code> for data
-                persistence and integrated{" "}
+                Implemented backend services with <code>Express.js</code> and{" "}
+                <code>MongoDB</code> for data persistence and integrated{" "}
                 <strong>Google's Gemini AI API</strong> to process user inputs
                 and generate contextually relevant outfit descriptions and
                 journal entries.
@@ -51,20 +51,20 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Containerized the entire application using <code>Docker</code> to
-            ensure consistent development and deployment environments, with
-            separate configurations for frontend and backend services.
+            <strong>Containerized</strong> the entire application using{" "}
+            <code>Docker</code> to ensure consistent development and deployment
+            environments, with separate configurations for frontend and backend
+            services.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Created a <em>scalable architecture</em> with proper environment
-                variable management for sensitive credentials and designed{" "}
-                <strong>RESTful API endpoints</strong>
-                to handle the communication between frontend components and AI
-                services.
+                Created an <strong>orchestrated Docker deployment</strong> with
+                proper environment variable management for sensitive credentials
+                and exposed <strong>RESTful API endpoints</strong> to handle the
+                communication between frontend components and AI services.
               </li>
               <li>
                 The containerized approach ensures consistent development and
@@ -85,34 +85,37 @@ export const projectInfos: ProjectInfo[] = [
     ],
   },
   {
-    title: "Personal Website",
+    title: "Personal Website (this site)",
     intro: (
       <>
-        Full-Stack Web Design & Development With <code>Bootstrap</code>,{" "}
-        <code>Three.js</code>, and <code>Express.js</code>
+        Modern Frontend Development with <code>React</code>,{" "}
+        <code>Tailwind CSS</code>, and <code>Three.js</code>
       </>
     ),
     descriptions: [
       {
         shortDesc: (
           <>
-            <strong>Constructed and hosted</strong> a website containing my
-            information, experiences, and projects.
+            <strong>Designed and developed</strong> a personal portfolio website
+            showcasing my information, experiences, and projects using modern
+            web technologies.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Designed and developed the front-end webpage using{" "}
-                <code>HTML5</code>, <code>Sass</code> preprocessor,{" "}
-                <code>Bootstrap</code>, and 3D graphics using <code>WebGL</code>{" "}
-                and <code>Three.js</code>.
+                Built the frontend using <code>React</code>,{" "}
+                <code>TypeScript</code>, and <code>Tailwind CSS</code> with
+                component libraries including <code>Hero UI</code> and{" "}
+                <code>Radix UI</code> for a polished, responsive user interface
+                that works seamlessly across all devices.
               </li>
               <li>
-                The website includes personal information and project
-                demonstrations, designed in a <em>responsive way</em>,
-                guaranteeing proper appearance on all common devices.
+                Utilized modern development tools including <code>Vite</code>{" "}
+                for fast builds, <code>ESLint</code> and <code>Prettier</code>{" "}
+                for code quality, and <code>TypeScript</code> for type safety
+                throughout the development process.
               </li>
             </ul>
           </>
@@ -121,20 +124,54 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            Hosted the site on my personal hostname by configuring an{" "}
-            <strong>AWS Linux EC2 instance</strong> cloud server that runs the{" "}
-            <code>Node.js</code> backend program with
-            <code>Express</code> framework for routing requests.
+            <strong>Implemented interactive elements</strong> using{" "}
+            <code>Framer Motion</code> animations, <code>Embla Carousel</code>,
+            and custom 3D graphics with <code>Three.js</code> and{" "}
+            <code>WebGL</code> for an engaging user experience.
           </>
         ),
         longDesc: (
           <>
-            The backend is constructed with <code>Node.js</code> and{" "}
-            <code>Express</code> framework. It is hosted on an AWS Linux EC2
-            instance on my personal domain. The backend is responsible for
-            serving the frontend resources, handling API requests, and managing
-            user data. The website is designed to be scalable and maintainable,
-            with a focus on performance and security.
+            <ul>
+              <li>
+                Created smooth page transitions and scrolling effects with{" "}
+                <code>fullpage.js</code> and <code>Framer Motion</code>{" "}
+                animations to enhance the user experience.
+              </li>
+              <li>
+                Designed unique interactive elements and immersive
+                visualizations using <code>Three.js</code> and{" "}
+                <code>WebGL</code> to showcase technical creativity and provide
+                a memorable browsing experience.
+              </li>
+            </ul>
+          </>
+        ),
+      },
+      {
+        shortDesc: (
+          <>
+            <strong>Deployed the site</strong> using <code>Docker Compose</code>{" "}
+            with <code>Caddy</code> as a web server on an{" "}
+            <strong>AWS EC2 instance</strong> for reliable, secure hosting with
+            automatic HTTPS.
+          </>
+        ),
+        longDesc: (
+          <>
+            <ul>
+              <li>
+                The deployment strategy ensures high availability and security
+                through containerization with <code>Docker</code> and automatic
+                HTTPS certificate management via <code>Caddy</code>.
+              </li>
+              <li>
+                The AWS infrastructure provides scalability and reliability for
+                consistent performance across varying traffic levels,
+                simplifying maintenance and updates while ensuring a
+                professional hosting environment.
+              </li>
+            </ul>
           </>
         ),
       },
@@ -143,13 +180,7 @@ export const projectInfos: ProjectInfo[] = [
       <>
         <IconedLink href="https://github.com/Perry2004/PerryZ-Website">
           <SiGithub />
-          <LinkText>GitHub Repository</LinkText>
-        </IconedLink>
-      </>,
-      <>
-        <IconedLink href="https://github.com/perry2004/perry2004.github.io">
-          <SiGithub />
-          <LinkText>GitHub Pages</LinkText>
+          <LinkText>Check Github</LinkText>
         </IconedLink>
       </>,
     ],
@@ -158,8 +189,8 @@ export const projectInfos: ProjectInfo[] = [
     title: "WeChat Message Analysis and Forecasting",
     intro: (
       <>
-        Time-series data analysis and forecasting project{" "}
-        <em>associated with The University of British Columbia</em>
+        Time-series data analysis and forecasting project using{" "}
+        <code>Python</code>{" "}
       </>
     ),
     descriptions: [
@@ -175,12 +206,13 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <ul>
               <li>
-                Performed comprehensive time-series analysis on WeChat message
-                data, including data cleaning, visualization, and decomposition
-                to understand temporal patterns.
+                Performed <strong>comprehensive time-series analysis</strong> on
+                WeChat message data, including data cleaning, visualization, and
+                decomposition to understand temporal patterns.
               </li>
               <li>
-                Utilized various time-series forecasting techniques to predict
+                Utilized various{" "}
+                <strong>time-series forecasting techniques</strong> to predict
                 future message frequencies and trends.
               </li>
             </ul>
@@ -200,15 +232,17 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <ul>
               <li>
-                Enhanced model performance through feature engineering by
-                extracting date/time components, creating lag features,
-                categorically encoding data, generating interaction and
-                polynomial terms, and computing lagged differences.
+                Enhanced model performance through{" "}
+                <strong>feature engineering</strong> by extracting date/time
+                components, creating lag features, categorically encoding data,
+                generating interaction and polynomial terms, and computing
+                lagged differences.
               </li>
               <li>
-                Developed and evaluated multiple time-series models with various
+                Developed and evaluated{" "}
+                <strong>multiple time-series models</strong> with various
                 hyperparameters and feature setups to forecast future values
-                with high accuracy.
+                with <strong>high accuracy</strong>.
               </li>
             </ul>
           </>
@@ -245,16 +279,17 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <ul>
               <li>
-                Performed data preprocessing and feature engineering by imputing
-                missing values to satisfy the models, standardizing numeric
-                variables to improve analogy-based models, and discretizing
-                continuous features to enhance linear models.
+                Performed <strong>data preprocessing</strong> and{" "}
+                <strong>feature engineering</strong> by imputing missing values
+                to satisfy the models, standardizing numeric variables to
+                improve analogy-based models, and discretizing continuous
+                features to enhance linear models.
               </li>
               <li>
-                Encoded text features using the <em>bags of words</em>{" "}
+                Encoded text features using the <strong>bags of words</strong>{" "}
                 representation using the Count Vectorizer, and categorical
-                features using <em>One Hot Encoding</em> so they can be absorbed
-                by the models.
+                features using <strong>One Hot Encoding</strong> so they can be
+                absorbed by the models.
               </li>
             </ul>
           </>
@@ -264,8 +299,9 @@ export const projectInfos: ProjectInfo[] = [
         shortDesc: (
           <>
             <strong>Developed pipelines</strong> for multiple models, including
-            linear Ridge model, Decision Tree Regressor, SVM with RBF kernel,
-            and XGBoost ensemble model.
+            linear <code>Ridge</code> model,{" "}
+            <code>Decision Tree Regressor</code>, <code>SVM</code> with RBF
+            kernel, and <code>XGBoost</code> ensemble model.
           </>
         ),
         longDesc: (
@@ -273,16 +309,16 @@ export const projectInfos: ProjectInfo[] = [
             <ul>
               <li>
                 Conducted hyperparameter tuning using a{" "}
-                <em>randomized search</em>
+                <strong>randomized search</strong>
                 and chose the best-performing parameter according to
                 cross-validation scores to reduce the performance loss by
                 overfitting and underfitting.
               </li>
               <li>
                 Selected essential features using <code>Select From Model</code>{" "}
-                with XGBRegresor and <em>Forward Search</em> approach to reduce
-                overfitting, mitigate the curse of dimensionality, and enhance
-                interpretability and training speeds.
+                with XGBRegresor and <strong>Forward Search</strong> approach to
+                reduce overfitting, mitigate the curse of dimensionality, and
+                enhance interpretability and training speeds.
               </li>
               <li>
                 Evaluated and interpreted the models using <code>SHAP</code> on
@@ -327,7 +363,7 @@ export const projectInfos: ProjectInfo[] = [
             <ul>
               <li>
                 Constructed a front-end interface with{" "}
-                <em>comprehensive form validation</em>, clear visual
+                <strong>comprehensive form validation</strong>, clear visual
                 notifications, animations, and smooth interaction by avoiding
                 extra refresh using <strong>asynchronous fetches</strong> to
                 replace the default form submission behavior using{" "}
@@ -356,16 +392,16 @@ export const projectInfos: ProjectInfo[] = [
             <ul>
               <li>
                 Tailored <code>SQL DDLs</code> and <code>DML</code> templates in
-                the backend model with
-                <em>sanitization to prevent injection</em> for functionalities,
-                including nested group- by aggregation, division, and view
-                creations to handle user request actions triggered by front-end
-                event listeners.
+                the backend model with{" "}
+                <strong>sanitization to prevent injection</strong> for
+                functionalities, including nested group- by aggregation,
+                division, and view creations to handle user request actions
+                triggered by front-end event listeners.
               </li>
               <li>
-                The system uses cookies and local storage for a better
-                interactive experience, preserving user state and authentication
-                information.
+                The system uses <code>cookies</code> and{" "}
+                <code>local storage</code> for a better interactive experience,
+                preserving user state and authentication information.
               </li>
             </ul>
           </>
@@ -395,26 +431,27 @@ export const projectInfos: ProjectInfo[] = [
           <>
             <strong>Constructed a video game</strong> that allows two players to
             play the traditional Snake game on the same computer.{" "}
-            <em>Won the 1st place winner</em> of the Fundamentals of Engineering
-            Design Showcase.
+            <strong>Won the 1st place winner</strong> of the Fundamentals of
+            Engineering Design Showcase.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Best group among all first-year students in the OSU College of
-                Engineering with the contribution of developing the main
-                game-loop logic in a group of 4.
+                <strong>Best group</strong> among all first-year students in the
+                OSU College of Engineering with the contribution of developing
+                the main
+                <strong>game-loop logic</strong> in a group of 4.
               </li>
               <li>
                 Developed the game in <code>MatLab</code> with the provided game
                 engine by initializing the game window with self-created
                 stripes, modeling the gameboard in a 2d matrix, maintaining a{" "}
-                <em>synchronous execution</em> to tick the snake movements and
-                food generation while handling user inputs
-                <em>asynchronously</em> by event listeners and model updates
-                with callback functions.
+                <strong>synchronous execution</strong> to tick the snake
+                movements and food generation while handling user inputs{" "}
+                <strong>asynchronously</strong> by event listeners and model
+                updates with callback functions.
               </li>
             </ul>
           </>
@@ -424,18 +461,19 @@ export const projectInfos: ProjectInfo[] = [
         shortDesc: (
           <>
             <strong>Later migrated</strong> the MatLab game to Java with two
-            interfaces with <code>Swing</code>
-            and <code>Lanterna</code> libraries in an object-oriented manner.
+            interfaces with <code>Swing</code> and <code>Lanterna</code>{" "}
+            libraries in an <strong>object-oriented</strong> manner.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Empowered with <em>singleton</em>, <em>observer</em>, and{" "}
-                <em>MVC design patterns</em> to divide the project into separate
-                components and hierarchies with well-specified interfaces for
-                better maintainability and scalability.
+                Empowered with <strong>singleton</strong>,{" "}
+                <strong>observer</strong>, and{" "}
+                <strong>MVC design patterns</strong> to divide the project into
+                separate components and hierarchies with well-specified
+                interfaces for better maintainability and scalability.
               </li>
               <li>
                 The OOP design also features extra functionality for{" "}

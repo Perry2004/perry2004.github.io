@@ -73,6 +73,42 @@
         }
       ],
       "location": "Remote"
+    },
+    {
+      "jobTitle": "Assistant AI Researcher",
+      "company": "UBC Pacific Laboratory for Artificial Intelligence",
+      "companyShortName": "PLAI",
+      "startDate": "May 2025",
+      "endDate": "Present",
+      "descriptions": [
+        {
+          "shortDesc": "Contributing to cutting-edge embodied AI research through Minecraft environments.",
+          "longDesc": [
+            "Contributing to cutting-edge embodied AI research at UBC's PLAI lab by maintaining the technical infrastructure that enables data collection through Minecraft environments."
+          ]
+        },
+        {
+          "shortDesc": "Maintained and upgraded Minecraft server infrastructure for AI research.",
+          "longDesc": [
+            "Maintained and upgraded the Minecraft server infrastructure for AI research data collection.",
+            "Optimized server performance to handle concurrent users and ensure reliable data collection."
+          ]
+        },
+        {
+          "shortDesc": "Developed Java plugins for AI training data collection and security.",
+          "longDesc": [
+            "Developed and improved Java plugins to monitor user actions and collect behavioral data for AI training.",
+            "Implemented security measures through custom plugins to identify and block malicious behaviors and users."
+          ]
+        },
+        {
+          "shortDesc": "Contributed to documentation and data pipeline for AI research.",
+          "longDesc": [
+            "Documented technical implementations and contributed to the data pipeline for AI research."
+          ]
+        }
+      ],
+      "location": "Vancouver, British Columbia, Canada"
     }
   ]
 }
