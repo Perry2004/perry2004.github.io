@@ -57,7 +57,7 @@ export function Home() {
 
       <div className="relative z-10 mx-4 w-auto max-w-full sm:mx-8 sm:w-4/5 md:ml-12 md:w-3/4 lg:ml-24 lg:w-2/3 xl:ml-48 xl:w-1/2">
         <div className="relative">
-          <h1 className="gradient-text mt-3 from-[#2f4eff] to-[#ff1281] font-great-vibes text-4xl font-bold !leading-normal dark:from-[#64d1ff] dark:to-[#fab7ff] sm:mt-0 sm:text-5xl md:text-7xl">
+          <h1 className="gradient-text mt-3 from-[#2f4eff] to-[#ff1281] p-1 font-great-vibes text-4xl font-bold !leading-normal dark:from-[#64d1ff] dark:to-[#fab7ff] sm:mt-0 sm:text-5xl md:text-7xl">
             Hello World!
           </h1>
           <div className="gradient-divider-responsive mb-3 w-32 sm:w-36 md:w-40"></div>
