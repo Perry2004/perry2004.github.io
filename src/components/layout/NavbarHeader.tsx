@@ -57,7 +57,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        className="py-1 sm:py-2"
+        className="py-0 sm:py-2"
       >
         <NavbarBrand>
           <p className="gradient-text-responsive font-great-vibes text-2xl font-bold sm:text-4xl">
@@ -81,7 +81,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
                       : "bg-transparent text-gray-700 hover:scale-105 hover:bg-[#5ad6ff]/10 hover:text-[#46a8ff] hover:shadow-sm dark:text-gray-300 dark:hover:bg-[#5ad6ff]/20 dark:hover:shadow-[#5ad6ff]/30")
                   }
                 >
-                  <span className="relative z-10 md:text-xl">
+                  <span className="md:text-md relative z-10">
                     {navbarAnchorMap[anchor]}
                   </span>
                   {activeAnchor === anchor && (

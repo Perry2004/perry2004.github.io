@@ -72,7 +72,7 @@ export function WorkExperiences() {
                 <AccordionItem
                   key={index + desc.shortDesc}
                   title={
-                    <span className="text-xl text-gray-800 dark:text-gray-200 sm:text-2xl">
+                    <span className="text-lg text-gray-800 dark:text-gray-200 sm:text-lg">
                       {desc.shortDesc}
                     </span>
                   }
@@ -80,14 +80,14 @@ export function WorkExperiences() {
                   classNames={{
                     content: "text-gray-700 dark:text-gray-300",
                     trigger:
-                      "data-[hover=true]:bg-[#5ad6ff]/10 dark:data-[hover=true]:bg-[#5ad6ff]/20 px-2 sm:px-3 md:px-4 rounded-lg",
+                      "data-[hover=true]:bg-[#5ad6ff]/10 dark:data-[hover=true]:bg-[#5ad6ff]/20 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg",
                     indicator: "text-gray-500 dark:text-gray-400",
                   }}
                 >
-                  <ul className="text-lg text-gray-700 dark:text-gray-300 sm:text-xl">
+                  <ul className="text-sm text-gray-700 dark:text-gray-300 sm:text-base">
                     {desc.longDesc.map((longDesc, index) => {
                       return (
-                        <li key={index + longDesc} className="mb-2">
+                        <li key={index + longDesc} className="mb-1.5">
                           {longDesc}
                         </li>
                       );
@@ -117,7 +117,7 @@ export function WorkExperiences() {
           mode={chronoMode as never}
           disableToolbar={true}
           disableInteraction={true}
-          cardHeight={300}
+          cardHeight={250}
           useReadMore={true}
           classNames={{
             card: "work-experience-card",

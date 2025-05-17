@@ -35,14 +35,14 @@ function AboutMeLeft() {
 
   return (
     <div className="flex w-full items-center justify-center py-4 md:w-2/5 md:py-0">
-      <div className="flex flex-col items-center justify-normal p-3 text-4xl leading-normal sm:p-4 sm:text-5xl md:p-5 md:text-7xl">
+      <div className="flex flex-col items-center justify-normal p-3 text-4xl leading-normal sm:p-4 sm:text-5xl md:p-5 md:text-6xl">
         <span className="gradient-text-responsive mb-2 text-center font-great-vibes leading-normal sm:mb-3 md:mb-4">
           Hi there! I'm Perry, and I'm a:
         </span>
         {!isLoading && shuffledPhrases.length > 0 && (
           <RotatingText
             texts={shuffledPhrases}
-            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-xl sm:text-3xl md:text-4xl lg:text-5xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
+            mainClassName="px-2 sm:px-2 md:px-3 bg-gradient-to-r from-[#5ad6ff]/20 to-[#fb9ac7]/20 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg border border-[#5ad6ff]/30 shadow-sm backdrop-blur-sm text-xl sm:text-3xl md:text-4xl lg:text-4xl dark:from-[#1a2e38]/80 dark:to-[#3d1e2e]/80 dark:border-[#5ad6ff]/50 dark:shadow-md"
             elementLevelClassName="gradient-text-responsive "
             staggerFrom={"last"}
             initial={{ y: "100%" }}
@@ -69,13 +69,13 @@ function AboutMeRight() {
         {aboutMeText.map((text, index) => (
           <p
             key={index}
-            className="my-2 text-base leading-relaxed text-gray-700 dark:text-gray-200 sm:text-lg md:text-2xl"
+            className="my-2 text-base leading-relaxed text-gray-700 dark:text-gray-200 sm:text-lg md:text-xl"
           >
             <DecryptedText
               text={text}
               speed={200}
               sequential={false}
-              maxIterations={20}
+              maxIterations={10}
               revealDirection="start"
               animateOn="view"
               useOriginalCharsOnly={true}

@@ -494,7 +494,7 @@
   background-clip: text !important;
   color: transparent !important;
   font-weight: bold !important;
-  @apply !text-2xl;
+  @apply !text-xl;
 }
 
 .dark .work-experience-card-title {
@@ -509,7 +509,7 @@
 .work-experience-title {
   font-weight: 600 !important;
   color: #1f2937 !important;
-  @apply !text-xl;
+  @apply !text-lg;
 }
 
 .dark .work-experience-title {
@@ -552,12 +552,12 @@
 
 .project-link {
   a {
-    @apply text-xl;
+    @apply text-base;
   }
 }
 
 .card-sub-title {
-  @apply text-lg !important;
+  @apply text-base !important;
 }
 
 html {
@@ -566,4 +566,23 @@ html {
 
 .emqEhB {
   width: 90% !important;
+}
+
+.bXyik {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  background: linear-gradient(to right, #5ad6ff, #fb9ac7);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.5 !important;
+}
+
+.dark .bXyik {
+  color: #e5e7eb !important;
+  background: linear-gradient(to right, #64d1ff, #fab7ff);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 }
