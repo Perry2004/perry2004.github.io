@@ -338,15 +338,15 @@
 }
 
 /* For work experiences timeline */
-.Wrapper-sc-cif21b-0 {
+[class^="Wrapper"] {
   height: 100%;
 }
 
-.TimelineMainWrapper-sc-cif21b-1 {
+[class^="TimelineVerticalWrapper"] {
   height: 100%;
 }
 
-.TimelineVerticalWrapper-sc-1427v1d-0 {
+[class^="TimelineVerticalWrapper"] {
   height: 100%;
   justify-content: center;
 }
@@ -521,7 +521,7 @@
   /* Previously defined .backface-hidden class is already in the components layer above */
 }
 
-.TriangleIconWrapper-sc-d7qjm1-11 {
+[class^="TriangleIconWrapper"] {
   & {
     &[dir="right"] {
       left: 8px;
@@ -542,7 +542,7 @@
 }
 
 @media (max-width: 640px) {
-  .dnIwUc {
+  [class^="TimelinePointWrapper"] {
     width: 10% !important;
   }
   #fp-nav ul li a span {
@@ -564,11 +564,11 @@ html {
   scroll-behavior: smooth;
 }
 
-.emqEhB {
+.card-content-wrapper {
   width: 90% !important;
 }
 
-.bXyik {
+[class^="CardTitle"] {
   font-size: 1.125rem !important;
   font-weight: 600 !important;
   color: #1f2937 !important;
@@ -580,8 +580,7 @@ html {
   line-height: 1.5 !important;
 }
 
-.dark .bXyik {
-  color: #e5e7eb !important;
+.dark [class^="CardTitle"] {
   background: linear-gradient(to right, #64d1ff, #fab7ff);
   -webkit-background-clip: text !important;
   background-clip: text !important;
