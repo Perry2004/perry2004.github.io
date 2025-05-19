@@ -57,7 +57,7 @@ export function NavbarHeader({ anchors }: { anchors: string[] }) {
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        className="py-1 sm:py-2"
+        className="sm:py-2"
       >
         <NavbarBrand>
           <p className="gradient-text-responsive font-great-vibes text-2xl font-bold sm:text-4xl">

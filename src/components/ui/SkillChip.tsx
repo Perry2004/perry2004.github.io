@@ -16,7 +16,7 @@ export function SkillChip({ skill }: SkillChipProps) {
     <Chip
       className="skill-chip-responsive group px-5 py-3 hover:cursor-pointer"
       startContent={
-        <div className="skill-icon-responsive group-hover:animate-spin-slow mr-3 text-lg transition-transform duration-300 ease-in-out sm:text-2xl">
+        <div className="skill-icon-responsive mr-3 text-lg transition-transform duration-300 ease-in-out group-hover:animate-spin-slow sm:text-2xl">
           {skill.icon}
         </div>
       }

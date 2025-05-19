@@ -45,6 +45,7 @@ export function Home() {
 
   return (
     <div className="gradient-bg-responsive relative flex min-h-screen flex-col justify-evenly overflow-hidden">
+      <NavbarPlaceholder />
       <div className="absolute z-10 h-full w-full">
         <Iridescence
           color={resolvedTheme === "light" ? [0.9, 0.9, 0.9] : [0.4, 0.4, 0.4]}
