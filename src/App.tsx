@@ -19,23 +19,47 @@ function MobileLayout({ anchors }: { anchors: string[] }) {
   return (
     <>
       <NavbarHeader anchors={anchors} />
-      <div id="home" className="sm:min-h-screen">
+      <div
+        id="home"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 1)" }}
+      >
         <NavbarPlaceholder />
         <Home />
       </div>
-      <div id="about-me" className="sm:min-h-screen">
+      <div
+        id="about-me"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 2)" }}
+      >
         <AboutMe />
       </div>
-      <div id="projects" className="sm:min-h-screen">
+      <div
+        id="projects"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 3)" }}
+      >
         <Projects />
       </div>
-      <div id="work-experiences" className="sm:min-h-screen">
+      <div
+        id="work-experiences"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 4)" }}
+      >
         <WorkExperiences />
       </div>
-      <div id="skills" className="sm:min-h-screen">
+      <div
+        id="skills"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 5)" }}
+      >
         <Skills />
       </div>
-      <div id="contacts" className="sm:min-h-screen">
+      <div
+        id="contacts"
+        className="animate-float-in-up opacity-0 sm:min-h-screen"
+        style={{ animationDelay: "calc(var(--fade-in-delay-increment) * 6)" }}
+      >
         <Contacts />
       </div>
     </>
@@ -59,22 +83,52 @@ function DesktopLayout({ anchors }: { anchors: string[] }) {
         render={() => {
           return (
             <ReactFullpage.Wrapper>
-              <div className="section">
+              <div
+                className="section animate-float-in-up opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 1)",
+                }}
+              >
                 <Home />
               </div>
-              <div className="section">
+              <div
+                className="section animate-float-in-right opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 2)",
+                }}
+              >
                 <AboutMe />
               </div>
-              <div className="section">
+              <div
+                className="section animate-float-in-left opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 3)",
+                }}
+              >
                 <Projects />
               </div>
-              <div className="section">
+              <div
+                className="section animate-float-in-right opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 4)",
+                }}
+              >
                 <WorkExperiences />
               </div>
-              <div className="section">
+              <div
+                className="section animate-float-in-left opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 5)",
+                }}
+              >
                 <Skills />
               </div>
-              <div className="section">
+              <div
+                className="section animate-float-in-up opacity-0"
+                style={{
+                  animationDelay: "calc(var(--fade-in-delay-increment) * 6)",
+                }}
+              >
                 <Contacts />
               </div>
             </ReactFullpage.Wrapper>
@@ -120,7 +174,12 @@ export function App() {
             duration={400}
             extraScale={1.0}
           >
-            <AppContent />
+            <div
+              className="animate-float-in-up opacity-0"
+              style={{ animationDuration: "2s" }}
+            >
+              <AppContent />
+            </div>
           </ClickSpark>
         </HeroUIProvider>
       </DeviceProvider>

@@ -120,8 +120,8 @@ export const skillsData: SkillCategory[] = [
     name: "Math & Statistics",
     icon: <FaCalculator />,
     skills: [
-      { name: "Differential & Integral Calculus", icon: <TbMathFunction /> },
-      { name: "Matrix and Linear Algebra", icon: <TbMatrix /> },
+      { name: "Advanced Calculus", icon: <TbMathFunction /> },
+      { name: "Linear Algebra", icon: <TbMatrix /> },
       { name: "Statistical Inference", icon: <BiStats /> },
       { name: "Mathematical Proof", icon: <TbMathFunction /> },
       { name: "Probability Theory", icon: <FaCalculator /> },
@@ -149,10 +149,10 @@ export const skillsData: SkillCategory[] = [
       { name: "Linux", icon: <FaLinux /> },
       { name: "Blender", icon: <SiBlender /> },
       {
-        name: "Minecraft Plugin and Mod Development",
+        name: "Minecraft Plugin & Mod",
         icon: <IoGameController />,
       },
-      { name: "Minecraft Server Management", icon: <FaServer /> },
+      { name: "MC Server Management", icon: <FaServer /> },
     ],
   },
 ];

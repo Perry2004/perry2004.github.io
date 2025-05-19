@@ -10,7 +10,7 @@ export function Contacts() {
     <div className="gradient-bg-responsive min-h-screen pb-12">
       {isDesktop && <NavbarPlaceholder />}
 
-      <div className="container mx-auto px-4 py-4 sm:py-6 md:py-8">
+      <div className="container mx-auto flex min-h-[calc(100vh-4rem)] flex-col justify-center px-4 py-4 sm:py-6 md:py-8">
         <h1 className="gradient-text-responsive text-center font-great-vibes text-4xl !leading-normal sm:text-6xl md:mt-0">
           Contact Me
         </h1>

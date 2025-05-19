@@ -73,19 +73,18 @@ function AboutMeRight() {
           >
             <DecryptedText
               text={text}
-              speed={200}
+              speed={300}
               sequential={false}
-              maxIterations={20}
-              revealDirection="start"
+              maxIterations={10}
               animateOn="view"
-              useOriginalCharsOnly={true}
+              useOriginalCharsOnly={false}
             />
           </p>
         ))}
         <Link
           href="/coop_resume.pdf"
           download="PerryZ_resume.pdf"
-          className="self-start"
+          className="flex w-full justify-center self-start"
         >
           <Button className="gradient-button-hover-responsive mt-4 flex items-center gap-2 border border-[#5ad6ff]/50 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm dark:border-[#5ad6ff]/70 dark:bg-gray-800 dark:text-gray-200 sm:px-4 sm:py-2 sm:text-base">
             <IoDocumentAttach />
