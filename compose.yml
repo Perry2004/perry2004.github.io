@@ -3,8 +3,7 @@ services:
     build: .
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./public:/usr/share/caddy/dist/
     ports:
       - 80:80
       - 443:443
-      - 443:443/udp
+    platform: linux/amd64
