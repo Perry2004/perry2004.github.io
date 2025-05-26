@@ -12,7 +12,7 @@
     "deploy:prod": "./deploy.sh --prod",
     "deploy:dev:down": "./deploy.sh --dev --down",
     "deploy:prod:down": "./deploy.sh --prod --down",
-    "deploy:dev:logs": "docker compose -p perry-dev -f compose.dev.yml logs -f",
+    "deploy:dev:logs": "docker compose -p perry-dev -f compose.yml logs -f",
     "deploy:prod:logs": "docker compose -p perry-prod -f compose.prod.yml logs -f"
   },
   "dependencies": {

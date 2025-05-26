@@ -44,7 +44,7 @@ while [[ $# -gt 0 ]]; do
             echo -e "${WHITE}Usage:${NC} $0 [--dev|--prod] [--down]"
             echo ""
             echo -e "${YELLOW}⚙ Configuration Options:${NC}"
-            echo -e "  ${GREEN}--dev${NC}     ⚡ Deploy development environment (localhost, Caddyfile.dev & compose.dev.yml)"
+            echo -e "  ${GREEN}--dev${NC}     ⚡ Deploy development environment (localhost, Caddyfile.dev & compose.yml)"
             echo -e "  ${BLUE}--prod${NC}    🌐 Deploy production environment (perryz.net, Caddyfile.prod & compose.prod.yml)"
             echo -e "  ${RED}--down${NC}    ⏹ Stop containers and remove volumes"
             echo -e "  ${PURPLE}-h, --help${NC} ℹ Display usage information"
@@ -75,7 +75,7 @@ fi
 if [[ "$MODE" == "dev" ]]; then
     CADDY_FILE="./Caddyfile.dev"
     COMPOSE_PROJECT="perry-dev"
-    COMPOSE_FILE="compose.dev.yml"
+    COMPOSE_FILE="compose.yml"
     DOMAIN="localhost"
 elif [[ "$MODE" == "prod" ]]; then
     CADDY_FILE="./Caddyfile.prod"
@@ -158,8 +158,10 @@ else
     echo ""
     echo -e "${CYAN}🛠 OPERATIONAL COMMANDS${NC}"
     echo -e "${WHITE}📋 View logs:${NC} docker compose -p \"$COMPOSE_PROJECT\" -f \"$COMPOSE_FILE\" logs -f"
-    echo -e "${WHITE}⏹ Stop deployment:${NC} yarn deploy:$MODE:down"
-    echo -e "${WHITE}🔄 Restart deployment:${NC} yarn deploy:$MODE:down && yarn deploy:$MODE"
+    echo -e "${WHITE}⏹ Stop deployment (yarn):${NC} yarn deploy:$MODE:down"
+    echo -e "${WHITE}⏹ Stop deployment (direct):${NC} ./deploy.sh --$MODE --down"
+    echo -e "${WHITE}🔄 Restart deployment (yarn):${NC} yarn deploy:$MODE:down && yarn deploy:$MODE"
+    echo -e "${WHITE}🔄 Restart deployment (direct):${NC} ./deploy.sh --$MODE --down && ./deploy.sh --$MODE"
     echo ""
     echo -e "${GREEN}✓ Deployment operations completed${NC}"
 fi
