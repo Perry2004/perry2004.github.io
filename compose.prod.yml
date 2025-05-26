@@ -1,15 +1,16 @@
-# Docker Compose configuration for development environment
-# Builds the application locally and serves with Caddy
+# Docker Compose configuration for production environment
+# Uses pre-built image from Docker registry
 
 services:
   app:
-    build: .
+    image: perry2004/perryz.net:latest
     volumes:
-      - ${CADDY_CONFIG:-./Caddyfile.dev}:/etc/caddy/Caddyfile
+      - ${CADDY_CONFIG:-./Caddyfile.prod}:/etc/caddy/Caddyfile
     ports:
       - "80:80"
       - "443:443"
     platform: linux/amd64
+    restart: unless-stopped
     healthcheck:
       test: [ "CMD", "caddy", "version" ]
       interval: 30s

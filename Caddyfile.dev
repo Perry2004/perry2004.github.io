@@ -1,0 +1,25 @@
+# Caddy configuration for development environment
+# Serves the built React/Vite application on localhost
+
+# HTTP (redirects to HTTPS)
+http://localhost {
+	redir https://localhost{uri}
+}
+
+# HTTPS with automatic TLS
+https://localhost {
+	root * /usr/share/caddy/
+	file_server
+	try_files {path} /index.html
+	
+	# Enable compression
+	encode gzip
+	
+	# Basic security headers (minimal for development)
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		X-XSS-Protection "1; mode=block"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}
