@@ -30,7 +30,7 @@ https://perryz.net {
 		Referrer-Policy "strict-origin-when-cross-origin"
 		
 		# Content Security Policy for React/Vite app
-		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:;"
 		
 		# Additional security headers
 		Permissions-Policy "geolocation=(), microphone=(), camera=()"

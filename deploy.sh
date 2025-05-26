@@ -38,15 +38,25 @@ while [[ $# -gt 0 ]]; do
             ACTION="down"
             shift
             ;;
+        --logs)
+            ACTION="logs"
+            shift
+            ;;
+        --build-push)
+            ACTION="build-push"
+            shift
+            ;;
         -h|--help)
             echo -e "${CYAN}${BOLD}▶ Docker Compose Deployment Manager${NC}"
             echo ""
-            echo -e "${WHITE}Usage:${NC} $0 [--dev|--prod] [--down]"
+            echo -e "${WHITE}Usage:${NC} $0 [--dev|--prod] [--down|--logs] | $0 --build-push"
             echo ""
             echo -e "${YELLOW}⚙ Configuration Options:${NC}"
             echo -e "  ${GREEN}--dev${NC}     ⚡ Deploy development environment (localhost, Caddyfile.dev & compose.yml)"
             echo -e "  ${BLUE}--prod${NC}    🌐 Deploy production environment (perryz.net, Caddyfile.prod & compose.prod.yml)"
             echo -e "  ${RED}--down${NC}    ⏹ Stop containers and remove volumes"
+            echo -e "  ${CYAN}--logs${NC}    📋 View live container logs"
+            echo -e "  ${PURPLE}--build-push${NC} 🚀 Build and push latest image to registry (standalone)"
             echo -e "  ${PURPLE}-h, --help${NC} ℹ Display usage information"
             echo ""
             echo -e "${YELLOW}📋 Command Examples:${NC}"
@@ -54,6 +64,9 @@ while [[ $# -gt 0 ]]; do
             echo -e "  ${BLUE}yarn deploy:prod${NC}        # Initialize production deployment"
             echo -e "  ${RED}yarn deploy:dev:down${NC}    # Terminate development deployment"
             echo -e "  ${RED}yarn deploy:prod:down${NC}   # Terminate production deployment"
+            echo -e "  ${CYAN}./deploy.sh --dev --logs${NC}   # View development logs"
+            echo -e "  ${CYAN}./deploy.sh --prod --logs${NC}  # View production logs"
+            echo -e "  ${PURPLE}./deploy.sh --build-push${NC}    # Build and push latest image"
             exit 0
             ;;
         *)
@@ -64,39 +77,45 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Validate mode
-if [[ -z "$MODE" ]]; then
+# Validate mode (not required for build-push action)
+if [[ -z "$MODE" && "$ACTION" != "build-push" ]]; then
     echo -e "${RED}✗ Error: Deployment mode required. Specify ${GREEN}--dev${NC} or ${BLUE}--prod${NC}"
     echo -e "${YELLOW}ℹ Use ${WHITE}-h${NC} or ${WHITE}--help${NC} for usage information"
     exit 1
 fi
 
-# Set configuration based on mode
-if [[ "$MODE" == "dev" ]]; then
-    CADDY_FILE="./Caddyfile.dev"
-    COMPOSE_PROJECT="perry-dev"
-    COMPOSE_FILE="compose.yml"
-    DOMAIN="localhost"
-elif [[ "$MODE" == "prod" ]]; then
-    CADDY_FILE="./Caddyfile.prod"
-    COMPOSE_PROJECT="perry-prod"
-    COMPOSE_FILE="compose.prod.yml"
-    DOMAIN="perryz.net"
+# Set configuration based on mode (only needed for non-build-push actions)
+if [[ "$ACTION" != "build-push" ]]; then
+    if [[ "$MODE" == "dev" ]]; then
+        CADDY_FILE="./Caddyfile.dev"
+        COMPOSE_PROJECT="perry-dev"
+        COMPOSE_FILE="compose.yml"
+        DOMAIN="localhost"
+    elif [[ "$MODE" == "prod" ]]; then
+        CADDY_FILE="./Caddyfile.prod"
+        COMPOSE_PROJECT="perry-prod"
+        COMPOSE_FILE="compose.prod.yml"
+        DOMAIN="perryz.net"
+    fi
 fi
 
 echo -e "${CYAN}════════════════════════════════════════════${NC}"
 echo -e "${BOLD}▶ DOCKER COMPOSE DEPLOYMENT WITH CADDY${NC}"
 echo -e "${CYAN}════════════════════════════════════════════${NC}"
 
-if [[ "$MODE" == "dev" ]]; then
+if [[ "$ACTION" == "build-push" ]]; then
+    echo -e "${PURPLE}🚀 Standalone Image Build & Push${NC}"
+elif [[ "$MODE" == "dev" ]]; then
     echo -e "${GREEN}⚡ Environment: ${WHITE}Development${NC} ${GREEN}(Local Testing)${NC}"
 elif [[ "$MODE" == "prod" ]]; then
     echo -e "${BLUE}🌐 Environment: ${WHITE}Production${NC} ${BLUE}(Live Deployment)${NC}"
 fi
 
-echo -e "${PURPLE}📄 Caddy Config: ${WHITE}$CADDY_FILE${NC}"
-echo -e "${YELLOW}📋 Compose File: ${WHITE}$COMPOSE_FILE${NC}"
-echo -e "${CYAN}🔗 Target Domain: ${WHITE}$DOMAIN${NC}"
+if [[ "$ACTION" != "build-push" ]]; then
+    echo -e "${PURPLE}📄 Caddy Config: ${WHITE}$CADDY_FILE${NC}"
+    echo -e "${YELLOW}📋 Compose File: ${WHITE}$COMPOSE_FILE${NC}"
+    echo -e "${CYAN}🔗 Target Domain: ${WHITE}$DOMAIN${NC}"
+fi
 echo -e "${CYAN}════════════════════════════════════════════${NC}"
 echo ""
 
@@ -106,6 +125,34 @@ if [[ "$ACTION" == "down" ]]; then
     docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" down -v
     echo -e "${GREEN}✓ ${WHITE}$MODE${NC} ${GREEN}deployment terminated successfully${NC}"
     echo -e "${PURPLE}⏸ All containers stopped and volumes removed${NC}"
+elif [[ "$ACTION" == "logs" ]]; then
+    echo -e "${CYAN}📋 VIEWING ${WHITE}$MODE${NC} ${CYAN}CONTAINER LOGS${NC}"
+    echo -e "${YELLOW}🔍 Streaming live logs from containers...${NC}"
+    echo -e "${PURPLE}💡 Press Ctrl+C to exit log stream${NC}"
+    echo ""
+    docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" logs -f
+elif [[ "$ACTION" == "build-push" ]]; then
+    echo -e "${PURPLE}🚀 BUILDING AND PUSHING LATEST IMAGE${NC}"
+    echo -e "${CYAN}⚙ Building Docker image from local source...${NC}"
+    echo ""
+    
+    # Use development compose file for building
+    BUILD_COMPOSE_FILE="compose.yml"
+    
+    echo -e "${YELLOW}🔨 Building image with Docker Compose...${NC}"
+    docker compose -f "$BUILD_COMPOSE_FILE" build
+    
+    echo -e "${BLUE}🏷 Tagging image for registry...${NC}"
+    docker tag perry2004githubio-app:latest perry2004/perryz.net:latest
+    
+    echo -e "${GREEN}📤 Pushing image to Docker registry...${NC}"
+    docker push perry2004/perryz.net:latest
+    
+    echo ""
+    echo -e "${GREEN}✓ IMAGE BUILD AND PUSH COMPLETED${NC}"
+    echo -e "${PURPLE}🚀 Image successfully pushed to registry${NC}"
+    echo -e "${CYAN}🏷 Tagged as: ${WHITE}perry2004/perryz.net:latest${NC}"
+    echo ""
 else
     echo -e "${GREEN}▶ INITIALIZING ${WHITE}$MODE${NC} ${GREEN}DEPLOYMENT${NC}"
     echo -e "${CYAN}⚙ Configuring deployment environment...${NC}"
@@ -157,11 +204,9 @@ else
     docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" ps
     echo ""
     echo -e "${CYAN}🛠 OPERATIONAL COMMANDS${NC}"
-    echo -e "${WHITE}📋 View logs:${NC} docker compose -p \"$COMPOSE_PROJECT\" -f \"$COMPOSE_FILE\" logs -f"
-    echo -e "${WHITE}⏹ Stop deployment (yarn):${NC} yarn deploy:$MODE:down"
-    echo -e "${WHITE}⏹ Stop deployment (direct):${NC} ./deploy.sh --$MODE --down"
-    echo -e "${WHITE}🔄 Restart deployment (yarn):${NC} yarn deploy:$MODE:down && yarn deploy:$MODE"
-    echo -e "${WHITE}🔄 Restart deployment (direct):${NC} ./deploy.sh --$MODE --down && ./deploy.sh --$MODE"
+    echo -e "${WHITE}📋 View logs:${NC} ./deploy.sh --$MODE --logs or yarn deploy:$MODE:logs"
+    echo -e "${WHITE}⏹ Stop deployment:${NC} ./deploy.sh --$MODE --down or yarn deploy:$MODE:down"
+    echo -e "${WHITE}🔄 Restart deployment:${NC} ./deploy.sh --$MODE --down && ./deploy.sh --$MODE"
     echo ""
     echo -e "${GREEN}✓ Deployment operations completed${NC}"
 fi
