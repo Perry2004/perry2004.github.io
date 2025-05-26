@@ -1,0 +1,44 @@
+# Production Caddy configuration for perryz.net
+# Serves the built React/Vite application with automatic HTTPS and enhanced security
+
+# Redirect www to non-www (both HTTP and HTTPS)
+http://www.perryz.net, https://www.perryz.net {
+	redir https://perryz.net{uri} permanent
+}
+
+# HTTP (redirects to HTTPS)
+http://perryz.net {
+	redir https://perryz.net{uri}
+}
+
+# HTTPS with automatic TLS from Let's Encrypt
+https://perryz.net {
+	root * /usr/share/caddy/
+	file_server
+	try_files {path} /index.html
+	
+	# Enable compression
+	encode gzip
+	
+	# Enhanced security headers for production
+	header {
+		# HTTPS-related security headers
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		X-XSS-Protection "1; mode=block"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		
+		# Content Security Policy for React/Vite app
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"
+		
+		# Additional security headers
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+	}
+	
+	# Cache static assets for better performance
+	@static {
+		path *.js *.css *.png *.jpg *.jpeg *.gif *.ico *.svg *.woff *.woff2 *.ttf *.eot
+	}
+	header @static Cache-Control "public, max-age=31536000, immutable"
+}

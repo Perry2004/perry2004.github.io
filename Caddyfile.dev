@@ -1,5 +1,5 @@
-# Simple Caddy configuration for both HTTP and HTTPS
-# This serves your built React/Vite application
+# Caddy configuration for development environment
+# Serves the built React/Vite application on localhost
 
 # HTTP (redirects to HTTPS)
 http://localhost {
@@ -15,10 +15,8 @@ https://localhost {
 	# Enable compression
 	encode gzip
 	
-	# Security headers
+	# Basic security headers (minimal for development)
 	header {
-		# HTTPS-related security headers
-		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "DENY"
 		X-XSS-Protection "1; mode=block"

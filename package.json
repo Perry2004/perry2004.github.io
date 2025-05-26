@@ -7,7 +7,13 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "deploy:dev": "./deploy.sh --dev",
+    "deploy:prod": "./deploy.sh --prod",
+    "deploy:dev:down": "./deploy.sh --dev --down",
+    "deploy:prod:down": "./deploy.sh --prod --down",
+    "deploy:dev:logs": "docker compose -p perry-dev -f compose.dev.yml logs -f",
+    "deploy:prod:logs": "docker compose -p perry-prod -f compose.prod.yml logs -f"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.48",

@@ -1,0 +1,18 @@
+# Docker Compose configuration for development environment
+# Builds the application locally and serves with Caddy
+
+services:
+  app:
+    build: .
+    volumes:
+      - ${CADDY_CONFIG:-./Caddyfile.dev}:/etc/caddy/Caddyfile
+    ports:
+      - "80:80"
+      - "443:443"
+    platform: linux/amd64
+    healthcheck:
+      test: [ "CMD", "caddy", "version" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
