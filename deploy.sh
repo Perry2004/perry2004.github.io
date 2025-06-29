@@ -232,7 +232,9 @@ else
     echo -e "${WHITE}🔄 Restart deployment:${NC} ${YELLOW}${BOLD}./deploy.sh --$MODE --down && ./deploy.sh --$MODE${NC}"
     echo ""
     echo -e "${GREEN}✅ ${BOLD}Deployment operations completed${NC}"
-elif [[ "$ACTION" == "scheduler" ]]; then
+fi
+
+if [[ "$ACTION" == "scheduler" ]]; then
     echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
     echo -e "${BOLD}${WHITE}🕒 Starting Image Scheduler Service${NC}"
     echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
