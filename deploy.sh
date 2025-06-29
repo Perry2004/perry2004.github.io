@@ -199,7 +199,7 @@ else
         echo -e "${BLUE}${BOLD}📥 PULLING PRODUCTION IMAGES${NC}"
         echo -e "${CYAN}🔄 Fetching latest images from registry...${NC}"
         docker pull perry2004/perryz.net:latest
-        docker pull perry2004/perryz-scheduler:latest
+        docker pull perry2004/perryz.net-scheduler:latest
         echo -e "${GREEN}▶️  Starting production containers...${NC}"
         CADDY_CONFIG="$CADDY_FILE" docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" up -d
     else
@@ -244,7 +244,7 @@ if [[ "$ACTION" == "scheduler" ]]; then
     echo ""
     
     echo -e "${BLUE}📥 Pulling latest scheduler image...${NC}"
-    docker pull perry2004/perryz-scheduler:latest
+    docker pull perry2004/perryz.net-scheduler:latest
     
     docker compose -f "compose.scheduler.yml" up -d
     
