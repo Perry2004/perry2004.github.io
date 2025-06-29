@@ -26,7 +26,7 @@ COPY . .
 
 # Install dependencies for the scripts
 WORKDIR /app/scripts
-RUN npm install
+RUN yarn install
 
 # Make the fetch script executable
 RUN chmod +x /app/scheduler/fetch-images.sh
