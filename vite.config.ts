@@ -11,4 +11,7 @@ export default defineConfig({
     },
   },
   base: "", // use relative paths for assets
+  server: {
+    host: true
+  }
 });

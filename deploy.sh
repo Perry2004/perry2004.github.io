@@ -46,6 +46,18 @@ while [[ $# -gt 0 ]]; do
             ACTION="build-push"
             shift
             ;;
+        --scheduler)
+            ACTION="scheduler"
+            shift
+            ;;
+        --scheduler-logs)
+            ACTION="scheduler-logs"
+            shift
+            ;;
+        --scheduler-stop)
+            ACTION="scheduler-stop"
+            shift
+            ;;
         -h|--help)
             echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
             echo -e "${BOLD}${WHITE}🚀 Docker Compose Deployment Manager${NC}"
@@ -59,6 +71,9 @@ while [[ $# -gt 0 ]]; do
             echo -e "  ${RED}${BOLD}--down${NC}        ⏹️  Stop containers and remove volumes"
             echo -e "  ${CYAN}${BOLD}--logs${NC}        📋 View live container logs"
             echo -e "  ${PURPLE}${BOLD}--build-push${NC}  🚀 Build and push latest image to registry"
+            echo -e "  ${CYAN}${BOLD}--scheduler${NC}      🕒 Start the image scheduler service"
+            echo -e "  ${CYAN}${BOLD}--scheduler-logs${NC} 📋 View scheduler logs"
+            echo -e "  ${RED}${BOLD}--scheduler-stop${NC} ⏹️  Stop the scheduler service"
             echo -e "  ${WHITE}${BOLD}-h, --help${NC}    ℹ️  Display this usage information"
             echo ""
             echo -e "${YELLOW}${BOLD}📋 Command Examples:${NC}"
@@ -69,6 +84,9 @@ while [[ $# -gt 0 ]]; do
             echo -e "  ${CYAN}${BOLD}yarn deploy:dev:logs${NC} or ${CYAN}${BOLD}./deploy.sh --dev --logs${NC}\t${WHITE}#${NC} ${CYAN}View development logs${NC}"
             echo -e "  ${CYAN}${BOLD}yarn deploy:prod:logs${NC} or ${CYAN}${BOLD}./deploy.sh --prod --logs${NC}\t${WHITE}#${NC} ${CYAN}View production logs${NC}"
             echo -e "  ${PURPLE}${BOLD}yarn deploy:build-push${NC} or ${PURPLE}${BOLD}./deploy.sh --build-push${NC}\t${WHITE}#${NC} ${PURPLE}Build and push latest image${NC}"
+            echo -e "  ${CYAN}${BOLD}./deploy.sh --scheduler${NC}\t\t\t\t${WHITE}#${NC} ${CYAN}Start image scheduler service${NC}"
+            echo -e "  ${CYAN}${BOLD}./deploy.sh --scheduler-logs${NC}\t\t\t\t${WHITE}#${NC} ${CYAN}View scheduler logs${NC}"
+            echo -e "  ${RED}${BOLD}./deploy.sh --scheduler-stop${NC}\t\t\t\t${WHITE}#${NC} ${RED}Stop scheduler service${NC}"
             exit 0
             ;;
         *)
@@ -79,15 +97,15 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Validate mode (not required for build-push action)
-if [[ -z "$MODE" && "$ACTION" != "build-push" ]]; then
+# Validate mode (not required for build-push action or scheduler actions)
+if [[ -z "$MODE" && "$ACTION" != "build-push" && "$ACTION" != "scheduler" && "$ACTION" != "scheduler-logs" && "$ACTION" != "scheduler-stop" ]]; then
     echo -e "${RED}❌ ${BOLD}Error:${NC} Deployment mode required. Specify ${GREEN}${BOLD}--dev${NC} or ${BLUE}${BOLD}--prod${NC}"
     echo -e "${YELLOW}💡 Use ${WHITE}${BOLD}-h${NC} or ${WHITE}${BOLD}--help${NC} for usage information"
     exit 1
 fi
 
-# Set configuration based on mode (only needed for non-build-push actions)
-if [[ "$ACTION" != "build-push" ]]; then
+# Set configuration based on mode (only needed for non-build-push and non-scheduler actions)
+if [[ "$ACTION" != "build-push" && "$ACTION" != "scheduler" && "$ACTION" != "scheduler-logs" && "$ACTION" != "scheduler-stop" ]]; then
     if [[ "$MODE" == "dev" ]]; then
         CADDY_FILE="./Caddyfile.dev"
         COMPOSE_PROJECT="perry-dev"
@@ -178,9 +196,10 @@ else
     
     # Pull latest image for production or build for development
     if [[ "$MODE" == "prod" ]]; then
-        echo -e "${BLUE}${BOLD}📥 PULLING PRODUCTION IMAGE${NC}"
-        echo -e "${CYAN}🔄 Fetching latest image from registry...${NC}"
+        echo -e "${BLUE}${BOLD}📥 PULLING PRODUCTION IMAGES${NC}"
+        echo -e "${CYAN}🔄 Fetching latest images from registry...${NC}"
         docker pull perry2004/perryz.net:latest
+        docker pull perry2004/perryz-scheduler:latest
         echo -e "${GREEN}▶️  Starting production containers...${NC}"
         CADDY_CONFIG="$CADDY_FILE" docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" up -d
     else
@@ -213,4 +232,38 @@ else
     echo -e "${WHITE}🔄 Restart deployment:${NC} ${YELLOW}${BOLD}./deploy.sh --$MODE --down && ./deploy.sh --$MODE${NC}"
     echo ""
     echo -e "${GREEN}✅ ${BOLD}Deployment operations completed${NC}"
+elif [[ "$ACTION" == "scheduler" ]]; then
+    echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
+    echo -e "${BOLD}${WHITE}🕒 Starting Image Scheduler Service${NC}"
+    echo -e "${CYAN}═══════════════════════════════════════════════════════════════${NC}"
+    echo ""
+    echo -e "${YELLOW}📅 Schedule: Updates rolling-images.json every 24 hours${NC}"
+    echo -e "${CYAN}🔍 Source: Pexels featured uploads${NC}"
+    echo ""
+    
+    echo -e "${BLUE}📥 Pulling latest scheduler image...${NC}"
+    docker pull perry2004/perryz-scheduler:latest
+    
+    docker compose -f "compose.scheduler.yml" up -d
+    
+    echo ""
+    echo -e "${GREEN}✅ ${BOLD}Image scheduler service started${NC}"
+    echo -e "${CYAN}📊 Container status:${NC}"
+    docker compose -f "compose.scheduler.yml" ps
+    echo ""
+    echo -e "${YELLOW}📋 To view logs: ${WHITE}${BOLD}./deploy.sh --scheduler-logs${NC}"
+    echo -e "${RED}⏹️  To stop: ${WHITE}${BOLD}./deploy.sh --scheduler-stop${NC}"
+
+elif [[ "$ACTION" == "scheduler-logs" ]]; then
+    echo -e "${CYAN}📋 ${BOLD}Image Scheduler Logs${NC}"
+    echo -e "${WHITE}Press Ctrl+C to exit${NC}"
+    echo ""
+    docker compose -f "compose.scheduler.yml" logs -f
+
+elif [[ "$ACTION" == "scheduler-stop" ]]; then
+    echo -e "${RED}⏹️  ${BOLD}Stopping Image Scheduler Service${NC}"
+    echo ""
+    docker compose -f "compose.scheduler.yml" down
+    echo ""
+    echo -e "${GREEN}✅ ${BOLD}Image scheduler service stopped${NC}"
 fi

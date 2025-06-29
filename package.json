@@ -14,7 +14,14 @@
     "deploy:prod:down": "./deploy.sh --prod --down",
     "deploy:dev:logs": "./deploy.sh --dev --logs",
     "deploy:prod:logs": "./deploy.sh --prod --logs",
-    "deploy:build-push": "./deploy.sh --build-push"
+    "deploy:build-push": "./deploy.sh --build-push",
+    "scheduler:start": "./manage-scheduler.sh start",
+    "scheduler:stop": "./manage-scheduler.sh stop",
+    "scheduler:status": "./manage-scheduler.sh status",
+    "scheduler:logs": "./manage-scheduler.sh logs",
+    "scheduler:logs-live": "./manage-scheduler.sh logs-live",
+    "scheduler:run-now": "./manage-scheduler.sh run-now",
+    "scheduler:cleanup": "./manage-scheduler.sh cleanup"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.48",

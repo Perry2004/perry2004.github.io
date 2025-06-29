@@ -1,0 +1,29 @@
+# Standalone Docker Compose for the image scheduler
+# Use this to run only the scheduler service independently
+
+services:
+  image-scheduler:
+    image: perry2004/perryz-scheduler:latest
+    volumes:
+      # Mount the public/data directory to persist changes to rolling-images.json
+      - ./public/data:/app/public/data
+      # Mount logs for monitoring
+      - ./scheduler/logs:/var/log
+    environment:
+      - TZ=UTC
+    platform: linux/amd64
+    restart: unless-stopped
+    container_name: perryz-image-scheduler
+    healthcheck:
+      test: ["CMD", "test", "-f", "/var/log/fetch-images.log"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+        reservations:
+          memory: 256M

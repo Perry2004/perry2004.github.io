@@ -6,13 +6,30 @@ services:
     build: .
     volumes:
       - ${CADDY_CONFIG:-./Caddyfile.dev}:/etc/caddy/Caddyfile
+      # Share public/data with scheduler for fresh image updates
+      - ./public/data:/usr/share/caddy/data
     ports:
       - "80:80"
       - "443:443"
     platform: linux/amd64
     healthcheck:
-      test: [ "CMD", "caddy", "version" ]
+      test: ["CMD", "caddy", "version"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
+
+  # Optional: Image scheduler service
+  # Uncomment to enable automatic image fetching every 24 hours
+  # scheduler:
+  #   build:
+  #     context: .
+  #     dockerfile: scheduler/Dockerfile
+  #   volumes:
+  #     - ./public/data:/app/public/data
+  #     - ./scheduler/logs:/var/log
+  #   environment:
+  #     - TZ=UTC
+  #   restart: unless-stopped
+  #   profiles:
+  #     - scheduler
