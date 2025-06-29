@@ -22,14 +22,13 @@ services:
 
   # Image scheduler service for automatic updates
   scheduler:
-    build:
-      context: .
-      dockerfile: scheduler/Dockerfile
+    image: perry2004/perryz-scheduler:latest
     volumes:
       - ./public/data:/app/public/data
       - ./scheduler/logs:/var/log
     environment:
       - TZ=UTC
+    platform: linux/amd64
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "test", "-f", "/var/log/fetch-images.log"]

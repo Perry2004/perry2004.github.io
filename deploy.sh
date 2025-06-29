@@ -196,9 +196,10 @@ else
     
     # Pull latest image for production or build for development
     if [[ "$MODE" == "prod" ]]; then
-        echo -e "${BLUE}${BOLD}📥 PULLING PRODUCTION IMAGE${NC}"
-        echo -e "${CYAN}🔄 Fetching latest image from registry...${NC}"
+        echo -e "${BLUE}${BOLD}📥 PULLING PRODUCTION IMAGES${NC}"
+        echo -e "${CYAN}🔄 Fetching latest images from registry...${NC}"
         docker pull perry2004/perryz.net:latest
+        docker pull perry2004/perryz-scheduler:latest
         echo -e "${GREEN}▶️  Starting production containers...${NC}"
         CADDY_CONFIG="$CADDY_FILE" docker compose -p "$COMPOSE_PROJECT" -f "$COMPOSE_FILE" up -d
     else
@@ -239,6 +240,9 @@ elif [[ "$ACTION" == "scheduler" ]]; then
     echo -e "${YELLOW}📅 Schedule: Updates rolling-images.json every 24 hours${NC}"
     echo -e "${CYAN}🔍 Source: Pexels featured uploads${NC}"
     echo ""
+    
+    echo -e "${BLUE}📥 Pulling latest scheduler image...${NC}"
+    docker pull perry2004/perryz-scheduler:latest
     
     docker compose -f "compose.scheduler.yml" up -d
     

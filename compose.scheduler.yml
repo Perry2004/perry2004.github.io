@@ -3,9 +3,7 @@
 
 services:
   image-scheduler:
-    build:
-      context: .
-      dockerfile: scheduler/Dockerfile
+    image: perry2004/perryz-scheduler:latest
     volumes:
       # Mount the public/data directory to persist changes to rolling-images.json
       - ./public/data:/app/public/data
@@ -13,6 +11,7 @@ services:
       - ./scheduler/logs:/var/log
     environment:
       - TZ=UTC
+    platform: linux/amd64
     restart: unless-stopped
     container_name: perryz-image-scheduler
     healthcheck:
