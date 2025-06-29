@@ -3,7 +3,7 @@
 
 services:
   image-scheduler:
-    image: perry2004/perryz-scheduler:latest
+    image: perry2004/perryz.net-scheduler:latest
     volumes:
       # Mount the public/data directory to persist changes to rolling-images.json
       - ./public/data:/app/public/data

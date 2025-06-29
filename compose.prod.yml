@@ -22,7 +22,7 @@ services:
 
   # Image scheduler service for automatic updates
   scheduler:
-    image: perry2004/perryz-scheduler:latest
+    image: perry2004/perryz.net-scheduler:latest
     volumes:
       - ./public/data:/app/public/data
       - ./scheduler/logs:/var/log
