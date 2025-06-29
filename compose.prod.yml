@@ -6,14 +6,40 @@ services:
     image: perry2004/perryz.net:latest
     volumes:
       - ${CADDY_CONFIG:-./Caddyfile.prod}:/etc/caddy/Caddyfile
+      # Share public/data with scheduler for fresh image updates
+      - ./public/data:/usr/share/caddy/data
     ports:
       - "80:80"
       - "443:443"
     platform: linux/amd64
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "caddy", "version" ]
+      test: ["CMD", "caddy", "version"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
+
+  # Image scheduler service for automatic updates
+  scheduler:
+    build:
+      context: .
+      dockerfile: scheduler/Dockerfile
+    volumes:
+      - ./public/data:/app/public/data
+      - ./scheduler/logs:/var/log
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "test", "-f", "/var/log/fetch-images.log"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
