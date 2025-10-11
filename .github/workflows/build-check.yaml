@@ -15,8 +15,6 @@ jobs:
         with:
           node-version: "22"
           cache: "yarn"
-      - name: Setup Yarn
-        run: corepack install
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Build Project
