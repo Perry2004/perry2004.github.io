@@ -5,7 +5,7 @@ on:
     branches:
       - main
 jobs:
-  deploy:
+  push-artifacts-to-s3:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
