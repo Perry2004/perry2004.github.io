@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
+    paths-ignore:
+      - scripts/**
 jobs:
   check-build-success:
     runs-on: ubuntu-latest
