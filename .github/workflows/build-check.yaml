@@ -18,4 +18,4 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Build Project
-        run: yarn run build
+        run: yarn cibuild

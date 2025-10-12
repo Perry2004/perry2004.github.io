@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "scripts/prepare-image-links.sh && vite",
     "build": "scripts/prepare-image-links.sh && tsc -b && vite build",
+    "cibuild": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview --host"
   },
