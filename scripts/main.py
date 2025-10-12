@@ -91,10 +91,6 @@ def get_image_links_selenium(url):
                     click_count += 1
                     load_more_button.click()
 
-                    # # Wait for new content to load
-                    # print("Waiting for new content to load...")
-                    # time.sleep(3)
-
                 except (StaleElementReferenceException, Exception) as e:
                     # print(f"Error clicking button: {e}")
                     continue
