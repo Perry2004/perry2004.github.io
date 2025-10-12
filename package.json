@@ -4,24 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "scripts/prepare-image-links.sh && vite",
+    "build": "scripts/prepare-image-links.sh && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview --host",
-    "deploy:dev": "./deploy.sh --dev",
-    "deploy:prod": "./deploy.sh --prod",
-    "deploy:dev:down": "./deploy.sh --dev --down",
-    "deploy:prod:down": "./deploy.sh --prod --down",
-    "deploy:dev:logs": "./deploy.sh --dev --logs",
-    "deploy:prod:logs": "./deploy.sh --prod --logs",
-    "deploy:build-push": "./deploy.sh --build-push",
-    "scheduler:start": "./manage-scheduler.sh start",
-    "scheduler:stop": "./manage-scheduler.sh stop",
-    "scheduler:status": "./manage-scheduler.sh status",
-    "scheduler:logs": "./manage-scheduler.sh logs",
-    "scheduler:logs-live": "./manage-scheduler.sh logs-live",
-    "scheduler:run-now": "./manage-scheduler.sh run-now",
-    "scheduler:cleanup": "./manage-scheduler.sh cleanup"
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.48",
