@@ -27,24 +27,24 @@ jobs:
           python-version: "3.13"
       - name: Install UV
         uses: astral-sh/setup-uv@v6
-        with:
-          working-directory: scripts
       - name: Build Lambda
         run: |
+          cd scripts
+
           # Create build directory
           mkdir -p dist
 
           # Install dependencies to build directory
-          uv sync --no-cache --target dist
+          uv sync --no-cache
 
           # Copy Lambda function files to build directory
-          cp scripts/lambda-handler.py dist/
-          cp scripts/main.py dist/
+          cp lambda-handler.py dist/
+          cp main.py dist/
 
           # Create deployment package
           cd dist
-          zip -r ../lambda-function.zip .
-          cd ..
+          zip -r ../../lambda-function.zip .
+          cd ../..
       - name: Deploy to S3
         run: |
           # Upload the Lambda function zip to S3
