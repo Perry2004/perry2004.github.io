@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - scripts/**
+  workflow_dispatch:
 jobs:
   push-artifacts-to-s3:
     runs-on: ubuntu-latest
@@ -25,7 +26,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install UV
-        run: pip install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          working-directory: scripts
       - name: Build Lambda
         run: |
           # Create build directory
