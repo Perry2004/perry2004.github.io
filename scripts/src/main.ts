@@ -76,9 +76,15 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       timeout: 60000,
     });
 
-    console.log("Waiting for network idle...");
-    await page.waitForLoadState("networkidle");
-    console.log("Page loaded.");
+    console.log("Waiting for image grid to be visible...");
+    await page.waitForSelector(
+      'img[src^="https://images.pexels.com/photos/"]',
+      {
+        state: "visible",
+        timeout: 60000,
+      },
+    );
+    console.log("Page content is ready.");
 
     const maxClicks = 5;
     let clickCount = 0;
@@ -94,9 +100,7 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
           );
           clickCount++;
           await loadMoreButton.click();
-
-          // Wait for new content to load
-          await page.waitForLoadState("networkidle");
+          await page.waitForTimeout(5000);
           console.log("New content loaded after clicking Load More.");
         } catch (error) {
           console.error(`Error clicking button: ${error}`);
