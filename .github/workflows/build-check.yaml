@@ -6,6 +6,7 @@ on:
     types: [opened, synchronize]
     paths-ignore:
       - scripts/**
+  workflow_dispatch:
 jobs:
   check-build-success:
     runs-on: ubuntu-latest

@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - scripts/**
       - README.md
+  workflow_dispatch:
 jobs:
   push-artifacts-to-s3:
     runs-on: ubuntu-latest
