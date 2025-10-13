@@ -32,7 +32,7 @@ jobs:
         run: yarn cibuild
       - name: Deploy to S3
         run: |
-          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
+          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }}/website --delete
       - name: Invalidate CloudFront cache
         uses: foxdalas/cloudfront-invalidator@v4
         with:
