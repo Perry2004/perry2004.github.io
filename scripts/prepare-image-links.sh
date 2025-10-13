@@ -4,5 +4,6 @@ if [ -f "public/data/rolling-images.json" ]; then
     exit 0
 fi
 cd scripts || exit
-uv sync
-uv run python main.py "../public/data/rolling-images.json"
+yarn install
+yarn build
+node dist/main.js "../public/data/rolling-images.json"
