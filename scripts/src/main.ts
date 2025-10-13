@@ -1,4 +1,5 @@
-import { chromium, Page, ElementHandle } from "playwright";
+import { chromium as playwright, Page, ElementHandle } from "playwright";
+import chromium from "@sparticuz/chromium";
 import * as fs from "fs";
 
 interface ImageData {
@@ -60,15 +61,12 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
   let browser = null;
   try {
     // Launch browser in headless mode
-    browser = await chromium.launch({
-      headless: true,
-      args: ["--disable-gpu", "--disable-blink-features=AutomationControlled"],
+    browser = await playwright.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
     });
 
-    const context = await browser.newContext({
-      userAgent:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-    });
+    const context = await browser.newContext();
 
     const page = await context.newPage();
 
