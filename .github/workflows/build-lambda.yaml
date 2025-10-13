@@ -31,7 +31,10 @@ jobs:
           cd scripts
           yarn install --frozen-lockfile
           yarn build
-          cd dist
+          mkdir -p build
+          cp -r dist/ build/
+          cp -r node_modules/ build/
+          cd build
           zip -r ../../lambda-function.zip .
           cd ../..
       - name: Deploy to S3
