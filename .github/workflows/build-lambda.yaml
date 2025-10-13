@@ -32,7 +32,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
           mkdir -p build
-          cp -r dist/ build/
+          cp -r dist/* build/
           cp -r node_modules/ build/
           cd build
           zip -r ../../lambda-function.zip .
