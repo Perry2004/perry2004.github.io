@@ -15,7 +15,8 @@
         "@types/aws-lambda": "^8.10.155",
         "@types/node": "^20.0.0",
         "ts-node": "^10.9.0",
-        "typescript": "^5.0.0"
+        "typescript": "^5.0.0",
+        "@sparticuz/chromium": "^141.0.0"
     },
     "packageManager": "yarn@1.22.0",
     "engines": {
