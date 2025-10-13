@@ -1,5 +1,5 @@
 # Build the lambda function zip file and push to S3
-name: Publish to S3
+name: Build and Publish Lambda to S3
 on:
   push:
     branches:
@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.13"
+      - name: Install UV
+        run: pip install uv
       - name: Build Lambda
         run: |
           # Create build directory
