@@ -1,0 +1,46 @@
+# Build the lambda function zip file and push to S3
+name: Publish to S3
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/**
+jobs:
+  push-artifacts-to-s3:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+      - name: Build Lambda
+        run: |
+          # Create build directory
+          mkdir -p dist
+
+          # Install dependencies to build directory
+          uv sync --no-cache --target dist
+
+          # Copy Lambda function files to build directory
+          cp scripts/lambda-handler.py dist/
+          cp scripts/main.py dist/
+
+          # Create deployment package
+          cd dist
+          zip -r ../lambda-function.zip .
+          cd ..
+      - name: Deploy to S3
+        run: |
+          # Upload the Lambda function zip to S3
+          aws s3 cp lambda-function.zip s3://${{ secrets.AWS_S3_BUCKET }}/lambda/lambda-function.zip
