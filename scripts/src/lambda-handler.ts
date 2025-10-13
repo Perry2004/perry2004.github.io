@@ -20,6 +20,7 @@ export async function lambdaHandler(
     const imageLinks = await getImageLinksPlaywright(pexelsUrl);
 
     if (imageLinks && imageLinks.length > 0) {
+      console.log(`Total image links found: ${imageLinks.length}`);
       return {
         statusCode: 200,
         body: JSON.stringify({
@@ -29,6 +30,7 @@ export async function lambdaHandler(
         }),
       };
     } else {
+      console.log("No image links found");
       return {
         statusCode: 200,
         body: JSON.stringify({
@@ -40,6 +42,7 @@ export async function lambdaHandler(
       };
     }
   } catch (error) {
+    console.log(`Error in lambdaHandler: ${error}`);
     return {
       statusCode: 500,
       body: JSON.stringify({

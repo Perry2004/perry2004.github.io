@@ -76,7 +76,9 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       timeout: 60000,
     });
 
-    await page.waitForTimeout(5000);
+    console.log("Waiting for network idle...");
+    await page.waitForLoadState("networkidle");
+    console.log("Page loaded.");
 
     const maxClicks = 5;
     let clickCount = 0;
@@ -94,7 +96,8 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
           await loadMoreButton.click();
 
           // Wait for new content to load
-          await page.waitForTimeout(2000);
+          await page.waitForLoadState("networkidle");
+          console.log("New content loaded after clicking Load More.");
         } catch (error) {
           console.error(`Error clicking button: ${error}`);
           break;
@@ -112,6 +115,7 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
     // Extract image links
     const imgLinks = await page.evaluate((): string[] => {
       const imgs = Array.from(document.querySelectorAll("img"));
+      console.log(`Total images found on page: ${imgs.length}`);
       const links: string[] = [];
 
       imgs.forEach((img) => {
