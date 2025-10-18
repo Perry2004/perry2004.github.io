@@ -6,6 +6,8 @@ on:
     types: [opened, synchronize]
     paths-ignore:
       - scripts/**
+      - .github/workflows/**
+      - README.md
   workflow_dispatch:
 jobs:
   check-build-success:
