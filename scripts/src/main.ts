@@ -1,16 +1,13 @@
-import { chromium as playwright, Page, ElementHandle } from "playwright";
-import chromium from "@sparticuz/chromium";
+import { chromium, Page, ElementHandle } from "playwright";
 import * as fs from "fs";
 
 interface ImageData {
   images: string[];
 }
 
-/**
- * Find the Load More button by searching through all buttons and examining their text content.
- * Returns the button element if found, null otherwise.
- */
-async function findLoadMoreButton(page: Page): Promise<ElementHandle | null> {
+async function findLoadMoreButton(
+  page: Page,
+): Promise<ElementHandle<SVGElement | HTMLElement> | null> {
   try {
     const buttons = await page.$$("button");
 
@@ -23,9 +20,8 @@ async function findLoadMoreButton(page: Page): Promise<ElementHandle | null> {
                 let text =
                   el.textContent || (el as HTMLElement).innerText || "";
 
-                // Also check all child elements for text
-                const children = Array.from(el.querySelectorAll("*"));
-                for (const child of children) {
+                const children = el.querySelectorAll("*");
+                for (const child of Array.from(children)) {
                   if (child.textContent) {
                     text += " " + child.textContent;
                   }
@@ -53,20 +49,18 @@ async function findLoadMoreButton(page: Page): Promise<ElementHandle | null> {
   }
 }
 
-/**
- * Crawls a Pexels page using Playwright to fetch the links of all featured images.
- * Auto-clicks the "Load More" button if exists to load more images.
- */
 async function getImageLinksPlaywright(url: string): Promise<string[]> {
   let browser = null;
   try {
-    // Launch browser in headless mode
-    browser = await playwright.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath(),
+    browser = await chromium.launch({
+      headless: true,
+      args: ["--disable-gpu", "--disable-blink-features=AutomationControlled"],
     });
 
-    const context = await browser.newContext();
+    const context = await browser.newContext({
+      userAgent:
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+    });
 
     const page = await context.newPage();
 
@@ -76,20 +70,11 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       timeout: 60000,
     });
 
-    console.log("Waiting for image grid to be visible...");
-    await page.waitForSelector(
-      'img[src^="https://images.pexels.com/photos/"]',
-      {
-        state: "visible",
-        timeout: 60000,
-      },
-    );
-    console.log("Page content is ready.");
+    await page.waitForTimeout(5000);
 
     const maxClicks = 5;
     let clickCount = 0;
 
-    // Try clicking the Load More button
     while (clickCount < maxClicks) {
       const loadMoreButton = await findLoadMoreButton(page);
 
@@ -100,8 +85,8 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
           );
           clickCount++;
           await loadMoreButton.click();
-          await page.waitForTimeout(5000);
-          console.log("New content loaded after clicking Load More.");
+
+          await page.waitForTimeout(2000);
         } catch (error) {
           console.error(`Error clicking button: ${error}`);
           break;
@@ -116,10 +101,10 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       `Finished clicking Load More buttons. Total clicks: ${clickCount}`,
     );
 
-    // Extract image links
+    await page.waitForTimeout(2000);
+
     const imgLinks = await page.evaluate((): string[] => {
       const imgs = Array.from(document.querySelectorAll("img"));
-      console.log(`Total images found on page: ${imgs.length}`);
       const links: string[] = [];
 
       imgs.forEach((img) => {
@@ -132,7 +117,6 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       return links;
     });
 
-    // Process links to remove duplicates and query parameters
     const processedImgLinks: string[] = [];
     for (const link of imgLinks) {
       const processedLink = link.split("?")[0];
@@ -152,9 +136,6 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
   }
 }
 
-/**
- * Save the list of image links to a JSON file.
- */
 function saveLinksToJson(links: string[], filename: string): void {
   try {
     const data: ImageData = {
@@ -178,7 +159,6 @@ async function main(): Promise<void> {
     console.log(JSON.stringify(links, null, 4));
     console.log(`\nTotal image links found: ${links.length}`);
 
-    // If output filename is provided as command line argument
     if (process.argv.length > 2) {
       const outputFilename = process.argv[2];
       saveLinksToJson(links, outputFilename);

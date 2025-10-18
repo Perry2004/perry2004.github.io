@@ -8,7 +8,7 @@ import { getImageLinksPlaywright } from "./main";
 /**
  * Fetches the latest pexels featured image links using Playwright
  */
-export async function lambdaHandler(
+export async function handler(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _event: APIGatewayProxyEvent,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
