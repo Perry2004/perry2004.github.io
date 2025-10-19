@@ -22,7 +22,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ${{ vars.AWS_REGION }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,10 +34,10 @@ jobs:
         run: yarn cibuild
       - name: Deploy to S3
         run: |
-          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }}/website --delete
+          aws s3 sync ./dist s3://${{ vars.AWS_S3_BUCKET }}/website --delete
       - name: Invalidate CloudFront cache
         uses: foxdalas/cloudfront-invalidator@v4
         with:
           tag_key: "Name"
-          tag_value: ${{ secrets.CLOUDFRONT_DISTRIBUTION_NAME }}
+          tag_value: ${{ vars.CLOUDFRONT_DISTRIBUTION_NAME }}
           paths: "/*"
