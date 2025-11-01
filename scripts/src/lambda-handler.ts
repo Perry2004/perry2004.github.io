@@ -31,8 +31,22 @@ export async function handler(
         images: imageLinks,
       };
 
-      const bucketName = "perryz-portfolio-website-usw2dev";
-      const key = "website/data/rolling-images.json";
+      const bucketName = process.env.S3_BUCKET_NAME;
+      const key = "data/rolling-images.json";
+
+      if (!bucketName || !key) {
+        console.error("Missing required environment variables: S3_BUCKET_NAME or S3_OBJECT_KEY");
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            success: false,
+            error: "Missing S3 configuration",
+            message: "S3_BUCKET_NAME and S3_OBJECT_KEY environment variables are required",
+            image_links: imageLinks,
+            total_count: imageLinks.length,
+          }),
+        };
+      }
 
       try {
         console.log(`Uploading JSON to S3: ${bucketName}/${key}`);
