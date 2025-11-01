@@ -32,7 +32,7 @@ export async function handler(
       };
 
       const bucketName = process.env.S3_BUCKET_NAME;
-      const key = "data/rolling-images.json";
+      const key = "website/data/rolling-images.json";
 
       if (!bucketName) {
         console.error("Missing required environment variable: S3_BUCKET_NAME");
