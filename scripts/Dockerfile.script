@@ -15,10 +15,12 @@ RUN apt-get update && \
     make \
     cmake \
     unzip \
-    libcurl4-openssl-dev
+    libcurl4-openssl-dev && \
+    rm -rf /var/lib/apt/lists/*
 RUN npm install aws-lambda-ric
 RUN npm ci --only=production
-ENV PLAYWRIGHT_BROWSERS_PATH=0
-RUN npx playwright install chromium --with-deps
+ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+RUN npx playwright install chromium --with-deps && \
+    npx playwright install-deps chromium
 ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
 CMD ["dist/lambda-handler.handler"]

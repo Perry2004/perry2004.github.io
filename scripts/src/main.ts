@@ -51,18 +51,68 @@ async function findLoadMoreButton(
 
 async function getImageLinksPlaywright(url: string): Promise<string[]> {
   let browser = null;
+  let context = null;
+  let page = null;
+
+  // Set environment variable to use system Chromium in Lambda
+  process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || '/ms-playwright/chromium-*/chrome-linux/chrome';
+
   try {
-    browser = await chromium.launch({
-      headless: true,
-      args: ["--disable-gpu", "--disable-blink-features=AutomationControlled"],
+    console.log("Environment:", {
+      PLAYWRIGHT_BROWSERS_PATH: process.env.PLAYWRIGHT_BROWSERS_PATH,
+      PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+      NODE_ENV: process.env.NODE_ENV,
     });
 
-    const context = await browser.newContext({
+    console.log("Launching browser...");
+    const launchStart = Date.now();
+    browser = await chromium.launch({
+      headless: true,
+      timeout: 120000,
+      args: [
+        "--disable-gpu",
+        "--disable-blink-features=AutomationControlled",
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-software-rasterizer",
+        "--disable-extensions",
+        "--disable-background-networking",
+        "--disable-sync",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--no-first-run",
+        "--safebrowsing-disable-auto-update",
+        "--disable-component-update",
+        "--disable-default-apps",
+        "--no-zygote",
+        "--disable-accelerated-2d-canvas",
+        "--disable-webgl",
+      ],
+    });
+    const launchDuration = Date.now() - launchStart;
+    console.log(`Browser launched successfully in ${launchDuration}ms`);
+
+    if (!browser.isConnected()) {
+      throw new Error("Browser disconnected after launch");
+    }
+
+    console.log("Creating browser context...");
+    context = await browser.newContext({
       userAgent:
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
     });
+    console.log("Browser context created successfully");
 
-    const page = await context.newPage();
+    console.log("Creating new page...");
+    try {
+      page = await context.newPage();
+      console.log("New page created successfully");
+    } catch (pageError) {
+      console.error("Failed to create new page");
+      console.error(`Browser connected: ${browser.isConnected()}`);
+      throw pageError;
+    }
 
     console.log("Fetching URL with Playwright...");
     await page.goto(url, {
@@ -128,10 +178,27 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
     return processedImgLinks;
   } catch (error) {
     console.error(`An error occurred: ${error}`);
+    if (error instanceof Error) {
+      console.error(`Error stack: ${error.stack}`);
+    }
     return [];
   } finally {
-    if (browser) {
-      await browser.close();
+    console.log("Cleaning up resources...");
+    try {
+      if (page) {
+        await page.close();
+        console.log("Page closed");
+      }
+      if (context) {
+        await context.close();
+        console.log("Context closed");
+      }
+      if (browser) {
+        await browser.close();
+        console.log("Browser closed");
+      }
+    } catch (cleanupError) {
+      console.error(`Error during cleanup: ${cleanupError}`);
     }
   }
 }

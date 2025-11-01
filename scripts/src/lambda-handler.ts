@@ -14,9 +14,11 @@ export async function handler(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _context: Context,
 ): Promise<APIGatewayProxyResult> {
+  console.log("Lambda handler started");
   try {
     const pexelsUrl =
       "https://www.pexels.com/@perry-z-1662054943/featured-uploads/";
+    console.log(`Fetching images from: ${pexelsUrl}`);
     const imageLinks = await getImageLinksPlaywright(pexelsUrl);
 
     if (imageLinks && imageLinks.length > 0) {
@@ -42,7 +44,11 @@ export async function handler(
       };
     }
   } catch (error) {
-    console.log(`Error in lambdaHandler: ${error}`);
+    console.error(`Error in lambdaHandler: ${error}`);
+    if (error instanceof Error) {
+      console.error(`Error message: ${error.message}`);
+      console.error(`Error stack: ${error.stack}`);
+    }
     return {
       statusCode: 500,
       body: JSON.stringify({
