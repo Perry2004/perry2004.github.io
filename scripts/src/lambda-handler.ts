@@ -34,14 +34,14 @@ export async function handler(
       const bucketName = process.env.S3_BUCKET_NAME;
       const key = "data/rolling-images.json";
 
-      if (!bucketName || !key) {
-        console.error("Missing required environment variables: S3_BUCKET_NAME or S3_OBJECT_KEY");
+      if (!bucketName) {
+        console.error("Missing required environment variable: S3_BUCKET_NAME");
         return {
           statusCode: 500,
           body: JSON.stringify({
             success: false,
             error: "Missing S3 configuration",
-            message: "S3_BUCKET_NAME and S3_OBJECT_KEY environment variables are required",
+            message: "S3_BUCKET_NAME environment variable is required",
             image_links: imageLinks,
             total_count: imageLinks.length,
           }),
