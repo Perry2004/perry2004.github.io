@@ -120,7 +120,7 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
       timeout: 60000,
     });
 
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(7500);
 
     const maxClicks = 5;
     let clickCount = 0;

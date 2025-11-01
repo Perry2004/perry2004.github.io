@@ -30,7 +30,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY_LAMBDA }}
-          AWS_S3_BUCKET_NAME: ${{ vars.AWS_S3_BUCKET_NAME }}
+          AWS_S3_BUCKET_NAME: ${{ vars.AWS_S3_BUCKET }}
         run: |
           # Build the Docker image from the 'scripts' directory.
           # This assumes your Dockerfile is located in 'scripts/Dockerfile'.
