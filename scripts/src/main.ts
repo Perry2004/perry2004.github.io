@@ -124,6 +124,7 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
 
     const maxClicks = 5;
     let clickCount = 0;
+    let triedFinding = false;
 
     while (clickCount < maxClicks) {
       const loadMoreButton = await findLoadMoreButton(page);
@@ -143,7 +144,12 @@ async function getImageLinksPlaywright(url: string): Promise<string[]> {
         }
       } else {
         console.log("No Load More button left to click.");
-        break;
+        if (!triedFinding) {
+          await page.waitForTimeout(5000);
+          triedFinding = true;
+        } else {
+          break;
+        }
       }
     }
 
