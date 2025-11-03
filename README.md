@@ -27,14 +27,17 @@ Automated Playwright-based scraper that fetches and updates Pexels image links f
 ## 🚀 Deployment
 
 ### Website
+
 - **Hosting:** AWS S3
 - **CDN:** AWS CloudFront
 
 ### Scripts
+
 - **Function:** AWS Lambda
 - **Scheduler:** AWS EventBridge
 
 ### GitHub Actions
+
 - **Build Check** - Validates builds on pull requests
 - **Publish to S3** - Builds and deploys website to S3 on main branch
 - **Build Lambda Image** - Builds and pushes Lambda container to ECR
