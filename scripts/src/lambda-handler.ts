@@ -4,9 +4,14 @@ import {
   Context,
 } from "aws-lambda";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import {
+  CloudFrontClient,
+  CreateInvalidationCommand,
+} from "@aws-sdk/client-cloudfront";
 import { getImageLinksPlaywright } from "./main";
 
 const s3Client = new S3Client({ region: "us-west-2" });
+const cloudfrontClient = new CloudFrontClient({ region: "us-west-2" });
 
 /**
  * Fetches the latest pexels featured image links using Playwright
@@ -31,10 +36,11 @@ export async function handler(
         images: imageLinks,
       };
 
-      const bucketName = process.env.S3_BUCKET_NAME;
+      const BUCKET_NAME = process.env.S3_BUCKET_NAME;
+      const CLOUDFRONT_DISTRIBUTION_ID = process.env.CLOUDFRONT_DISTRIBUTION_ID;
       const key = "website/data/rolling-images.json";
 
-      if (!bucketName) {
+      if (!BUCKET_NAME) {
         console.error("Missing required environment variable: S3_BUCKET_NAME");
         return {
           statusCode: 500,
@@ -48,17 +54,34 @@ export async function handler(
         };
       }
 
+      if (!CLOUDFRONT_DISTRIBUTION_ID) {
+        console.error(
+          "Missing required environment variable: CLOUDFRONT_DISTRIBUTION_ID",
+        );
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            success: false,
+            error: "Missing CloudFront configuration",
+            message:
+              "CLOUDFRONT_DISTRIBUTION_ID environment variable is required",
+            image_links: imageLinks,
+            total_count: imageLinks.length,
+          }),
+        };
+      }
+
       try {
-        console.log(`Uploading JSON to S3: ${bucketName}/${key}`);
+        console.log(`Uploading JSON to S3: ${BUCKET_NAME}/${key}`);
         const command = new PutObjectCommand({
-          Bucket: bucketName,
+          Bucket: BUCKET_NAME,
           Key: key,
           Body: JSON.stringify(jsonData, null, 4),
           ContentType: "application/json",
         });
 
         await s3Client.send(command);
-        console.log(`Successfully uploaded to S3: ${bucketName}/${key}`);
+        console.log(`Successfully uploaded to S3: ${BUCKET_NAME}/${key}`);
       } catch (s3Error) {
         console.error(`Error uploading to S3: ${s3Error}`);
         return {
@@ -73,13 +96,52 @@ export async function handler(
         };
       }
 
+      // Invalidate CloudFront cache for the updated file
+      let invalidationId = null;
+      try {
+        console.log(
+          `Creating CloudFront invalidation for distribution: ${CLOUDFRONT_DISTRIBUTION_ID}`,
+        );
+        const invalidationCommand = new CreateInvalidationCommand({
+          DistributionId: CLOUDFRONT_DISTRIBUTION_ID,
+          InvalidationBatch: {
+            CallerReference: `lambda-${Date.now()}`,
+            Paths: {
+              Quantity: 1,
+              Items: [`/${key.replace("website/", "")}`],
+            },
+          },
+        });
+
+        const invalidationResponse =
+          await cloudfrontClient.send(invalidationCommand);
+        invalidationId = invalidationResponse.Invalidation?.Id;
+        console.log(
+          `CloudFront invalidation created successfully: ${invalidationId}`,
+        );
+      } catch (cfError) {
+        console.error(`Error creating CloudFront invalidation: ${cfError}`);
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            success: false,
+            error: cfError instanceof Error ? cfError.message : String(cfError),
+            message: "Failed to invalidate CloudFront cache",
+            image_links: imageLinks,
+            total_count: imageLinks.length,
+            s3_location: `s3://${BUCKET_NAME}/${key}`,
+          }),
+        };
+      }
+
       return {
         statusCode: 200,
         body: JSON.stringify({
           success: true,
           image_links: imageLinks,
           total_count: imageLinks.length,
-          s3_location: `s3://${bucketName}/${key}`,
+          s3_location: `s3://${BUCKET_NAME}/${key}`,
+          cloudfront_invalidation_id: invalidationId,
         }),
       };
     } else {
