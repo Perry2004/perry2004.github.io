@@ -1,11 +1,79 @@
 {
   "workExperiences": [
     {
+      "jobTitle": "Cloud Ops Database Engineer",
+      "company": "Samsung R&D Canada",
+      "companyShortName": "Samsung R&D Canada",
+      "startDate": "Sep 2025",
+      "endDate": "Present",
+      "descriptions": [
+        {
+          "shortDesc": "Built a centralized User Account Management tool with enterprise-grade controls for 2000+ database accounts.",
+          "longDesc": [
+            "Developed a centralized User Account Management (UAM) tool to unify prod and non-prod account management for 2000+ accounts across all project databases with an intuitive UI, implementing automated password rotation, account expiration, safe credential delivery via corporate email, and ticket-attached audit logging for compliance."
+          ]
+        },
+        {
+          "shortDesc": "Orchestrated Kubernetes delivery for UAM and secured multi-account database connectivity with Terraform IaC.",
+          "longDesc": [
+            "Orchestrated the UAM application deployment on Kubernetes with Argo CD and AWS EKS, architecting network routings, VPC peerings, IAM policies, and Security Groups using Terraform to securely connect to 100+ MySQL, Postgres, Redshift, and MongoDB databases across 20+ VPCs in 5 AWS accounts and 3 regions."
+          ]
+        },
+        {
+          "shortDesc": "Automated observability migration to Grafana by standardizing Alloy agent rollout via Ansible.",
+          "longDesc": [
+            "Supported the migration from Datadog to self-hosted Grafana by automating the configuration and deployment of Alloy agents across 70+ MongoDB EC2 instances with Ansible, ensuring consistent metrics, traces, and log shipping."
+          ]
+        },
+        {
+          "shortDesc": "Built MongoDB index usage collection and visualization to guide DBA tuning decisions.",
+          "longDesc": [
+            "Performed index usage statistics collection by developing a cron script and a dashboard to automatically collect, aggregate, and visualize MongoDB index usage across all replica sets, enabling senior DBAs to analyze and optimize index performance."
+          ]
+        },
+        {
+          "shortDesc": "Designing Grafana dashboards for RDS, Redshift, and MongoDB to improve real-time visibility and alerting.",
+          "longDesc": [
+            "Designing and building custom Grafana dashboards to monitor RDS, Redshift, and MongoDB status, improving real-time visibility into database and OS health and enabling timely alerting."
+          ]
+        }
+      ],
+      "location": "Vancouver, British Columbia, Canada"
+    },
+    {
+      "jobTitle": "Software Engineer - Infrastructure & Custom Development",
+      "company": "UBC Pacific Laboratory for Artificial Intelligence",
+      "companyShortName": "PLAI",
+      "startDate": "May 2025",
+      "endDate": "Aug 2025",
+      "descriptions": [
+        {
+          "shortDesc": "Upgraded legacy Minecraft plugins/mods to 1.21 with robust connection lifecycle handling for data collection.",
+          "longDesc": [
+            "Upgraded and enhanced legacy Java plugins and mods from Minecraft 1.19 to 1.21, improving connection and termination logic based on client states to ensure stable and reliable behavioral data collection."
+          ]
+        },
+        {
+          "shortDesc": "Built an Agent Companion Framework enabling safe, private AI character interactions on the game server.",
+          "longDesc": [
+            "Architected the Agent Companion Framework to integrate AI characters into the game server, featuring a custom session queue and specialized command interface for private, uninterrupted agent communication, with deterministic guardrails to prevent unsafe actions such as violence or property destruction."
+          ]
+        },
+        {
+          "shortDesc": "Enhanced PLAITime backend with transcription batching, real-time validation, and incentive mechanisms.",
+          "longDesc": [
+            "Contributed to the PLAITime mechanism backend by integrating a transcription model to batch-process player voice transcripts with audio context, implementing real-time validation using Lambda functions and UDP sockets, and designing an incentive mechanism that dynamically awards playing time for high-value interactions while limiting low-quality sessions."
+          ]
+        }
+      ],
+      "location": "Vancouver, British Columbia, Canada"
+    },
+    {
       "jobTitle": "Teaching Assistant",
       "company": "The University of British Columbia",
       "companyShortName": "UBC",
       "startDate": "Jan 2025",
-      "endDate": "Present",
+      "endDate": "Aug 2025",
       "descriptions": [
         {
           "shortDesc": "Guided students through database design concepts and implementation in weekly lab sessions.",
@@ -73,42 +141,6 @@
         }
       ],
       "location": "Remote"
-    },
-    {
-      "jobTitle": "Assistant AI Researcher",
-      "company": "UBC Pacific Laboratory for Artificial Intelligence",
-      "companyShortName": "PLAI",
-      "startDate": "May 2025",
-      "endDate": "Present",
-      "descriptions": [
-        {
-          "shortDesc": "Contributing to cutting-edge embodied AI research through Minecraft environments.",
-          "longDesc": [
-            "Contributing to cutting-edge embodied AI research at UBC's PLAI lab by maintaining the technical infrastructure that enables data collection through Minecraft environments."
-          ]
-        },
-        {
-          "shortDesc": "Maintained and upgraded Minecraft server infrastructure for AI research.",
-          "longDesc": [
-            "Maintained and upgraded the Minecraft server infrastructure for AI research data collection.",
-            "Optimized server performance to handle concurrent users and ensure reliable data collection."
-          ]
-        },
-        {
-          "shortDesc": "Developed Java plugins for AI training data collection and security.",
-          "longDesc": [
-            "Developed and improved Java plugins to monitor user actions and collect behavioral data for AI training.",
-            "Implemented security measures through custom plugins to identify and block malicious behaviors and users."
-          ]
-        },
-        {
-          "shortDesc": "Contributed to documentation and data pipeline for AI research.",
-          "longDesc": [
-            "Documented technical implementations and contributed to the data pipeline for AI research."
-          ]
-        }
-      ],
-      "location": "Vancouver, British Columbia, Canada"
     }
   ]
 }
