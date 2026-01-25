@@ -36,6 +36,12 @@ import {
   SiTailwindcss,
   SiSass,
   SiPostgresql,
+  SiAnsible,
+  SiKubernetes,
+  SiGrafana,
+  SiTerraform,
+  SiNestjs,
+  SiMongodb,
 } from "react-icons/si";
 import { GiMagnifyingGlass, GiEarthAmerica, GiJapan } from "react-icons/gi";
 import { BsDatabaseGear, BsFiletypeSql, BsDiagram3 } from "react-icons/bs";
@@ -64,7 +70,7 @@ export const skillsData: SkillCategory[] = [
       { name: "R", icon: <FaRProject /> },
       { name: "C", icon: <SiC /> },
       { name: "C++", icon: <SiCplusplus /> },
-      { name: "Matlab", icon: <MdScience /> },
+      { name: "MATLAB", icon: <MdScience /> },
     ],
   },
   {
@@ -83,6 +89,8 @@ export const skillsData: SkillCategory[] = [
       { name: "WebGL", icon: <SiWebgl /> },
       { name: "Three.js", icon: <TbBrandThreejs /> },
       { name: "Express.js", icon: <SiExpress /> },
+      { name: "NestJS", icon: <SiNestjs /> },
+      { name: "TanStack", icon: <FaReact /> },
     ],
   },
   {
@@ -113,6 +121,7 @@ export const skillsData: SkillCategory[] = [
       { name: "MySQL DB", icon: <SiMysql /> },
       { name: "OracleDB", icon: <SiOracle /> },
       { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Data Warehousing", icon: <MdOutlineStorage /> },
     ],
   },
@@ -143,6 +152,10 @@ export const skillsData: SkillCategory[] = [
       { name: "Git", icon: <SiGit /> },
       { name: "GitHub", icon: <FaGithub /> },
       { name: "Docker", icon: <FaDocker /> },
+      { name: "Kubernetes", icon: <SiKubernetes /> },
+      { name: "Ansible", icon: <SiAnsible /> },
+      { name: "Terraform", icon: <SiTerraform /> },
+      { name: "Grafana", icon: <SiGrafana /> },
       { name: "Vim/Nvim", icon: <SiVim /> },
       { name: "Zsh", icon: <SiGnubash /> },
       { name: "AWS", icon: <FaAws /> },
