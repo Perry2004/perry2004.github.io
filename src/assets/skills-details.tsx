@@ -42,6 +42,7 @@ import {
   SiTerraform,
   SiNestjs,
   SiMongodb,
+  SiGo,
 } from "react-icons/si";
 import { GiMagnifyingGlass, GiEarthAmerica, GiJapan } from "react-icons/gi";
 import { BsDatabaseGear, BsFiletypeSql, BsDiagram3 } from "react-icons/bs";
@@ -65,6 +66,7 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: "TypeScript", icon: <SiTypescript /> },
       { name: "Java", icon: <FaJava /> },
+      { name: "Golang", icon: <SiGo /> },
       { name: "JavaScript", icon: <FaJs /> },
       { name: "Python", icon: <FaPython /> },
       { name: "R", icon: <FaRProject /> },
@@ -110,6 +112,20 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
+    name: "AI Development",
+    icon: <MdArchitecture />,
+    skills: [
+      { name: "LangChain", icon: <MdArchitecture /> },
+      { name: "LangGraph", icon: <BsDiagram3 /> },
+      { name: "Prompt & Context Engineering", icon: <RiEnglishInput /> },
+      { name: "AI Agent", icon: <MdArchitecture /> },
+      { name: "AI Workflow", icon: <MdOutlineEngineering /> },
+      { name: "RAG", icon: <GiMagnifyingGlass /> },
+      { name: "Human-in-the-Loop", icon: <FaLanguage /> },
+      { name: "ReAct", icon: <BiTimeFive /> },
+    ],
+  },
+  {
     name: "Database Design and Management",
     icon: <FaDatabase />,
     skills: [
@@ -146,20 +162,30 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
+    name: "Cloud Computing",
+    icon: <FaAws />,
+    skills: [
+      { name: "AWS", icon: <FaAws /> },
+      { name: "Linux", icon: <FaLinux /> },
+      { name: "Kubernetes", icon: <SiKubernetes /> },
+      { name: "Ansible", icon: <SiAnsible /> },
+      { name: "Terraform", icon: <SiTerraform /> },
+      { name: "Grafana", icon: <SiGrafana /> },
+      { name: "CI/CD", icon: <MdOutlineEngineering /> },
+      { name: "GitHub Actions", icon: <FaGithub /> },
+      { name: "Golang", icon: <SiGo /> },
+      { name: "Distributed System", icon: <FaServer /> },
+    ],
+  },
+  {
     name: "Tools & Technologies",
     icon: <FaGithub />,
     skills: [
       { name: "Git", icon: <SiGit /> },
       { name: "GitHub", icon: <FaGithub /> },
       { name: "Docker", icon: <FaDocker /> },
-      { name: "Kubernetes", icon: <SiKubernetes /> },
-      { name: "Ansible", icon: <SiAnsible /> },
-      { name: "Terraform", icon: <SiTerraform /> },
-      { name: "Grafana", icon: <SiGrafana /> },
       { name: "Vim/Nvim", icon: <SiVim /> },
       { name: "Zsh", icon: <SiGnubash /> },
-      { name: "AWS", icon: <FaAws /> },
-      { name: "Linux", icon: <FaLinux /> },
       { name: "Blender", icon: <SiBlender /> },
       {
         name: "Minecraft Plugin & Mod",

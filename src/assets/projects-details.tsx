@@ -10,6 +10,62 @@ import { SiGithub } from "react-icons/si";
  */
 export const projectInfos: ProjectInfo[] = [
   {
+    title: "Open-Door Job Application Agent",
+    intro: (
+      <>
+        Human-in-the-Loop AI Agent for Automated Job Applications using <code>LangGraph</code>, <code>Stagehand</code>, <code>Gemini API</code>, and <code>TypeScript</code>
+      </>
+    ),
+    descriptions: [
+      {
+        shortDesc: (
+          <>
+            <strong>Architected and developed</strong> a stateful AI agentic system using <code>LangGraph</code> to automate end-to-end online job applications, reducing manual entry for repetitive forms.
+          </>
+        ),
+        longDesc: (
+          <>
+            <ul>
+              <li>
+                Integrated <code>Stagehand</code> for browser automation, enabling autonomous navigation across job portals, login detection, and handling account creation plus email verification flows.
+              </li>
+              <li>
+                Implemented a robust <strong>Human-in-the-Loop (HITL)</strong> workflow with interactive interrupts to request missing user information and explicit approval before final submission.
+              </li>
+            </ul>
+          </>
+        ),
+      },
+      {
+        shortDesc: (
+          <>
+            <strong>Engineered a multimodal pipeline</strong> with Gemini API (<code>gemini-3.0-flash-preview</code>) for advanced computer-use capabilities and automated PDF resume parsing.
+          </>
+        ),
+        longDesc: (
+          <>
+            <ul>
+              <li>
+                Designed a modular node-based architecture across Resource Preparation, Account Handling, Form Filling, and Submission Review stages to manage complex states and looped form flows.
+              </li>
+              <li>
+                Managed the TypeScript workspace with <code>pnpm</code> workspaces and <code>Biome</code> for fast linting, formatting, and optimized dependency management.
+              </li>
+            </ul>
+          </>
+        ),
+      },
+    ],
+    links: [
+      <>
+        <IconedLink href="https://github.com/Perry2004/open-door">
+          <SiGithub />
+          <LinkText>Check GitHub</LinkText>
+        </IconedLink>
+      </>,
+    ],
+  },
+  {
     title: "OOTDscribe",
     intro: (
       <>
