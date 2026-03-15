@@ -1,5 +1,4 @@
-import { ProjectInfo, IconedLink } from "@/components";
-import { LinkText } from "@/components";
+import { IconedLink, LinkText, ProjectInfo } from "@/components";
 import { SiGithub } from "react-icons/si";
 
 /**
@@ -10,27 +9,82 @@ import { SiGithub } from "react-icons/si";
  */
 export const projectInfos: ProjectInfo[] = [
   {
-    title: "Open-Door Job Application Agent",
+    title: "GP-News",
     intro: (
       <>
-        Human-in-the-Loop AI Agent for Automated Job Applications using <code>LangGraph</code>, <code>Stagehand</code>, <code>Gemini API</code>, and <code>TypeScript</code>
+        Automated News Aggregation and Processing Platform using{" "}
+        <code>AWS Lambda</code>, <code>AI API</code>, and{" "}
+        <code>TypeScript</code>
       </>
     ),
     descriptions: [
       {
         shortDesc: (
           <>
-            <strong>Architected and developed</strong> a stateful AI agentic system using <code>LangGraph</code> to automate end-to-end online job applications, reducing manual entry for repetitive forms.
+            <strong>Architected and developed</strong> a specialized news
+            aggregation tool designed to automatically fetch, process, and
+            organize content from diverse digital sources.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Integrated <code>Stagehand</code> for browser automation, enabling autonomous navigation across job portals, login detection, and handling account creation plus email verification flows.
+                Streamlined information workflows by implementing{" "}
+                <strong>automated data gathering and formatting</strong>,
+                ensuring news updates are structured for seamless personal
+                consumption.
               </li>
               <li>
-                Implemented a robust <strong>Human-in-the-Loop (HITL)</strong> workflow with interactive interrupts to request missing user information and explicit approval before final submission.
+                Leveraged <strong>AI APIs</strong> for intelligent content
+                processing and <strong>AWS Lambda</strong> for scalable,
+                serverless execution of aggregation tasks.
+              </li>
+            </ul>
+          </>
+        ),
+      },
+    ],
+    links: [
+      <>
+        <IconedLink href="https://github.com/Perry2004/GP-News">
+          <SiGithub />
+          <LinkText>Check GitHub</LinkText>
+        </IconedLink>
+      </>,
+    ],
+  },
+  {
+    title: "Open-Door Job Application Agent",
+    intro: (
+      <>
+        Human-in-the-Loop AI Agent for Automated Job Applications using{" "}
+        <code>LangGraph</code>, <code>Stagehand</code>, <code>Gemini API</code>,
+        and <code>TypeScript</code>
+      </>
+    ),
+    descriptions: [
+      {
+        shortDesc: (
+          <>
+            <strong>Architected and developed</strong> a stateful AI agentic
+            system using <code>LangGraph</code> to automate end-to-end online
+            job applications, reducing manual entry for repetitive forms.
+          </>
+        ),
+        longDesc: (
+          <>
+            <ul>
+              <li>
+                Integrated <code>Stagehand</code> for browser automation,
+                enabling autonomous navigation across job portals, login
+                detection, and handling account creation plus email verification
+                flows.
+              </li>
+              <li>
+                Implemented a robust <strong>Human-in-the-Loop (HITL)</strong>{" "}
+                workflow with interactive interrupts to request missing user
+                information and explicit approval before final submission.
               </li>
             </ul>
           </>
@@ -39,17 +93,23 @@ export const projectInfos: ProjectInfo[] = [
       {
         shortDesc: (
           <>
-            <strong>Engineered a multimodal pipeline</strong> with Gemini API (<code>gemini-3.0-flash-preview</code>) for advanced computer-use capabilities and automated PDF resume parsing.
+            <strong>Engineered a multimodal pipeline</strong> with Gemini API (
+            <code>gemini-3.0-flash-preview</code>) for advanced computer-use
+            capabilities and automated PDF resume parsing.
           </>
         ),
         longDesc: (
           <>
             <ul>
               <li>
-                Designed a modular node-based architecture across Resource Preparation, Account Handling, Form Filling, and Submission Review stages to manage complex states and looped form flows.
+                Designed a modular node-based architecture across Resource
+                Preparation, Account Handling, Form Filling, and Submission
+                Review stages to manage complex states and looped form flows.
               </li>
               <li>
-                Managed the TypeScript workspace with <code>pnpm</code> workspaces and <code>Biome</code> for fast linting, formatting, and optimized dependency management.
+                Managed the TypeScript workspace with <code>pnpm</code>{" "}
+                workspaces and <code>Biome</code> for fast linting, formatting,
+                and optimized dependency management.
               </li>
             </ul>
           </>
