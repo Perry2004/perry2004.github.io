@@ -42,6 +42,7 @@ import {
   SiTerraform,
   SiNestjs,
   SiMongodb,
+  SiNeo4J,
   SiGo,
 } from "react-icons/si";
 import { GiMagnifyingGlass, GiEarthAmerica, GiJapan } from "react-icons/gi";
@@ -138,6 +139,7 @@ export const skillsData: SkillCategory[] = [
       { name: "OracleDB", icon: <SiOracle /> },
       { name: "PostgreSQL", icon: <SiPostgresql /> },
       { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "Neo4j", icon: <SiNeo4J /> },
       { name: "Data Warehousing", icon: <MdOutlineStorage /> },
     ],
   },
