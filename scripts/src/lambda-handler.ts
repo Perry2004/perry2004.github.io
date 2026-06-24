@@ -37,7 +37,10 @@ export async function handler(
 
       const BUCKET_NAME = process.env.S3_BUCKET_NAME;
       const CLOUDFRONT_DISTRIBUTION_ID = process.env.CLOUDFRONT_DISTRIBUTION_ID;
-      const key = "website/data/rolling-images.json";
+      const key = process.env.S3_OBJECT_KEY ?? "website/data/rolling-images.json";
+      const cloudfrontInvalidationPath =
+        process.env.CLOUDFRONT_INVALIDATION_PATH ??
+        `/${key.replace(/^website\//, "")}`;
 
       if (!BUCKET_NAME) {
         console.error("Missing required environment variable: S3_BUCKET_NAME");
@@ -107,7 +110,7 @@ export async function handler(
             CallerReference: `lambda-${Date.now()}`,
             Paths: {
               Quantity: 1,
-              Items: [`/${key.replace("website/", "")}`],
+              Items: [cloudfrontInvalidationPath],
             },
           },
         });
