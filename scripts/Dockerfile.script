@@ -15,6 +15,7 @@ ARG CLOUDFRONT_DISTRIBUTION_ID
 ENV CLOUDFRONT_DISTRIBUTION_ID=${CLOUDFRONT_DISTRIBUTION_ID}
 
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/dist/*.js /app/dist/*.js.map ./
 COPY package*.json  ./
 RUN apt-get update && \
     apt-get install -y \
@@ -24,11 +25,21 @@ RUN apt-get update && \
     unzip \
     libcurl4-openssl-dev && \
     rm -rf /var/lib/apt/lists/*
-RUN npm install aws-lambda-ric
+RUN npm install aws-lambda-ric@3.3.0
 RUN npm ci --only=production
+RUN mkdir -p /var/task /app/node_modules/lambda-handler /node_modules/lambda-handler && \
+    cp /app/lambda-handler.js /app/lambda-handler.js.map /app/main.js /app/main.js.map /var/task/ && \
+    cp /app/lambda-handler.js /app/node_modules/lambda-handler/index.js && \
+    cp /app/lambda-handler.js.map /app/node_modules/lambda-handler/index.js.map && \
+    cp /app/main.js /app/node_modules/lambda-handler/main.js && \
+    cp /app/main.js.map /app/node_modules/lambda-handler/main.js.map && \
+    printf '{"name":"lambda-handler","main":"index.js"}\n' > /app/node_modules/lambda-handler/package.json && \
+    printf 'module.exports = require("/app/lambda-handler.js");\n' > /node_modules/lambda-handler/index.js && \
+    printf '{"name":"lambda-handler","main":"index.js"}\n' > /node_modules/lambda-handler/package.json && \
+    ln -sfn /app/node_modules /var/task/node_modules
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 RUN npx playwright install chromium --with-deps && \
     npx playwright install-deps chromium
 
 ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
-CMD ["dist/lambda-handler.handler"]
+CMD ["lambda-handler.handler"]
