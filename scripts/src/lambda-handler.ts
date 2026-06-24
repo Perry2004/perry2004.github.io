@@ -8,7 +8,7 @@ import {
   CloudFrontClient,
   CreateInvalidationCommand,
 } from "@aws-sdk/client-cloudfront";
-import { getImageLinksPlaywright } from "./main";
+import { getImageLinksPlaywright, getPexelsFeaturedUploadsUrl } from "./main";
 
 const s3Client = new S3Client({ region: "us-west-2" });
 const cloudfrontClient = new CloudFrontClient({ region: "us-west-2" });
@@ -24,8 +24,7 @@ export async function handler(
 ): Promise<APIGatewayProxyResult> {
   console.log("Lambda handler started");
   try {
-    const pexelsUrl =
-      "https://www.pexels.com/@perry-z-1662054943/featured-uploads/";
+    const pexelsUrl = getPexelsFeaturedUploadsUrl();
     console.log(`Fetching images from: ${pexelsUrl}`);
     const imageLinks = await getImageLinksPlaywright(pexelsUrl);
 
