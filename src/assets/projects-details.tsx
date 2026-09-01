@@ -1,5 +1,5 @@
 import { IconedLink, LinkText, ProjectInfo } from "@/components";
-import { SiGithub } from "react-icons/si";
+import { SiArxiv, SiGithub } from "react-icons/si";
 
 /**
  * This file contains the project details that will be displayed on the project cards.
@@ -8,6 +8,60 @@ import { SiGithub } from "react-icons/si";
  * Modifying the file requires re-building the project.
  */
 export const projectInfos: ProjectInfo[] = [
+  {
+    title: "ClawBench Paper",
+    intro: (
+      <>
+        <strong>EMNLP 2026 Findings</strong> and{" "}
+        <strong>COLM 2026 Workshop on Agent Behavior</strong> paper on an
+        open-source browser-agent evaluation benchmark with a{" "}
+        <code>containerized runtime</code>, final request interception,
+        interchangeable browser runtimes and agent harnesses, and five-layer
+        recording
+      </>
+    ),
+    descriptions: [
+      {
+        shortDesc: (
+          <>
+            <strong>Architected and implemented</strong> ClawBench&apos;s core
+            runtime for safe, reproducible browser-agent evaluation across 281
+            tasks on 163 live websites.
+          </>
+        ),
+        longDesc: (
+          <>
+            <ul>
+              <li>
+                Built interchangeable browser-runtime and agent-harness
+                integrations with final-request interception and{" "}
+                <strong>five-layer recording</strong>.
+              </li>
+              <li>
+                Established <strong>CI/CD</strong> and automated PyPI release
+                pipelines, reviewed community pull requests, and resolved
+                user-reported issues.
+              </li>
+            </ul>
+          </>
+        ),
+      },
+    ],
+    links: [
+      <>
+        <IconedLink href="https://arxiv.org/abs/2604.08523">
+          <SiArxiv />
+          <LinkText>Read the paper</LinkText>
+        </IconedLink>
+      </>,
+      <>
+        <IconedLink href="https://github.com/TIGER-AI-Lab/ClawBench">
+          <SiGithub />
+          <LinkText>Check GitHub</LinkText>
+        </IconedLink>
+      </>,
+    ],
+  },
   {
     title: "GP-News",
     intro: (
