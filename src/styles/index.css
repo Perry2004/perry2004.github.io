@@ -349,6 +349,12 @@
   height: 100%;
 }
 
+/* React Chrono's inner wrapper is not independently scrollable in this layout.
+   Allow wheel and touch gestures to continue to fullPage.js's scroll container. */
+.work-experiences-timeline .timeline-main-wrapper {
+  overscroll-behavior-y: auto;
+}
+
 .TimelineVerticalWrapper-sc-1427v1d-0 {
   height: 100%;
   justify-content: center;
