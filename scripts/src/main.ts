@@ -5,6 +5,20 @@ interface ImageData {
   images: string[];
 }
 
+const PEXELS_FEATURED_UPLOADS_URL_ENV = "PEXELS_FEATURED_UPLOADS_URL";
+
+function getPexelsFeaturedUploadsUrl(): string {
+  const pexelsUrl = process.env[PEXELS_FEATURED_UPLOADS_URL_ENV]?.trim();
+
+  if (!pexelsUrl) {
+    throw new Error(
+      `${PEXELS_FEATURED_UPLOADS_URL_ENV} environment variable is required`,
+    );
+  }
+
+  return pexelsUrl;
+}
+
 async function findLoadMoreButton(
   page: Page,
 ): Promise<ElementHandle<SVGElement | HTMLElement> | null> {
@@ -223,8 +237,7 @@ function saveLinksToJson(links: string[], filename: string): void {
 }
 
 async function main(): Promise<void> {
-  const pexelsUrl =
-    "https://www.pexels.com/@perry-z-1662054943/featured-uploads/";
+  const pexelsUrl = getPexelsFeaturedUploadsUrl();
   const links = await getImageLinksPlaywright(pexelsUrl);
 
   if (links && links.length > 0) {
@@ -245,4 +258,9 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-export { getImageLinksPlaywright, saveLinksToJson, findLoadMoreButton };
+export {
+  getImageLinksPlaywright,
+  getPexelsFeaturedUploadsUrl,
+  saveLinksToJson,
+  findLoadMoreButton,
+};

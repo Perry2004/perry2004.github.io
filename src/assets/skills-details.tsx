@@ -42,6 +42,7 @@ import {
   SiTerraform,
   SiNestjs,
   SiMongodb,
+  SiNeo4J,
   SiGo,
 } from "react-icons/si";
 import { GiMagnifyingGlass, GiEarthAmerica, GiJapan } from "react-icons/gi";
@@ -92,6 +93,7 @@ export const skillsData: SkillCategory[] = [
       { name: "Three.js", icon: <TbBrandThreejs /> },
       { name: "Express.js", icon: <SiExpress /> },
       { name: "NestJS", icon: <SiNestjs /> },
+      { name: "Spring Boot", icon: <FaJava /> },
       { name: "TanStack", icon: <FaReact /> },
     ],
   },
@@ -138,6 +140,7 @@ export const skillsData: SkillCategory[] = [
       { name: "OracleDB", icon: <SiOracle /> },
       { name: "PostgreSQL", icon: <SiPostgresql /> },
       { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "Neo4j", icon: <SiNeo4J /> },
       { name: "Data Warehousing", icon: <MdOutlineStorage /> },
     ],
   },
@@ -171,6 +174,7 @@ export const skillsData: SkillCategory[] = [
       { name: "Ansible", icon: <SiAnsible /> },
       { name: "Terraform", icon: <SiTerraform /> },
       { name: "Grafana", icon: <SiGrafana /> },
+      { name: "OpenTelemetry", icon: <MdOutlineEngineering /> },
       { name: "CI/CD", icon: <MdOutlineEngineering /> },
       { name: "GitHub Actions", icon: <FaGithub /> },
       { name: "Golang", icon: <SiGo /> },

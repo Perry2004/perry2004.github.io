@@ -8,7 +8,7 @@ import {
   CloudFrontClient,
   CreateInvalidationCommand,
 } from "@aws-sdk/client-cloudfront";
-import { getImageLinksPlaywright } from "./main";
+import { getImageLinksPlaywright, getPexelsFeaturedUploadsUrl } from "./main";
 
 const s3Client = new S3Client({ region: "us-west-2" });
 const cloudfrontClient = new CloudFrontClient({ region: "us-west-2" });
@@ -24,8 +24,7 @@ export async function handler(
 ): Promise<APIGatewayProxyResult> {
   console.log("Lambda handler started");
   try {
-    const pexelsUrl =
-      "https://www.pexels.com/@perry-z-1662054943/featured-uploads/";
+    const pexelsUrl = getPexelsFeaturedUploadsUrl();
     console.log(`Fetching images from: ${pexelsUrl}`);
     const imageLinks = await getImageLinksPlaywright(pexelsUrl);
 
@@ -38,7 +37,10 @@ export async function handler(
 
       const BUCKET_NAME = process.env.S3_BUCKET_NAME;
       const CLOUDFRONT_DISTRIBUTION_ID = process.env.CLOUDFRONT_DISTRIBUTION_ID;
-      const key = "website/data/rolling-images.json";
+      const key = process.env.S3_OBJECT_KEY ?? "website/data/rolling-images.json";
+      const cloudfrontInvalidationPath =
+        process.env.CLOUDFRONT_INVALIDATION_PATH ??
+        `/${key.replace(/^website\//, "")}`;
 
       if (!BUCKET_NAME) {
         console.error("Missing required environment variable: S3_BUCKET_NAME");
@@ -108,7 +110,7 @@ export async function handler(
             CallerReference: `lambda-${Date.now()}`,
             Paths: {
               Quantity: 1,
-              Items: [`/${key.replace("website/", "")}`],
+              Items: [cloudfrontInvalidationPath],
             },
           },
         });

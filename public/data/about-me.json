@@ -1,6 +1,6 @@
 {
   "phrases": [
-    "Cloud Ops Database Engineer",
+    "Teaching Assistant",
     "Database Engineer",
     "DevOps Engineer",
     "Software Engineer",
@@ -10,7 +10,7 @@
     "International Student from China",
     "Computer Science Student",
     "Statistics Student",
-    "Cloud Infrastructure Specialist",
+    "Cloud Engineer",
     "Kubernetes Enthusiast",
     "Database Administration Specialist",
     "Terraform Practitioner",
@@ -18,9 +18,7 @@
     "Automation Enthusiast",
     "Problem Solver",
     "Lifelong Learner",
-    "Former PLAI Research Engineer",
-    "Former UBC TA",
-    "Open Source Contributor",
+    "Open Source Maintainer",
     "Amateur Photographer",
     "Violin Player",
     "Aviation Fan",
@@ -30,13 +28,14 @@
     "Minecraft Server Manager",
     "Minecraft Mod & Plugin Developer",
     "War Thunder Player",
-    "Total War Player"
+    "Total War Player",
+    "Vocaloid Producer"
   ],
   "paragraphs": [
-    "I'm a Computer Science and Statistics student at UBC, currently on co-op as a Cloud Ops Database Engineer at Samsung R&D Canada. I'm passionate about technology, problem-solving, and continuous learning.",
-    "At Samsung, I work on cloud infrastructure and database operations, building tools for account management and implementing Kubernetes and Terraform solutions. I also enjoy contributing to research projects at UBC's PLAI lab, where I develop Minecraft plugins and AI agent frameworks.",
-    "I have experience with various technologies including Kubernetes, Docker, AWS, Python, TypeScript, and Java. I've worked with databases like MySQL, PostgreSQL, and MongoDB, and I enjoy automating workflows and building monitoring solutions.",
-    "Beyond coding, I'm an amateur photographer, violin player, and aviation enthusiast. I love playing Minecraft (and have developed mods & plugins for it!), reading manga, and spending time with my cat. I also enjoy strategy games like War Thunder and Total War.",
+    "I'm a Computer Science and Statistics student at UBC, where I currently working as a Teaching Assistant for CPSC330 Applied Machine Learning. I'm passionate about software development and cloud engineering.",
+    "I've previously worked as a Cloud Operations & Database Engineering at Samsung R&D Canada and as a Software Engineer at UBC's Pacific Laboratory for Artificial Intelligence (PLAI). I have experience in cloud infrastructure, DevOps, database administration, and fullstack software development.",
+    "I co-authored ClawBench and architected its core containerized runtime for safe, reproducible browser-agent evaluation. I also maintain the open-source project through CI/CD, releases, runtime integrations, community reviews, and user support.",
+    "I work with AWS, Kubernetes, Terraform, Ansible, Docker, Grafana, OpenTelemetry, TypeScript, Go, Python, Java, PostgreSQL, and MongoDB, and I enjoy automating workflows and building reliable systems.",
     "I'm always eager to explore new technologies and collaborate on interesting projects. Feel free to reach out if you'd like to connect!"
   ]
 }

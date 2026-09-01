@@ -1,40 +1,44 @@
 {
   "workExperiences": [
     {
-      "jobTitle": "Cloud Ops Database Engineer",
-      "company": "Samsung R&D Canada",
-      "companyShortName": "Samsung R&D Canada",
-      "startDate": "Sep 2025",
+      "jobTitle": "Teaching Assistant - CPSC330 Applied Machine Learning",
+      "company": "The University of British Columbia, Department of Computer Science",
+      "companyShortName": "UBC Computer Science",
+      "startDate": "Sep 2026",
       "endDate": "Present",
       "descriptions": [
         {
-          "shortDesc": "Built a centralized User Account Management tool with enterprise-grade controls for 2000+ database accounts.",
+          "shortDesc": "Teaching assistant for CPSC330 Applied Machine Learning.",
           "longDesc": [
-            "Developed a centralized User Account Management (UAM) tool to unify prod and non-prod account management for 2000+ accounts across all project databases with an intuitive UI, implementing automated password rotation, account expiration, safe credential delivery via corporate email, and ticket-attached audit logging for compliance."
+            "Serving as a teaching assistant for CPSC330 Applied Machine Learning."
+          ]
+        }
+      ],
+      "location": "Vancouver, British Columbia, Canada"
+    },
+    {
+      "jobTitle": "Cloud Operations & Database Engineer",
+      "company": "Samsung R&D Canada",
+      "companyShortName": "Samsung R&D Canada",
+      "startDate": "Sep 2025",
+      "endDate": "Aug 2026",
+      "descriptions": [
+        {
+          "shortDesc": "Built and deployed DB-UAM for secure, auditable management of 3,000+ accounts across 150+ databases.",
+          "longDesc": [
+            "Designed and built DB-UAM, a centralized portal for secure and auditable database-user lifecycle management across MongoDB, MySQL, PostgreSQL, and Amazon Redshift. Deployed it to AWS EKS through Argo CD using Helm charts and provisioned dedicated subnets, a Karpenter NodePool, cross-account networking, VPC peering, IAM policies, and security groups with Terraform, supporting 3,000+ accounts across 150+ databases in multiple VPCs, AWS accounts, and regions."
           ]
         },
         {
-          "shortDesc": "Orchestrated Kubernetes delivery for UAM and secured multi-account database connectivity with Terraform IaC.",
+          "shortDesc": "Migrated database observability to Grafana LGTM and expanded MongoDB and RDS monitoring.",
           "longDesc": [
-            "Orchestrated the UAM application deployment on Kubernetes with Argo CD and AWS EKS, architecting network routings, VPC peerings, IAM policies, and Security Groups using Terraform to securely connect to 100+ MySQL, Postgres, Redshift, and MongoDB databases across 20+ VPCs in 5 AWS accounts and 3 regions."
+            "Migrated database observability from Datadog to a self-hosted Grafana LGTM stack integrated with AlertNow and Slack, using Ansible to deploy and configure Alloy across 80+ MongoDB EC2 instances for standardized metrics and logs. Customized a fork of an open-source MongoDB Prometheus exporter and configured an RDS exporter to support internal monitoring requirements and additional functionality, built MongoDB and RDS dashboards and alerts, and developed custom scripts for MongoDB index-usage analytics."
           ]
         },
         {
-          "shortDesc": "Automated observability migration to Grafana by standardizing Alloy agent rollout via Ansible.",
+          "shortDesc": "Deployed MongoDB Ops Manager to AWS EKS for secure and resilient database administration.",
           "longDesc": [
-            "Supported the migration from Datadog to self-hosted Grafana by automating the configuration and deployment of Alloy agents across 70+ MongoDB EC2 instances with Ansible, ensuring consistent metrics, traces, and log shipping."
-          ]
-        },
-        {
-          "shortDesc": "Built MongoDB index usage collection and visualization to guide DBA tuning decisions.",
-          "longDesc": [
-            "Performed index usage statistics collection by developing a cron script and a dashboard to automatically collect, aggregate, and visualize MongoDB index usage across all replica sets, enabling senior DBAs to analyze and optimize index performance."
-          ]
-        },
-        {
-          "shortDesc": "Designing Grafana dashboards for RDS, Redshift, and MongoDB to improve real-time visibility and alerting.",
-          "longDesc": [
-            "Designing and building custom Grafana dashboards to monitor RDS, Redshift, and MongoDB status, improving real-time visibility into database and OS health and enabling timely alerting."
+            "Deployed MongoDB Ops Manager to AWS EKS using Helm charts and Terraform; configured TLS-encrypted communication, backup and recovery, high availability, and SSO integration with Authentik for secure and resilient MongoDB administration."
           ]
         }
       ],
@@ -48,56 +52,37 @@
       "endDate": "Aug 2025",
       "descriptions": [
         {
-          "shortDesc": "Upgraded legacy Minecraft plugins/mods to 1.21 with robust connection lifecycle handling for data collection.",
+          "shortDesc": "Modernized legacy Minecraft plugins and mods for reliable behavioral-data collection.",
           "longDesc": [
-            "Upgraded and enhanced legacy Java plugins and mods from Minecraft 1.19 to 1.21, improving connection and termination logic based on client states to ensure stable and reliable behavioral data collection."
+            "Modernized legacy Java Minecraft plugins and mods from Minecraft 1.19 to 1.21 and refactored connection and session-lifecycle logic, improving the reliability of behavioral-data collection."
           ]
         },
         {
-          "shortDesc": "Built an Agent Companion Framework enabling safe, private AI character interactions on the game server.",
+          "shortDesc": "Architected an Agent Companion Framework for safe, private agent-player interactions.",
           "longDesc": [
-            "Architected the Agent Companion Framework to integrate AI characters into the game server, featuring a custom session queue and specialized command interface for private, uninterrupted agent communication, with deterministic guardrails to prevent unsafe actions such as violence or property destruction."
+            "Architected an Agent Companion Framework with session queuing and a command interface for private agent-player interactions; added deterministic safety guardrails to prevent unsafe in-game actions."
           ]
         },
         {
-          "shortDesc": "Enhanced PLAITime backend with transcription batching, real-time validation, and incentive mechanisms.",
+          "shortDesc": "Implemented the PLAITime backend with context-aware transcription, real-time validation, and quality-based incentives.",
           "longDesc": [
-            "Contributed to the PLAITime mechanism backend by integrating a transcription model to batch-process player voice transcripts with audio context, implementing real-time validation using Lambda functions and UDP sockets, and designing an incentive mechanism that dynamically awards playing time for high-value interactions while limiting low-quality sessions."
+            "Implemented the new PLAITime backend with context-aware voice transcription using Whisper, real-time LLM validation through AWS Lambda and UDP sockets, and an incentive mechanism that adjusted playtime based on interaction quality."
           ]
         }
       ],
       "location": "Vancouver, British Columbia, Canada"
     },
     {
-      "jobTitle": "Teaching Assistant",
-      "company": "The University of British Columbia",
-      "companyShortName": "UBC",
+      "jobTitle": "Teaching Assistant - CPSC304 Introduction to Relational Databases",
+      "company": "The University of British Columbia, Department of Computer Science",
+      "companyShortName": "UBC Computer Science",
       "startDate": "Jan 2025",
-      "endDate": "Aug 2025",
+      "endDate": "Apr 2025",
       "descriptions": [
         {
-          "shortDesc": "Guided students through database design concepts and implementation in weekly lab sessions.",
+          "shortDesc": "Led weekly database labs for 50+ students and mentored five full-stack project teams.",
           "longDesc": [
-            "Held weekly one-hour lab sessions to guide students through hands-on exercises on relational database design and implementation using ER models, relational algebra, and SQL."
-          ]
-        },
-        {
-          "shortDesc": "Provided regular office hours and online support for student questions.",
-          "longDesc": [
-            "Provided weekly office hours to address students' questions and offer individualized support.",
-            "Answered student queries promptly via Piazza and emails, fostering a supportive learning environment."
-          ]
-        },
-        {
-          "shortDesc": "Assisted with full-stack database project development and implementation.",
-          "longDesc": [
-            "Assisted students in designing and implementing full-stack database projects using JavaScript/TypeScript and SQL, ensuring proper design and integration of the database."
-          ]
-        },
-        {
-          "shortDesc": "Collaborated with instructors on course alignment and grading.",
-          "longDesc": [
-            "Coordinated with course instructors to align project deliverables with course objectives and maintain consistent grading standards."
+            "Led weekly labs for 50+ students on database design, ER modeling, relational algebra, and SQL; mentored five teams on full-stack database projects."
           ]
         }
       ],
