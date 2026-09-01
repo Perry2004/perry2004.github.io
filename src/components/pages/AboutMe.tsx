@@ -82,7 +82,7 @@ function AboutMeRight() {
           </p>
         ))}
         <Link
-          href="/coop_resume.pdf"
+          href="/resume_latest.pdf"
           download="PerryZ_resume.pdf"
           className="flex w-full justify-center self-start"
         >
