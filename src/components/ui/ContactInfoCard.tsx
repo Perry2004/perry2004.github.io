@@ -1,13 +1,7 @@
 import { Card, CardBody, Divider, Button, Link } from "@heroui/react";
 import { ContactInfoItem } from "./ContactInfoItem";
 import { MdEmail, MdLocationOn, MdPerson } from "react-icons/md";
-import {
-  SiBilibili,
-  SiGithub,
-  SiInstagram,
-  SiLinkedin,
-  SiPexels,
-} from "react-icons/si";
+import { SiGithub, SiInstagram, SiLinkedin, SiPexels } from "react-icons/si";
 
 export function ContactInfoCard() {
   return (
@@ -94,17 +88,6 @@ export function ContactInfoCard() {
             >
               <SiPexels className="h-5 w-5 sm:h-6 sm:w-6" />
               <span>Pexels</span>
-            </Button>
-
-            <Button
-              as="a"
-              href="https://space.bilibili.com/384057718"
-              className="gradient-button-hover-responsive flex items-center gap-2 border border-[#5ad6ff]/50 bg-white px-5 py-3 text-sm text-gray-700 shadow-sm dark:border-[#5ad6ff]/70 dark:bg-gray-800 dark:text-gray-200 sm:text-lg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <SiBilibili className="h-5 w-5 sm:h-6 sm:w-6" />
-              <span>Bilibili</span>
             </Button>
           </div>
         </div>

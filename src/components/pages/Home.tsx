@@ -3,13 +3,7 @@ import { NavbarPlaceholder } from "@/components/layout";
 import { RollingImages } from "@/components/ui";
 import { useDevice, useTheme } from "@/hooks";
 import { Button, Link } from "@heroui/react";
-import {
-  SiBilibili,
-  SiGithub,
-  SiInstagram,
-  SiLinkedin,
-  SiPexels,
-} from "react-icons/si";
+import { SiGithub, SiInstagram, SiLinkedin, SiPexels } from "react-icons/si";
 
 interface SocialMediaLink {
   text: string;
@@ -37,11 +31,6 @@ const socialMediaLinks: SocialMediaLink[] = [
     text: "Pexels",
     href: "https://www.pexels.com/@perry-z-1662054943/",
     icon: <SiPexels />,
-  },
-  {
-    text: "Bilibili",
-    href: "https://space.bilibili.com/384057718",
-    icon: <SiBilibili />,
   },
 ];
 
